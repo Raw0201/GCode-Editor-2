@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>resources/cnc.png</file>
+    <file>resources/exit.png</file>
+    <file>resources/icon.png</file>
+  </qresource>
+</RCC>
