@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>resources/gear.png</file>
+    <file>resources/question.png</file>
     <file>resources/cnc.png</file>
     <file>resources/exit.png</file>
     <file>resources/icon.png</file>

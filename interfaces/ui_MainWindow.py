@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWindowWDPzlv.ui'
+## Form generated from reading UI file 'MainWindowbAXFup.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -12,19 +12,20 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
+import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1292, 1284)
+        MainWindow.resize(1292, 1286)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         icon = QIcon()
-        icon.addFile(u":/resources/Resources/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/resources/gear.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
 "\n"
@@ -2274,6 +2275,9 @@ class Ui_MainWindow(object):
         self.actionClose.setObjectName(u"actionClose")
         self.actionDuplicate = QAction(MainWindow)
         self.actionDuplicate.setObjectName(u"actionDuplicate")
+        icon1 = QIcon()
+        icon1.addFile(u":/resources/cnc.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionDuplicate.setIcon(icon1)
         self.actionDelete = QAction(MainWindow)
         self.actionDelete.setObjectName(u"actionDelete")
         self.actionVersion = QAction(MainWindow)
@@ -2322,7 +2326,8 @@ class Ui_MainWindow(object):
         __qtablewidgetitem = QTableWidgetItem()
         self.tape1_widget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         self.tape1_widget.setObjectName(u"tape1_widget")
-        self.tape1_widget.setEditTriggers(QAbstractItemView.AnyKeyPressed|QAbstractItemView.EditKeyPressed)
+        self.tape1_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tape1_widget.setSelectionMode(QAbstractItemView.ContiguousSelection)
         self.tape1_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.tape1_widget.setColumnCount(1)
         self.tape1_widget.horizontalHeader().setStretchLastSection(True)
@@ -2336,6 +2341,7 @@ class Ui_MainWindow(object):
         self.tape2_widget.setHorizontalHeaderItem(0, __qtablewidgetitem1)
         self.tape2_widget.setObjectName(u"tape2_widget")
         self.tape2_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tape2_widget.setSelectionMode(QAbstractItemView.ContiguousSelection)
         self.tape2_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.tape2_widget.setColumnCount(1)
         self.tape2_widget.horizontalHeader().setStretchLastSection(True)
@@ -2349,6 +2355,7 @@ class Ui_MainWindow(object):
         self.config_widget.setHorizontalHeaderItem(0, __qtablewidgetitem2)
         self.config_widget.setObjectName(u"config_widget")
         self.config_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.config_widget.setSelectionMode(QAbstractItemView.ContiguousSelection)
         self.config_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.config_widget.setColumnCount(1)
         self.config_widget.horizontalHeader().setStretchLastSection(True)
@@ -2426,10 +2433,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.btn_spindle_index, 2, 0, 1, 1)
 
-        self.btn_mode = QPushButton(self.groupBox_machine)
-        self.btn_mode.setObjectName(u"btn_mode")
+        self.btn_sync = QPushButton(self.groupBox_machine)
+        self.btn_sync.setObjectName(u"btn_sync")
 
-        self.gridLayout_3.addWidget(self.btn_mode, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.btn_sync, 0, 0, 1, 1)
 
 
         self.gridLayout_4.addWidget(self.groupBox_machine, 2, 0, 1, 1)
@@ -2952,7 +2959,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionGo_to.setShortcut(QCoreApplication.translate("MainWindow", u"Alt+Right", None))
 #endif // QT_CONFIG(shortcut)
-        self.actionReturn_to.setText(QCoreApplication.translate("MainWindow", u"Regresar a programa", None))
+        self.actionReturn_to.setText(QCoreApplication.translate("MainWindow", u"Regresar a programa      ", None))
 #if QT_CONFIG(statustip)
         self.actionReturn_to.setStatusTip(QCoreApplication.translate("MainWindow", u"Regresar al programa CNC anterior", None))
 #endif // QT_CONFIG(statustip)
@@ -3034,12 +3041,12 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.btn_spindle_index.setText(QCoreApplication.translate("MainWindow", u"&Orientar husillo", None))
 #if QT_CONFIG(tooltip)
-        self.btn_mode.setToolTip(QCoreApplication.translate("MainWindow", u"Seleccionar el modo de sincronizaci\u00f3n de operaciones", None))
+        self.btn_sync.setToolTip(QCoreApplication.translate("MainWindow", u"Seleccionar el modo de sincronizaci\u00f3n de operaciones", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.btn_mode.setStatusTip(QCoreApplication.translate("MainWindow", u"Seleccionar el modo de sincronizaci\u00f3n de operaciones", None))
+        self.btn_sync.setStatusTip(QCoreApplication.translate("MainWindow", u"Seleccionar el modo de sincronizaci\u00f3n de operaciones", None))
 #endif // QT_CONFIG(statustip)
-        self.btn_mode.setText(QCoreApplication.translate("MainWindow", u"Modo sincronizaci\u00f3n", None))
+        self.btn_sync.setText(QCoreApplication.translate("MainWindow", u"Modo sincronizaci\u00f3n", None))
         self.groupBox_tool.setTitle(QCoreApplication.translate("MainWindow", u"Herramienta", None))
 #if QT_CONFIG(tooltip)
         self.btn_tool.setToolTip(QCoreApplication.translate("MainWindow", u"Llama una herramienta guardada o colocada en la m\u00e1quina", None))
@@ -3219,10 +3226,10 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.btn_drill.setText(QCoreApplication.translate("MainWindow", u"Perforado", None))
 #if QT_CONFIG(tooltip)
-        self.btn_drill_ini.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de preparaci\u00f3n para fresados", None))
+        self.btn_drill_ini.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de preparaci\u00f3n para perforados", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.btn_drill_ini.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de preparaci\u00f3n para fresados", None))
+        self.btn_drill_ini.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de preparaci\u00f3n para perforados", None))
 #endif // QT_CONFIG(statustip)
         self.btn_drill_ini.setText(QCoreApplication.translate("MainWindow", u"Iniciar perforados", None))
 #if QT_CONFIG(tooltip)
@@ -3233,10 +3240,10 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.btn_ream.setText(QCoreApplication.translate("MainWindow", u"Rimado", None))
 #if QT_CONFIG(tooltip)
-        self.btn_drill_end.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n para fresados", None))
+        self.btn_drill_end.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n para perforados", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.btn_drill_end.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n para fresados", None))
+        self.btn_drill_end.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n para perforados", None))
 #endif // QT_CONFIG(statustip)
         self.btn_drill_end.setText(QCoreApplication.translate("MainWindow", u"Finalizar perforados", None))
 #if QT_CONFIG(tooltip)
