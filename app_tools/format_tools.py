@@ -32,6 +32,52 @@ def ftape(machine: str, number: int) -> str:
     return number
 
 
+def foper(oper: str) -> float:
+    """Realiza y formatea operaciones matemáticas
+
+    Args:
+        oper (str): Operación a evaluar
+
+    Returns:
+        float: Resultado de la operación
+    """
+    if oper != "":
+        try:
+            result = eval(oper)
+            result = float(fnum4(result))
+        except NameError:
+            result = 0
+    return result
+
+
+def fnum4(num: str) -> str:
+    """Formatear de float a str 4 decimales
+
+    Args:
+        num (str): Número a formatear
+
+    Returns:
+        str: Cadena formateada
+    """
+    num = "{0:.4f}".format(float(num))
+
+    while num[-1] == "0" and num[-2] != ".":
+        num = num[:-1]
+
+    while True:
+        if num[0] == "-":
+            if num[1] != "0":
+                break
+            num = f"-{num[2:]}"
+        elif num[0] != "0":
+            break
+        else:
+            num = num[1:]
+    num = "0" if num == ".0" else num
+
+    return num
+
+
 def fversion() -> str:
     """Obtiene la versión del tape según la fecha
 

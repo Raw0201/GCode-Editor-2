@@ -1,7 +1,7 @@
 from app_tools.format_tools import *
 
 
-def end_gen(machine: str, data: list) -> list:
+def subrutine_gen(machine: str, data: list) -> list:
     """Generador
 
     Args:
@@ -13,9 +13,11 @@ def end_gen(machine: str, data: list) -> list:
         list: Lista de líneas de tape
     """
 
-    mch, num = data.values()
+    sub, rep, blk = data.values()
+    blk = "/" if blk else ""
+    rep = f"L{int(rep)}" if rep != "" else ""
 
-    lines1 = [f"Finalizando tape1 de {mch} {num}"]
-    lines2 = [f"Finalizando tape2 de {mch} {num}"]
+    lines1 = [f"{blk}M98P{sub}{rep}"]
+    lines2 = [" "]
 
     return [lines1, lines2]

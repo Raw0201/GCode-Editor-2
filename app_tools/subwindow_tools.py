@@ -54,6 +54,7 @@ def image_load(label: str, image: str) -> None:
         label (str): Etiqueta a rellenar
         image (str): Imagen a cargar
     """
-    image = QPixmap(absPath(f"resources/{image}"))
+
+    image = QPixmap(absPath(f"../resources/{image}"))
     label.setPixmap(image)
     label.setScaledContents(True)
