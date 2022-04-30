@@ -7,27 +7,27 @@ def free_gen(machine: str, data: list) -> list:
     Args:
         machine (str): Tipo de máquina utilizada
         data (list): Lista de datos a procesar
-        side (str): Lado del programa
 
     Returns:
         list: Lista de líneas de tape
     """
 
     fre, sde, blk = data.values()
+    blank_space = fspace()
+
     blk = "/" if blk else ""
     blk = "" if fre == "" else blk
     fre = " " if fre == "" else fre
-
     line = f"{blk}{fre}"
 
     if sde in ("PRINCIPAL", "LATERAL"):
         lines1 = [line]
-        lines2 = [" "]
+        lines2 = [blank_space]
     elif sde == "SECUNDARIO" and machine in {"K16", "E16"}:
-        lines1 = [" "]
+        lines1 = [blank_space]
         lines2 = [line]
     else:
-        lines1 = [" "]
-        lines2 = [" "]
+        lines1 = [blank_space]
+        lines2 = [blank_space]
 
     return [lines1, lines2]

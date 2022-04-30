@@ -7,7 +7,6 @@ def end_gen(machine: str, data: list) -> list:
     Args:
         machine (str): Tipo de máquina utilizada
         data (list): Lista de datos a procesar
-        side (str): Lado del programa
 
     Returns:
         list: Lista de líneas de tape

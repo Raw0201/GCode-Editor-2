@@ -50,6 +50,34 @@ def foper(oper: str) -> float:
     return result
 
 
+def fnum3(num: str) -> str:
+    """Formatear de float a str 3 decimales
+
+    Args:
+        num (str): Número a formatear
+
+    Returns:
+        str: Cadena formateada
+    """
+    num = "{0:.3f}".format(float(num))
+
+    while num[-1] == "0" and num[-2] != ".":
+        num = num[:-1]
+
+    while True:
+        if num[0] == "-":
+            if num[1] != "0":
+                break
+            num = f"-{num[2:]}"
+        elif num[0] != "0":
+            break
+        else:
+            num = num[1:]
+    num = "0" if num == ".0" else num
+
+    return num
+
+
 def fnum4(num: str) -> str:
     """Formatear de float a str 4 decimales
 
@@ -86,3 +114,12 @@ def fversion() -> str:
     """
 
     return date.today().strftime("V%m.%d.%y")
+
+
+def fspace() -> str:
+    """Devuelve un espacio vacío para visualización
+
+    Returns:
+        str: Espacio vacío
+    """
+    return "  "

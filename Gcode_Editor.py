@@ -3,8 +3,7 @@
 # ?
 
 from PySide6 import QtCore
-from PySide6 import QtGui
-from PySide6.QtCore import QTranslator, QLibraryInfo, QEvent
+from PySide6.QtCore import QTranslator, QLibraryInfo
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -73,7 +72,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.subtask1 = None
         self.helper1 = None
 
-        self.load_machine_list()
         self.load_folders_locations()
         self.load_default_folders()
         self.load_main_data()
@@ -91,10 +89,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # * Carga inicial de datos ---------------------------------------------- *
     # *
 
-    def load_machine_list(self) -> None:
-        """Cargar lista de máquinas"""
-        self.machine_list = Lists.machine_list
-
     def load_folders_locations(self) -> None:
         """Ubicación de los folders de guardado"""
 
@@ -102,7 +96,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         base = self.root_dir
         self.default_dirs = {
-            machine: f"{base}/{machine}" for machine in self.machine_list
+            machine: f"{base}/{machine}" for machine in Lists.machine_list
         }
 
     def load_default_folders(self) -> None:
@@ -133,9 +127,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def load_machining_data(self) -> None:
         """Cargar datos de mecanizado"""
 
-        self.machine_list = Lists.machine_list
         self.current_machine = ""
         self.current_comment = ""
+        self.current_work_offset = ""
         self.part_name = ""
         self.main_tape_number = ""
         self.tape_description = ""
@@ -153,8 +147,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.tasks_list = {
             "Inicio de programa": Header,
-            "        Código libre": Free,
             "        Comentario": Comment,
+            "        Código libre": Free,
             "        -> Subrutina": Subrutine,
             "Fin de programa": End,
         }
@@ -337,15 +331,36 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         os.chdir(self.root_dir)
-        tape_complete = self.tape1_list + self.tape2_list
+        complete_tape = self.make_tape()
 
         file = f"{self.file_name}{self.file_extension}"
         with open(file, "w") as tape:
-            for lines in tape_complete:
-                tape.write(lines[1] + "\n")
+            for lines in complete_tape:
+                tape.write(lines + "\n")
 
         self.save_required = False
         self.load_main_title()
+
+    def make_tape(self) -> list:
+        """Crea las líneas del tape
+
+        Returns:
+            list: Tape completo
+        """
+
+        tape = []
+        blank_space = fspace()
+
+        for line in self.tape1_list:
+            data = line[1]
+            if data != blank_space:
+                tape.append(data)
+        for line in self.tape2_list:
+            data = line[1]
+            if data != blank_space:
+                tape.append(data)
+
+        return tape
 
     def close_app(self) -> None:
         """Cerrar la aplicación"""
@@ -807,6 +822,7 @@ class Subtask_window(QMainWindow):
         if window.helper1:
             window.helper1.close()
 
+
 # ? ---------------------------------------------------------------------------
 
 
@@ -833,6 +849,7 @@ class Helper(QMainWindow, Ui_frm_helper):
 
         keyPressed(self, qKeyEvent)
 
+
 # ? ---------------------------------------------------------------------------
 
 
@@ -853,7 +870,9 @@ class Header(Subtask_window, Ui_frm_header):
         image = "header.png"
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
-        self.cbx_mch.addItems(window.machine_list)
+        self.cbx_mch.addItems(Lists.machine_list)
+        self.cbx_cch.addItems(Lists.cutoff_list)
+        self.cbx_wrk.addItems(Lists.work_offset_list)
 
     def collector(self) -> None:
         """Recopilar datos ingresado por el usuario"""
@@ -863,6 +882,11 @@ class Header(Subtask_window, Ui_frm_header):
             "Pgr": self.tbx_pgr.text(),
             "Dsc": self.tbx_dsc.text(),
             "Mch": self.cbx_mch.currentText(),
+            "Dia": self.tbx_dia.text(),
+            "Lgt": self.tbx_lgt.text(),
+            "Chk": self.tbx_chk.text(),
+            "Cch": self.cbx_cch.currentText(),
+            "Wrk": self.cbx_wrk.currentText(),
         }
         self.validator(data)
 
@@ -889,6 +913,9 @@ class Header(Subtask_window, Ui_frm_header):
             data["Prt"] = ftext(data["Prt"]) if data["Prt"] != "" else ""
             data["Pgr"] = ftext(data["Pgr"]) if data["Pgr"] != "" else ""
             data["Dsc"] = ftext(data["Dsc"]) if data["Dsc"] != "" else ""
+            data["Dia"] = foper(data["Dia"])
+            data["Lgt"] = foper(data["Lgt"])
+            data["Chk"] = foper(data["Chk"])
 
         except ValueError:
             Messages.data_type_error(self)
@@ -906,7 +933,6 @@ class Header(Subtask_window, Ui_frm_header):
         data1 = (self.task, data)
         data_pack = [data1]
         window.config_add(data_pack)
-        window.modified_task = False
         self.close()
 
     def generator(self, data: dict) -> None:
@@ -929,8 +955,8 @@ class Header(Subtask_window, Ui_frm_header):
             data (dict): Lista de datos de configuración
         """
 
-        window.modified_task = True
-        prt, pgr, dsc, mch = data.values()
+        self.modified_task = True
+        prt, pgr, dsc, mch, dia, lgt, chk, cch, wrk = data.values()
 
         self.subtask1 = Header()
         self.subtask1.tbx_prt.setText(str(prt))
@@ -938,6 +964,11 @@ class Header(Subtask_window, Ui_frm_header):
         self.subtask1.tbx_pgr.setText(str(pgr))
         self.subtask1.tbx_dsc.setText(str(dsc))
         self.subtask1.cbx_mch.setCurrentText(str(mch))
+        self.subtask1.tbx_dia.setText(str(dia))
+        self.subtask1.tbx_lgt.setText(str(lgt))
+        self.subtask1.tbx_chk.setText(str(chk))
+        self.subtask1.cbx_cch.setCurrentText(str(cch))
+        self.subtask1.cbx_wrk.setCurrentText(str(wrk))
         self.subtask1.btn_save.setText("Actualizar")
         self.subtask1.show()
 
@@ -948,17 +979,17 @@ class Header(Subtask_window, Ui_frm_header):
             data (dict): Diccionario de datos recopilados
         """
 
-        window.modified_task = False
-        window.save_required = True
+        self.save_required = True
+        self.current_machine = data["Mch"]
+        self.part_name = data["Prt"]
+        self.main_tape_number = data["Pgr"]
+        self.tape_description = data["Dsc"]
+        self.current_work_offset = data["Wrk"]
+        self.swiss_back_machining = data["Chk"] > 0
 
-        window.current_machine = data["Mch"]
-        window.part_name = data["Prt"]
-        window.main_tape_number = data["Pgr"]
-        window.tape_description = data["Dsc"]
-
-        window.update_file_name()
-        window.update_file_dir()
-        window.load_main_title()
+        self.update_file_name()
+        self.update_file_dir()
+        self.load_main_title()
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -968,24 +999,23 @@ class Header(Subtask_window, Ui_frm_header):
         """
 
         for button_list in (
-            window.main_buttons,
-            window.turning_buttons,
-            window.milling_buttons,
-            window.drilling_buttons,
+            self.main_buttons,
+            self.turning_buttons,
+            self.milling_buttons,
+            self.drilling_buttons,
         ):
             for button in button_list:
                 button.setEnabled(True)
 
-        if data["Mch"] != "Mazak":
-            for button in window.plate_buttons:
+        if self.current_machine != "Mazak":
+            for button in self.plate_buttons:
                 button.setEnabled(False)
 
-        if data["Mch"] == "Mazak":
-            for button in window.turning_buttons:
+        if self.current_machine == "Mazak":
+            for button in self.turning_buttons:
                 button.setEnabled(False)
 
-        window.btn_header.setEnabled(False)
-
+        self.btn_header.setEnabled(False)
 
 # ? ---------------------------------------------------------------------------
 
@@ -1056,7 +1086,6 @@ class Free(Subtask_window, Ui_frm_free):
         data1 = (self.task, data)
         data_pack = [data1]
         window.config_add(data_pack)
-        window.modified_task = False
         self.close()
 
     def generator(self, data: dict) -> None:
@@ -1078,7 +1107,7 @@ class Free(Subtask_window, Ui_frm_free):
             data (dict): Lista de datos de configuración
         """
 
-        window.modified_task = True
+        self.modified_task = True
         fre, sde, blk = data.values()
         blk = QtCore.Qt.Checked if blk else QtCore.Qt.Unchecked
 
@@ -1097,7 +1126,7 @@ class Free(Subtask_window, Ui_frm_free):
             data (dict): Diccionario de datos recopilados
         """
 
-        pass
+        self.save_required = True
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -1106,7 +1135,8 @@ class Free(Subtask_window, Ui_frm_free):
             data (dict): Diccionario de datos recopilados
         """
 
-        pass
+        self.btn_free.setEnabled(True)
+
 
 # ? ---------------------------------------------------------------------------
 
@@ -1148,6 +1178,9 @@ class Comment(Subtask_window, Ui_frm_comment):
             data (dict): Diccionario de datos recopilados
         """
 
+        if any_empty(data):
+            Messages.blank_data_error(self)
+            return
         self.converter(data)
 
     def converter(self, data: dict) -> None:
@@ -1177,7 +1210,6 @@ class Comment(Subtask_window, Ui_frm_comment):
         data1 = (self.task, data)
         data_pack = [data1]
         window.config_add(data_pack)
-        window.modified_task = False
         self.close()
 
     def generator(self, data: dict) -> None:
@@ -1199,7 +1231,7 @@ class Comment(Subtask_window, Ui_frm_comment):
             data (dict): Lista de datos de configuración
         """
 
-        window.modified_task = True
+        self.modified_task = True
         com, sde, blk = data.values()
         blk = QtCore.Qt.Checked if blk else QtCore.Qt.Unchecked
 
@@ -1218,7 +1250,8 @@ class Comment(Subtask_window, Ui_frm_comment):
             data (dict): Diccionario de datos recopilados
         """
 
-        pass
+        self.save_required = True
+        self.current_comment = data["Com"]
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -1227,7 +1260,8 @@ class Comment(Subtask_window, Ui_frm_comment):
             data (dict): Diccionario de datos recopilados
         """
 
-        pass
+        self.btn_comment.setEnabled(True)
+
 
 # ? ---------------------------------------------------------------------------
 
@@ -1267,6 +1301,9 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
             data (dict): Diccionario de datos recopilados
         """
 
+        if any_empty(data):
+            Messages.blank_data_error(self)
+            return
         self.converter(data)
 
     def converter(self, data: dict) -> None:
@@ -1297,7 +1334,6 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
         data1 = (self.task, data)
         data_pack = [data1]
         window.config_add(data_pack)
-        window.modified_task = False
         self.close()
 
     def generator(self, data: dict) -> None:
@@ -1319,7 +1355,7 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
             data (dict): Lista de datos de configuración
         """
 
-        window.modified_task = True
+        self.modified_task = True
         sub, rep, blk = data.values()
         blk = QtCore.Qt.Checked if blk else QtCore.Qt.Unchecked
 
@@ -1338,7 +1374,7 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
             data (dict): Diccionario de datos recopilados
         """
 
-        pass
+        self.save_required = True
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -1347,7 +1383,8 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
             data (dict): Diccionario de datos recopilados
         """
 
-        pass
+        self.btn_subrutine.setEnabled(True)
+
 
 # ? ---------------------------------------------------------------------------
 
@@ -1384,7 +1421,6 @@ class End(QMainWindow):
         data1 = (self.task, data)
         data_pack = [data1]
         window.config_add(data_pack)
-        window.modified_task = False
         self.close()
 
     def generator(self, data: dict) -> None:
@@ -1416,7 +1452,7 @@ class End(QMainWindow):
         Args:
             data (dict): Diccionario de datos recopilados
         """
-        window.save_required = True
+        self.save_required = True
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones

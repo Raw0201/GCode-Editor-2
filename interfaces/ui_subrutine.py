@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'subrutineoKlnjc.ui'
+## Form generated from reading UI file 'subrutinerqzofU.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QToolButton, QWidget)
 import resources_rc
 
 class Ui_frm_subrutine(object):
@@ -2218,7 +2224,7 @@ class Ui_frm_subrutine(object):
         self.lbl_sub = QLabel(self.frame)
         self.lbl_sub.setObjectName(u"lbl_sub")
         self.lbl_sub.setEnabled(True)
-        self.lbl_sub.setGeometry(QRect(20, 10, 111, 26))
+        self.lbl_sub.setGeometry(QRect(20, 10, 61, 26))
         self.lbl_rep = QLabel(self.frame)
         self.lbl_rep.setObjectName(u"lbl_rep")
         self.lbl_rep.setEnabled(True)

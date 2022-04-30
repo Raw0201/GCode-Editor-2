@@ -7,25 +7,25 @@ def comment_gen(machine: str, data: list) -> list:
     Args:
         machine (str): Tipo de máquina utilizada
         data (list): Lista de datos a procesar
-        side (str): Lado del programa
 
     Returns:
         list: Lista de líneas de tape
     """
 
     com, sde, blk = data.values()
-    com = " " if com == "" else com
+    blank_space = fspace()
 
+    com = " " if com == "" else com
     line = f"(-- {com} --)"
 
     if sde in ("PRINCIPAL", "LATERAL"):
         lines1 = [line]
-        lines2 = [" "]
+        lines2 = [blank_space]
     elif sde == "SECUNDARIO" and machine in {"K16", "E16"}:
-        lines1 = [" "]
+        lines1 = [blank_space]
         lines2 = [line]
     else:
-        lines1 = [" "]
-        lines2 = [" "]
+        lines1 = [blank_space]
+        lines2 = [blank_space]
 
     return [lines1, lines2]

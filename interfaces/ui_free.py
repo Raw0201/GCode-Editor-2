@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'freehAcAEK.ui'
+## Form generated from reading UI file 'freeTTogZg.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QToolButton, QWidget)
 import resources_rc
 
 class Ui_frm_free(object):
@@ -2218,7 +2224,7 @@ class Ui_frm_free(object):
         self.lbl_fre = QLabel(self.frame)
         self.lbl_fre.setObjectName(u"lbl_fre")
         self.lbl_fre.setEnabled(True)
-        self.lbl_fre.setGeometry(QRect(23, 10, 111, 26))
+        self.lbl_fre.setGeometry(QRect(20, 10, 95, 26))
         self.lbl_sde = QLabel(self.frame)
         self.lbl_sde.setObjectName(u"lbl_sde")
         self.lbl_sde.setEnabled(True)

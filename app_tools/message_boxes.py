@@ -25,6 +25,13 @@ class Messages:
             "No puede haber datos en blanco",
         )
 
+    def all_blank_data_error(self):
+        return QMessageBox.critical(
+            self,
+            "Error",
+            "No pueden quedar todos los datos en blanco",
+        )
+
     def movement_error_information(self):
         return QMessageBox.information(
             self,

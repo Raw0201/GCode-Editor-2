@@ -7,17 +7,17 @@ def subrutine_gen(machine: str, data: list) -> list:
     Args:
         machine (str): Tipo de máquina utilizada
         data (list): Lista de datos a procesar
-        side (str): Lado del programa
 
     Returns:
         list: Lista de líneas de tape
     """
 
     sub, rep, blk = data.values()
+    blank_space = fspace()
+
     blk = "/" if blk else ""
     rep = f"L{int(rep)}" if rep != "" else ""
 
     lines1 = [f"{blk}M98P{sub}{rep}"]
-    lines2 = [" "]
-
+    lines2 = [blank_space]
     return [lines1, lines2]
