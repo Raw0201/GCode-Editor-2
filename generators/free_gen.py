@@ -20,10 +20,10 @@ def free_gen(machine: str, data: list) -> list:
     fre = " " if fre == "" else fre
     line = f"{blk}{fre}"
 
-    if sde in ("PRINCIPAL", "LATERAL"):
+    if sde != "SECUNDARIO":
         lines1 = [line]
         lines2 = [blank_space]
-    elif sde == "SECUNDARIO" and machine in {"K16", "E16"}:
+    elif machine in {"K16", "E16"}:
         lines1 = [blank_space]
         lines2 = [line]
     else:

@@ -18,10 +18,10 @@ def comment_gen(machine: str, data: list) -> list:
     com = " " if com == "" else com
     line = f"(-- {com} --)"
 
-    if sde in ("PRINCIPAL", "LATERAL"):
+    if sde != "SECUNDARIO":
         lines1 = [line]
         lines2 = [blank_space]
-    elif sde == "SECUNDARIO" and machine in {"K16", "E16"}:
+    elif machine in {"K16", "E16"}:
         lines1 = [blank_space]
         lines2 = [line]
     else:

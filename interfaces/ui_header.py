@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'headereZkMhM.ui'
+## Form generated from reading UI file 'headerDmlUtH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -2503,5 +2503,8 @@ class Ui_frm_header(object):
         self.cbx_cch.setToolTip(QCoreApplication.translate("frm_header", u"Seleccione el tipo de cuchilla de tronzar a utilizar (Torno suizo)", None))
 #endif // QT_CONFIG(tooltip)
         self.btn_help.setText("")
+#if QT_CONFIG(shortcut)
+        self.btn_help.setShortcut(QCoreApplication.translate("frm_header", u"F1", None))
+#endif // QT_CONFIG(shortcut)
     # retranslateUi
 

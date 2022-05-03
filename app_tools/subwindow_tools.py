@@ -30,7 +30,11 @@ def keyPressed(self, qKeyEvent) -> None:
     if qKeyEvent.key() in [QtCore.Qt.Key_Return, QtCore.Qt.Key_Enter]:
         self.focusNextChild()
     elif qKeyEvent.key() == QtCore.Qt.Key_Escape:
+        self.modified_task = False
         self.close()
+    elif qKeyEvent.modifiers() == QtCore.Qt.ControlModifier:
+        if qKeyEvent.key() == QtCore.Qt.Key_S:
+            self.collector()
     else:
         return
 

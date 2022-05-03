@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWindowFqfxjh.ui'
+## Form generated from reading UI file 'MainWindowunrETC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1292, 1286)
+        MainWindow.resize(1292, 1300)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -2316,6 +2316,8 @@ class Ui_MainWindow(object):
         self.actionHide_config_widget.setObjectName(u"actionHide_config_widget")
         self.actionBlock = QAction(MainWindow)
         self.actionBlock.setObjectName(u"actionBlock")
+        self.actionGraph = QAction(MainWindow)
+        self.actionGraph.setObjectName(u"actionGraph")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -2326,6 +2328,14 @@ class Ui_MainWindow(object):
         __qtablewidgetitem = QTableWidgetItem()
         self.tape1_widget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         self.tape1_widget.setObjectName(u"tape1_widget")
+        self.tape1_widget.setStyleSheet(u"QWidget {\n"
+"  background-color: #000000;\n"
+"  border: 0px solid #32414B;\n"
+"  padding: 0px;\n"
+"  color: #F0F0F0;\n"
+"  selection-background-color: #1464A0;\n"
+"  selection-color: #F0F0F0;\n"
+"}")
         self.tape1_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tape1_widget.setSelectionMode(QAbstractItemView.ContiguousSelection)
         self.tape1_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -2340,6 +2350,14 @@ class Ui_MainWindow(object):
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tape2_widget.setHorizontalHeaderItem(0, __qtablewidgetitem1)
         self.tape2_widget.setObjectName(u"tape2_widget")
+        self.tape2_widget.setStyleSheet(u"QWidget {\n"
+"  background-color: #000000;\n"
+"  border: 0px solid #32414B;\n"
+"  padding: 0px;\n"
+"  color: #F0F0F0;\n"
+"  selection-background-color: #1464A0;\n"
+"  selection-color: #F0F0F0;\n"
+"}")
         self.tape2_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tape2_widget.setSelectionMode(QAbstractItemView.ContiguousSelection)
         self.tape2_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -2354,6 +2372,14 @@ class Ui_MainWindow(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.config_widget.setHorizontalHeaderItem(0, __qtablewidgetitem2)
         self.config_widget.setObjectName(u"config_widget")
+        self.config_widget.setStyleSheet(u"QWidget {\n"
+"  background-color: #000000;\n"
+"  border: 0px solid #32414B;\n"
+"  padding: 0px;\n"
+"  color: #F0F0F0;\n"
+"  selection-background-color: #1464A0;\n"
+"  selection-color: #F0F0F0;\n"
+"}")
         self.config_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.config_widget.setSelectionMode(QAbstractItemView.ContiguousSelection)
         self.config_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -2391,20 +2417,28 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.dock_functions.sizePolicy().hasHeightForWidth())
         self.dock_functions.setSizePolicy(sizePolicy1)
+        self.dock_functions.setStyleSheet(u"")
         self.dockWidgetContents = QWidget()
         self.dockWidgetContents.setObjectName(u"dockWidgetContents")
         self.verticalLayout_5 = QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.tabWidget_principal = QTabWidget(self.dockWidgetContents)
         self.tabWidget_principal.setObjectName(u"tabWidget_principal")
+        sizePolicy.setHeightForWidth(self.tabWidget_principal.sizePolicy().hasHeightForWidth())
+        self.tabWidget_principal.setSizePolicy(sizePolicy)
+        self.tabWidget_principal.setStyleSheet(u"")
         self.tabWidget_principal_functions = QWidget()
         self.tabWidget_principal_functions.setObjectName(u"tabWidget_principal_functions")
         self.gridLayout_4 = QGridLayout(self.tabWidget_principal_functions)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.groupBox_machine = QGroupBox(self.tabWidget_principal_functions)
         self.groupBox_machine.setObjectName(u"groupBox_machine")
+        self.groupBox_machine.setStyleSheet(u"")
         self.gridLayout_3 = QGridLayout(self.groupBox_machine)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setHorizontalSpacing(3)
+        self.gridLayout_3.setVerticalSpacing(5)
+        self.gridLayout_3.setContentsMargins(1, 10, 1, 1)
         self.btn_misc = QPushButton(self.groupBox_machine)
         self.btn_misc.setObjectName(u"btn_misc")
         sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -2445,16 +2479,20 @@ class Ui_MainWindow(object):
 
         self.groupBox_tool = QGroupBox(self.tabWidget_principal_functions)
         self.groupBox_tool.setObjectName(u"groupBox_tool")
+        self.groupBox_tool.setStyleSheet(u"")
         self.gridLayout_2 = QGridLayout(self.groupBox_tool)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.btn_tool = QPushButton(self.groupBox_tool)
-        self.btn_tool.setObjectName(u"btn_tool")
-        sizePolicy2.setHeightForWidth(self.btn_tool.sizePolicy().hasHeightForWidth())
-        self.btn_tool.setSizePolicy(sizePolicy2)
-        self.btn_tool.setMinimumSize(QSize(28, 0))
-        self.btn_tool.setMaximumSize(QSize(120, 16777215))
+        self.gridLayout_2.setHorizontalSpacing(3)
+        self.gridLayout_2.setVerticalSpacing(5)
+        self.gridLayout_2.setContentsMargins(1, 10, 1, 1)
+        self.btn_tool_call = QPushButton(self.groupBox_tool)
+        self.btn_tool_call.setObjectName(u"btn_tool_call")
+        sizePolicy2.setHeightForWidth(self.btn_tool_call.sizePolicy().hasHeightForWidth())
+        self.btn_tool_call.setSizePolicy(sizePolicy2)
+        self.btn_tool_call.setMinimumSize(QSize(28, 0))
+        self.btn_tool_call.setMaximumSize(QSize(120, 16777215))
 
-        self.gridLayout_2.addWidget(self.btn_tool, 2, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.btn_tool_call, 2, 0, 1, 1)
 
         self.btn_tool_close = QPushButton(self.groupBox_tool)
         self.btn_tool_close.setObjectName(u"btn_tool_close")
@@ -2470,8 +2508,13 @@ class Ui_MainWindow(object):
 
         self.groupBox_program = QGroupBox(self.tabWidget_principal_functions)
         self.groupBox_program.setObjectName(u"groupBox_program")
+        self.groupBox_program.setStyleSheet(u"")
+        self.groupBox_program.setCheckable(False)
         self.gridLayout = QGridLayout(self.groupBox_program)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setHorizontalSpacing(3)
+        self.gridLayout.setVerticalSpacing(5)
+        self.gridLayout.setContentsMargins(1, 10, 1, 1)
         self.btn_free = QPushButton(self.groupBox_program)
         self.btn_free.setObjectName(u"btn_free")
         self.btn_free.setMinimumSize(QSize(28, 0))
@@ -2519,10 +2562,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addWidget(self.tabWidget_principal)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_5.addItem(self.verticalSpacer_5)
-
         self.tabWidget_functions = QTabWidget(self.dockWidgetContents)
         self.tabWidget_functions.setObjectName(u"tabWidget_functions")
         sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -2541,6 +2580,9 @@ class Ui_MainWindow(object):
         self.groupBox_turning.setFlat(True)
         self.gridLayout_5 = QGridLayout(self.groupBox_turning)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.gridLayout_5.setHorizontalSpacing(3)
+        self.gridLayout_5.setVerticalSpacing(5)
+        self.gridLayout_5.setContentsMargins(1, 10, 1, 1)
         self.btn_lineal = QPushButton(self.groupBox_turning)
         self.btn_lineal.setObjectName(u"btn_lineal")
         sizePolicy2.setHeightForWidth(self.btn_lineal.sizePolicy().hasHeightForWidth())
@@ -2582,6 +2624,9 @@ class Ui_MainWindow(object):
         self.groupBox_milling.setFlat(True)
         self.gridLayout_10 = QGridLayout(self.groupBox_milling)
         self.gridLayout_10.setObjectName(u"gridLayout_10")
+        self.gridLayout_10.setHorizontalSpacing(3)
+        self.gridLayout_10.setVerticalSpacing(5)
+        self.gridLayout_10.setContentsMargins(1, 10, 1, 1)
         self.btn_mill_end = QPushButton(self.groupBox_milling)
         self.btn_mill_end.setObjectName(u"btn_mill_end")
 
@@ -2618,6 +2663,9 @@ class Ui_MainWindow(object):
         self.groupBox_mill_cycles.setObjectName(u"groupBox_mill_cycles")
         self.gridLayout_7 = QGridLayout(self.groupBox_mill_cycles)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.gridLayout_7.setHorizontalSpacing(3)
+        self.gridLayout_7.setVerticalSpacing(5)
+        self.gridLayout_7.setContentsMargins(1, 10, 1, 1)
         self.btn_bevel = QPushButton(self.groupBox_mill_cycles)
         self.btn_bevel.setObjectName(u"btn_bevel")
 
@@ -2664,6 +2712,9 @@ class Ui_MainWindow(object):
         self.groupBox_drilling.setObjectName(u"groupBox_drilling")
         self.gridLayout_8 = QGridLayout(self.groupBox_drilling)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.gridLayout_8.setHorizontalSpacing(3)
+        self.gridLayout_8.setVerticalSpacing(5)
+        self.gridLayout_8.setContentsMargins(1, 10, 1, 1)
         self.btn_csink = QPushButton(self.groupBox_drilling)
         self.btn_csink.setObjectName(u"btn_csink")
 
@@ -2710,6 +2761,9 @@ class Ui_MainWindow(object):
         self.groupBox_platter.setObjectName(u"groupBox_platter")
         self.gridLayout_6 = QGridLayout(self.groupBox_platter)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.gridLayout_6.setHorizontalSpacing(3)
+        self.gridLayout_6.setVerticalSpacing(5)
+        self.gridLayout_6.setContentsMargins(1, 10, 1, 1)
         self.btn_call_square = QPushButton(self.groupBox_platter)
         self.btn_call_square.setObjectName(u"btn_call_square")
 
@@ -2765,8 +2819,8 @@ class Ui_MainWindow(object):
         MainWindow.addDockWidget(Qt.LeftDockWidgetArea, self.dock_functions)
         QWidget.setTabOrder(self.btn_header, self.btn_comment)
         QWidget.setTabOrder(self.btn_comment, self.btn_free)
-        QWidget.setTabOrder(self.btn_free, self.btn_tool)
-        QWidget.setTabOrder(self.btn_tool, self.btn_tool_close)
+        QWidget.setTabOrder(self.btn_free, self.btn_tool_call)
+        QWidget.setTabOrder(self.btn_tool_call, self.btn_tool_close)
         QWidget.setTabOrder(self.btn_tool_close, self.btn_misc)
         QWidget.setTabOrder(self.btn_misc, self.btn_spindle_index)
         QWidget.setTabOrder(self.btn_spindle_index, self.btn_collect)
@@ -2818,6 +2872,8 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actionVersion)
         self.menuView.addAction(self.menuShow.menuAction())
         self.menuView.addAction(self.menuHide.menuAction())
+        self.menuView.addSeparator()
+        self.menuView.addAction(self.actionGraph)
         self.menuShow.addAction(self.actionShow_functions)
         self.menuShow.addAction(self.actionShow_tape1_widget)
         self.menuShow.addAction(self.actionShow_tape2_widget)
@@ -3029,6 +3085,10 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionBlock.setShortcut(QCoreApplication.translate("MainWindow", u"/", None))
 #endif // QT_CONFIG(shortcut)
+        self.actionGraph.setText(QCoreApplication.translate("MainWindow", u"Graficar tape", None))
+#if QT_CONFIG(shortcut)
+        self.actionGraph.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+G", None))
+#endif // QT_CONFIG(shortcut)
         ___qtablewidgetitem = self.tape1_widget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Programa principal", None));
         ___qtablewidgetitem1 = self.tape2_widget.horizontalHeaderItem(0)
@@ -3074,12 +3134,12 @@ class Ui_MainWindow(object):
         self.btn_sync.setText(QCoreApplication.translate("MainWindow", u"Sincronizaci\u00f3n", None))
         self.groupBox_tool.setTitle(QCoreApplication.translate("MainWindow", u"Herramienta", None))
 #if QT_CONFIG(tooltip)
-        self.btn_tool.setToolTip(QCoreApplication.translate("MainWindow", u"Llama una herramienta guardada o colocada en la m\u00e1quina", None))
+        self.btn_tool_call.setToolTip(QCoreApplication.translate("MainWindow", u"Llama una herramienta guardada o colocada en la m\u00e1quina", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.btn_tool.setStatusTip(QCoreApplication.translate("MainWindow", u"Llama una herramienta guardada o colocada en la m\u00e1quina", None))
+        self.btn_tool_call.setStatusTip(QCoreApplication.translate("MainWindow", u"Llama una herramienta guardada o colocada en la m\u00e1quina", None))
 #endif // QT_CONFIG(statustip)
-        self.btn_tool.setText(QCoreApplication.translate("MainWindow", u"Llamar &Herramienta", None))
+        self.btn_tool_call.setText(QCoreApplication.translate("MainWindow", u"Llamar &Herramienta", None))
 #if QT_CONFIG(tooltip)
         self.btn_tool_close.setToolTip(QCoreApplication.translate("MainWindow", u"Finaliza el uso de una herramienta en la m\u00e1quina", None))
 #endif // QT_CONFIG(tooltip)

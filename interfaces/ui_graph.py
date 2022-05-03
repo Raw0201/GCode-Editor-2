@@ -1,35 +1,43 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'commentwVWmAl.ui'
+## Form generated from reading UI file 'graphTkZQnT.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QApplication, QDockWidget, QFrame, QGridLayout,
+    QGroupBox, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
+    QVBoxLayout, QWidget)
 
+from pyqtgraph import PlotWidget
 import resources_rc
 
-class Ui_frm_comment(object):
-    def setupUi(self, frm_comment):
-        if not frm_comment.objectName():
-            frm_comment.setObjectName(u"frm_comment")
-        frm_comment.resize(210, 210)
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+class Ui_GraphWindow(object):
+    def setupUi(self, GraphWindow):
+        if not GraphWindow.objectName():
+            GraphWindow.setObjectName(u"GraphWindow")
+        GraphWindow.resize(1292, 1300)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(frm_comment.sizePolicy().hasHeightForWidth())
-        frm_comment.setSizePolicy(sizePolicy)
-        frm_comment.setMinimumSize(QSize(210, 210))
-        frm_comment.setMaximumSize(QSize(210, 210))
+        sizePolicy.setHeightForWidth(GraphWindow.sizePolicy().hasHeightForWidth())
+        GraphWindow.setSizePolicy(sizePolicy)
         icon = QIcon()
         icon.addFile(u":/icons/resources/gear.png", QSize(), QIcon.Normal, QIcon.Off)
-        frm_comment.setWindowIcon(icon)
-        frm_comment.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
+        GraphWindow.setWindowIcon(icon)
+        GraphWindow.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
 "\n"
 "    Created by the qtsass compiler v0.1.1\n"
 "    \n"
@@ -97,7 +105,7 @@ class Ui_frm_comment(object):
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QWidget {\n"
-"  background-color: #19232D;\n"
+"  background-color: #19232D; /*#19232D*/\n"
 "  border: 0px solid #32414B;\n"
 "  padding: 0px;\n"
 "  color: #F0F0F0;\n"
@@ -127,9 +135,9 @@ class Ui_frm_comment(object):
 "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qmainwindow\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
-"QMainWindow::separator {\n"
-""
-                        "  background-color: #32414B;\n"
+"QMainWindow::sep"
+                        "arator {\n"
+"  background-color: #32414B;\n"
 "  border: 0px solid #19232D;\n"
 "  spacing: 0px;\n"
 "  padding: 2px;\n"
@@ -160,13 +168,13 @@ class Ui_frm_comment(object):
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QToolTip {\n"
-"  background-color: #ffffff;\n"
+"  background-color: #ffffff/*#148CD2*/;\n"
 "  border: 1px solid #19232D;\n"
 "  color: #19232D;\n"
-"  /* Remove padding, for fix combo box tooltip */\n"
+"  /* Remove padding, for fix combo box tooltip *"
+                        "/\n"
 "  padding: 0px;\n"
-""
-                        "  /* Remove opacity, fix #174 - may need to use RGBA */\n"
+"  /* Remove opacity, fix #174 - may need to use RGBA */\n"
 "}\n"
 "\n"
 "/* QStatusBar -------------------------------------------------------------\n"
@@ -200,11 +208,79 @@ class Ui_frm_comment(object):
 "  background: transparent;\n"
 "}\n"
 "\n"
+"/* QCheckBox ---------------------------------------------------"
+                        "-----------\n"
+"\n"
+"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qcheckbox\n"
+"\n"
+"--------------------------------------------------------------------------- */\n"
+"QCheckBox {\n"
+"  background-color: #19232D;\n"
+"  color: #F0F0F0;\n"
+"  spacing: 4px;\n"
+"  outline: none;\n"
+"  padding-top: 4px;\n"
+"  padding-bottom: 4px;\n"
+"}\n"
+"\n"
+"QCheckBox:focus {\n"
+"  border: none;\n"
+"}\n"
+"\n"
+"QCheckBox QWidget:disabled {\n"
+"  background-color: #19232D;\n"
+"  color: #787878;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"  margin-left: 4px;\n"
+"  height: 16px;\n"
+"  width: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"  image: url(\":/qss_icons/rc/checkbox_unchecked.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover, QCheckBox::indicator:unchecked:focus, QCheckBox::indicator:unchecked:pressed {\n"
+"  border: none;\n"
+"  image: url(\":/qss_icons/rc/checkbox_unchecked_focus.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:disabled {\n"
+"  image: url(\":/qss_icons/rc/checkbox_un"
+                        "checked_disabled.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"  image: url(\":/qss_icons/rc/checkbox_checked.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover, QCheckBox::indicator:checked:focus, QCheckBox::indicator:checked:pressed {\n"
+"  border: none;\n"
+"  image: url(\":/qss_icons/rc/checkbox_checked_focus.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:disabled {\n"
+"  image: url(\":/qss_icons/rc/checkbox_checked_disabled.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate {\n"
+"  image: url(\":/qss_icons/rc/checkbox_indeterminate.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:disabled {\n"
+"  image: url(\":/qss_icons/rc/checkbox_indeterminate_disabled.png\");\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:focus, QCheckBox::indicator:indeterminate:hover, QCheckBox::indicator:indeterminate:pressed {\n"
+"  image: url(\":/qss_icons/rc/checkbox_indeterminate_focus.png\");\n"
+"}\n"
 "\n"
 "/* QGroupBox --------------------------------------------------------------\n"
-"\n"
 ""
-                        "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qgroupbox\n"
+                        "\n"
+"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qgroupbox\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QGroupBox {\n"
@@ -241,8 +317,8 @@ class Ui_frm_comment(object):
 "  image: url(\":/qss_icons/rc/checkbox_unchecked_focus.png\");\n"
 "}\n"
 "\n"
-"QGroupBox::indicator:unchecked:disa"
-                        "bled {\n"
+"QGroupBox::indicator:unchecked"
+                        ":disabled {\n"
 "  image: url(\":/qss_icons/rc/checkbox_unchecked_disabled.png\");\n"
 "}\n"
 "\n"
@@ -278,8 +354,8 @@ class Ui_frm_comment(object):
 "  border: none;\n"
 "}\n"
 "\n"
-"QR"
-                        "adioButton:disabled {\n"
+""
+                        "QRadioButton:disabled {\n"
 "  background-color: #19232D;\n"
 "  color: #787878;\n"
 "  border: none;\n"
@@ -320,8 +396,8 @@ class Ui_frm_comment(object):
 "QRadioButton::indicator:checked {\n"
 "  border: none;\n"
 "  outline: none;\n"
-"  image: url"
-                        "(\":/qss_icons/rc/radio_checked.png\");\n"
+"  image: u"
+                        "rl(\":/qss_icons/rc/radio_checked.png\");\n"
 "}\n"
 "\n"
 "QRadioButton::indicator:checked:hover, QRadioButton::indicator:checked:focus, QRadioButton::indicator:checked:pressed {\n"
@@ -358,8 +434,8 @@ class Ui_frm_comment(object):
 "\n"
 "QMenuBar::item:selected {\n"
 "  padding: 4px;\n"
-"  backgrou"
-                        "nd: transparent;\n"
+"  backgr"
+                        "ound: transparent;\n"
 "  border: 0px solid #32414B;\n"
 "}\n"
 "\n"
@@ -404,9 +480,9 @@ class Ui_frm_comment(object):
 "QMenu::item:selected {\n"
 "  color: #F0F0F0;\n"
 "}\n"
-"\n"
 ""
-                        "QMenu::indicator {\n"
+                        "\n"
+"QMenu::indicator {\n"
 "  width: 12px;\n"
 "  height: 12px;\n"
 "  padding-left: 6px;\n"
@@ -435,9 +511,9 @@ class Ui_frm_comment(object):
 "}\n"
 "\n"
 "QMenu::indicator:exclusive:unchecked:selected {\n"
-"  image: url(\":/qss_icons/rc/radio_unchecked_disabled.png\");\n"
-""
-                        "}\n"
+"  image: url(\":/qss_icons/rc/radio_unchecked_disabled.png\")"
+                        ";\n"
+"}\n"
 "\n"
 "QMenu::indicator:exclusive:checked {\n"
 "  image: url(\":/qss_icons/rc/radio_checked.png\");\n"
@@ -472,8 +548,8 @@ class Ui_frm_comment(object):
 "\n"
 "/* QAbstractScrollArea ----------------------------------------------------\n"
 "\n"
-"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qabstractscrolla"
-                        "rea\n"
+"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qabstracts"
+                        "crollarea\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QAbstractScrollArea {\n"
@@ -507,8 +583,8 @@ class Ui_frm_comment(object):
 "  height: 16px;\n"
 "  margin: 2px 16px 2px 16px;\n"
 "  border: 1px solid #32414B;\n"
-"  bor"
-                        "der-radius: 4px;\n"
+""
+                        "  border-radius: 4px;\n"
 "  background-color: #19232D;\n"
 "}\n"
 "\n"
@@ -552,9 +628,9 @@ class Ui_frm_comment(object):
 "  min-height: 8px;\n"
 "}\n"
 "\n"
-"QScrollBar::handle:vertical:focus {\n"
-""
-                        "  border: 1px solid #1464A0;\n"
+"QScrollBar::handle:vertical:focus "
+                        "{\n"
+"  border: 1px solid #1464A0;\n"
 "}\n"
 "\n"
 "QScrollBar::add-line:horizontal {\n"
@@ -588,8 +664,8 @@ class Ui_frm_comment(object):
 "  height: 12px;\n"
 "  width: 12px;\n"
 "  subcontrol-position: bottom;\n"
-"  s"
-                        "ubcontrol-origin: margin;\n"
+""
+                        "  subcontrol-origin: margin;\n"
 "}\n"
 "\n"
 "QScrollBar::sub-line:horizontal {\n"
@@ -623,8 +699,8 @@ class Ui_frm_comment(object):
 "  height: 12px;\n"
 "  width: 12px;\n"
 "  subcontrol-position: top;\n"
-"  subcontrol-origin:"
-                        " margin;\n"
+"  subcontrol-orig"
+                        "in: margin;\n"
 "}\n"
 "\n"
 "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {\n"
@@ -665,8 +741,8 @@ class Ui_frm_comment(object):
 "}\n"
 "\n"
 "QTextEdit:selected {\n"
-"  backg"
-                        "round: #1464A0;\n"
+"  ba"
+                        "ckground: #1464A0;\n"
 "  color: #32414B;\n"
 "}\n"
 "\n"
@@ -706,8 +782,8 @@ class Ui_frm_comment(object):
 "  image: url(\":/qss_icons/rc/window_grip.png\");\n"
 "}\n"
 "\n"
-"/* QSt"
-                        "ackedWidget ---------------------------------------------------------\n"
+"/* "
+                        "QStackedWidget ---------------------------------------------------------\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QStackedWidget {\n"
@@ -744,8 +820,8 @@ class Ui_frm_comment(object):
 "}\n"
 "\n"
 "QToolBar QToolButton:checked:hover {\n"
-" "
-                        " border: 1px solid #148CD2;\n"
+""
+                        "  border: 1px solid #148CD2;\n"
 "}\n"
 "\n"
 "QToolBar::handle:horizontal {\n"
@@ -1000,7 +1076,7 @@ class Ui_frm_comment(object):
 "  outline: none"
                         ";\n"
 "  /* Issue #194 - Special case of QPushButton inside dialogs, for better UI */\n"
-"  min-width: 80px;\n"
+"  min-width: 20px;\n"
 "}\n"
 "\n"
 "QPushButton:disabled {\n"
@@ -2195,116 +2271,427 @@ class Ui_frm_comment(object):
 "  /* Fix cut labels in plots #134 */\n"
 "  padding: 0px;\n"
 "}")
-        self.centralwidget = QWidget(frm_comment)
+        self.actionNew = QAction(GraphWindow)
+        self.actionNew.setObjectName(u"actionNew")
+        self.actionOpen = QAction(GraphWindow)
+        self.actionOpen.setObjectName(u"actionOpen")
+        self.actionSave = QAction(GraphWindow)
+        self.actionSave.setObjectName(u"actionSave")
+        self.actionGuardar_como = QAction(GraphWindow)
+        self.actionGuardar_como.setObjectName(u"actionGuardar_como")
+        self.actionDirectorio_base = QAction(GraphWindow)
+        self.actionDirectorio_base.setObjectName(u"actionDirectorio_base")
+        self.actionClose = QAction(GraphWindow)
+        self.actionClose.setObjectName(u"actionClose")
+        self.actionDuplicate = QAction(GraphWindow)
+        self.actionDuplicate.setObjectName(u"actionDuplicate")
+        icon1 = QIcon()
+        icon1.addFile(u":/resources/cnc.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionDuplicate.setIcon(icon1)
+        self.actionDelete = QAction(GraphWindow)
+        self.actionDelete.setObjectName(u"actionDelete")
+        self.actionVersion = QAction(GraphWindow)
+        self.actionVersion.setObjectName(u"actionVersion")
+        self.actionInvert_X = QAction(GraphWindow)
+        self.actionInvert_X.setObjectName(u"actionInvert_X")
+        self.actionInvert_Y = QAction(GraphWindow)
+        self.actionInvert_Y.setObjectName(u"actionInvert_Y")
+        self.actionInvert_Z = QAction(GraphWindow)
+        self.actionInvert_Z.setObjectName(u"actionInvert_Z")
+        self.actionMove_up = QAction(GraphWindow)
+        self.actionMove_up.setObjectName(u"actionMove_up")
+        self.actionMove_down = QAction(GraphWindow)
+        self.actionMove_down.setObjectName(u"actionMove_down")
+        self.actionGo_to = QAction(GraphWindow)
+        self.actionGo_to.setObjectName(u"actionGo_to")
+        self.actionReturn_to = QAction(GraphWindow)
+        self.actionReturn_to.setObjectName(u"actionReturn_to")
+        self.actionShow_functions = QAction(GraphWindow)
+        self.actionShow_functions.setObjectName(u"actionShow_functions")
+        self.actionShow_tape1_widget = QAction(GraphWindow)
+        self.actionShow_tape1_widget.setObjectName(u"actionShow_tape1_widget")
+        self.actionShow_tape2_widget = QAction(GraphWindow)
+        self.actionShow_tape2_widget.setObjectName(u"actionShow_tape2_widget")
+        self.actionHide_functions = QAction(GraphWindow)
+        self.actionHide_functions.setObjectName(u"actionHide_functions")
+        self.actionHide_tape1_widget = QAction(GraphWindow)
+        self.actionHide_tape1_widget.setObjectName(u"actionHide_tape1_widget")
+        self.actionHide_tape2_widget = QAction(GraphWindow)
+        self.actionHide_tape2_widget.setObjectName(u"actionHide_tape2_widget")
+        self.actionSeleccionar_maquina = QAction(GraphWindow)
+        self.actionSeleccionar_maquina.setObjectName(u"actionSeleccionar_maquina")
+        self.actionShow_config_widget = QAction(GraphWindow)
+        self.actionShow_config_widget.setObjectName(u"actionShow_config_widget")
+        self.actionHide_config_widget = QAction(GraphWindow)
+        self.actionHide_config_widget.setObjectName(u"actionHide_config_widget")
+        self.actionBlock = QAction(GraphWindow)
+        self.actionBlock.setObjectName(u"actionBlock")
+        self.actionGraph = QAction(GraphWindow)
+        self.actionGraph.setObjectName(u"actionGraph")
+        self.centralwidget = QWidget(GraphWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.frame = QFrame(self.centralwidget)
-        self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(10, 10, 190, 190))
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.frame1 = QFrame(self.centralwidget)
+        self.frame1.setObjectName(u"frame1")
+        self.frame1.setFrameShape(QFrame.StyledPanel)
+        self.frame1.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.frame1)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.graph1_widget = PlotWidget(self.frame1)
+        self.graph1_widget.setObjectName(u"graph1_widget")
+        self.graph1_widget.setStyleSheet(u"QWidget {\n"
+"  background-color: #000000;\n"
+"  border: 0px solid #32414B;\n"
+"  padding: 0px;\n"
+"  color: #F0F0F0;\n"
+"  selection-background-color: #1464A0;\n"
+"  selection-color: #F0F0F0;\n"
+"}")
+
+        self.verticalLayout_4.addWidget(self.graph1_widget)
+
+
+        self.verticalLayout.addWidget(self.frame1)
+
+        self.frame2 = QFrame(self.centralwidget)
+        self.frame2.setObjectName(u"frame2")
+        self.frame2.setFrameShape(QFrame.StyledPanel)
+        self.frame2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_3 = QVBoxLayout(self.frame2)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.graph2_widget = PlotWidget(self.frame2)
+        self.graph2_widget.setObjectName(u"graph2_widget")
+        self.graph2_widget.setStyleSheet(u"QWidget {\n"
+"  background-color: #000000;\n"
+"  border: 0px solid #32414B;\n"
+"  padding: 0px;\n"
+"  color: #F0F0F0;\n"
+"  selection-background-color: #1464A0;\n"
+"  selection-color: #F0F0F0;\n"
+"}")
+
+        self.verticalLayout_3.addWidget(self.graph2_widget)
+
+
+        self.verticalLayout.addWidget(self.frame2)
+
+        GraphWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(GraphWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 1292, 31))
+        self.menuFile = QMenu(self.menubar)
+        self.menuFile.setObjectName(u"menuFile")
+        GraphWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(GraphWindow)
+        self.statusbar.setObjectName(u"statusbar")
+        GraphWindow.setStatusBar(self.statusbar)
+        self.dock_functions = QDockWidget(GraphWindow)
+        self.dock_functions.setObjectName(u"dock_functions")
+        sizePolicy1 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy1)
-        self.frame.setMinimumSize(QSize(190, 190))
-        self.frame.setMaximumSize(QSize(190, 190))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.tbx_com = QLineEdit(self.frame)
-        self.tbx_com.setObjectName(u"tbx_com")
-        self.tbx_com.setGeometry(QRect(13, 30, 170, 26))
-        self.tbx_com.setMinimumSize(QSize(170, 0))
-        self.tbx_com.setMaximumSize(QSize(170, 16777215))
-        self.tbx_com.setAlignment(Qt.AlignCenter)
-        self.lbl_com = QLabel(self.frame)
-        self.lbl_com.setObjectName(u"lbl_com")
-        self.lbl_com.setEnabled(True)
-        self.lbl_com.setGeometry(QRect(20, 10, 73, 26))
-        self.lbl_sde = QLabel(self.frame)
-        self.lbl_sde.setObjectName(u"lbl_sde")
-        self.lbl_sde.setEnabled(True)
-        self.lbl_sde.setGeometry(QRect(20, 60, 111, 26))
-        self.cbx_sde = QComboBox(self.frame)
-        self.cbx_sde.setObjectName(u"cbx_sde")
-        self.cbx_sde.setGeometry(QRect(10, 80, 170, 26))
-        self.cbx_sde.setMinimumSize(QSize(170, 26))
-        self.cbx_sde.setMaximumSize(QSize(170, 16777215))
-        self.btn_save = QPushButton(self.frame)
-        self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setGeometry(QRect(10, 160, 171, 24))
-        sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
-        self.btn_save.setSizePolicy(sizePolicy)
-        self.btn_save.setMinimumSize(QSize(88, 0))
-        self.btn_save.setAutoDefault(True)
-        self.chk_blk = QCheckBox(self.frame)
-        self.chk_blk.setObjectName(u"chk_blk")
-        self.chk_blk.setGeometry(QRect(15, 130, 161, 20))
-        self.tbx_com.raise_()
-        self.lbl_com.raise_()
-        self.cbx_sde.raise_()
-        self.lbl_sde.raise_()
-        self.btn_save.raise_()
-        self.chk_blk.raise_()
-        self.btn_help = QToolButton(self.centralwidget)
-        self.btn_help.setObjectName(u"btn_help")
-        self.btn_help.setGeometry(QRect(183, -2, 29, 29))
-        font = QFont()
-        font.setPointSize(20)
-        font.setBold(True)
-        self.btn_help.setFont(font)
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Normal, QIcon.On)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Disabled, QIcon.Off)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Disabled, QIcon.On)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Active, QIcon.Off)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Active, QIcon.On)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Selected, QIcon.Off)
-        icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Selected, QIcon.On)
-        self.btn_help.setIcon(icon1)
-        self.btn_help.setIconSize(QSize(20, 20))
-        frm_comment.setCentralWidget(self.centralwidget)
-#if QT_CONFIG(shortcut)
-        self.lbl_com.setBuddy(self.lbl_com)
-        self.lbl_sde.setBuddy(self.lbl_sde)
-#endif // QT_CONFIG(shortcut)
-        QWidget.setTabOrder(self.tbx_com, self.cbx_sde)
-        QWidget.setTabOrder(self.cbx_sde, self.btn_save)
-        QWidget.setTabOrder(self.btn_save, self.chk_blk)
-        QWidget.setTabOrder(self.chk_blk, self.btn_help)
+        sizePolicy1.setHeightForWidth(self.dock_functions.sizePolicy().hasHeightForWidth())
+        self.dock_functions.setSizePolicy(sizePolicy1)
+        self.dockWidgetContents = QWidget()
+        self.dockWidgetContents.setObjectName(u"dockWidgetContents")
+        self.verticalLayout_5 = QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.groupBox_program = QGroupBox(self.dockWidgetContents)
+        self.groupBox_program.setObjectName(u"groupBox_program")
+        self.gridLayout = QGridLayout(self.groupBox_program)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.btn_free = QPushButton(self.groupBox_program)
+        self.btn_free.setObjectName(u"btn_free")
+        self.btn_free.setMinimumSize(QSize(28, 0))
+        self.btn_free.setMaximumSize(QSize(120, 16777215))
 
-        self.retranslateUi(frm_comment)
+        self.gridLayout.addWidget(self.btn_free, 4, 0, 1, 1)
 
-        QMetaObject.connectSlotsByName(frm_comment)
+        self.btn_end = QPushButton(self.groupBox_program)
+        self.btn_end.setObjectName(u"btn_end")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.btn_end.sizePolicy().hasHeightForWidth())
+        self.btn_end.setSizePolicy(sizePolicy2)
+        self.btn_end.setMinimumSize(QSize(28, 0))
+        self.btn_end.setMaximumSize(QSize(120, 16777215))
+
+        self.gridLayout.addWidget(self.btn_end, 6, 0, 1, 1)
+
+        self.btn_comment = QPushButton(self.groupBox_program)
+        self.btn_comment.setObjectName(u"btn_comment")
+        sizePolicy2.setHeightForWidth(self.btn_comment.sizePolicy().hasHeightForWidth())
+        self.btn_comment.setSizePolicy(sizePolicy2)
+        self.btn_comment.setMinimumSize(QSize(28, 0))
+        self.btn_comment.setMaximumSize(QSize(120, 16777215))
+
+        self.gridLayout.addWidget(self.btn_comment, 3, 0, 1, 1)
+
+        self.btn_header = QPushButton(self.groupBox_program)
+        self.btn_header.setObjectName(u"btn_header")
+        sizePolicy2.setHeightForWidth(self.btn_header.sizePolicy().hasHeightForWidth())
+        self.btn_header.setSizePolicy(sizePolicy2)
+        self.btn_header.setMinimumSize(QSize(28, 0))
+        self.btn_header.setMaximumSize(QSize(120, 16777215))
+        self.btn_header.setFlat(False)
+
+        self.gridLayout.addWidget(self.btn_header, 0, 0, 1, 1)
+
+        self.btn_subrutine = QPushButton(self.groupBox_program)
+        self.btn_subrutine.setObjectName(u"btn_subrutine")
+
+        self.gridLayout.addWidget(self.btn_subrutine, 5, 0, 1, 1)
+
+
+        self.verticalLayout_5.addWidget(self.groupBox_program)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_5.addItem(self.verticalSpacer_5)
+
+        self.dock_functions.setWidget(self.dockWidgetContents)
+        GraphWindow.addDockWidget(Qt.LeftDockWidgetArea, self.dock_functions)
+        QWidget.setTabOrder(self.btn_header, self.btn_comment)
+        QWidget.setTabOrder(self.btn_comment, self.btn_free)
+
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.menuFile.addAction(self.actionNew)
+        self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionSave)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionClose)
+
+        self.retranslateUi(GraphWindow)
+        self.actionShow_functions.triggered.connect(self.dock_functions.show)
+        self.actionHide_functions.triggered.connect(self.dock_functions.hide)
+
+        QMetaObject.connectSlotsByName(GraphWindow)
     # setupUi
 
-    def retranslateUi(self, frm_comment):
-        frm_comment.setWindowTitle(QCoreApplication.translate("frm_comment", u"GCode Editor", None))
+    def retranslateUi(self, GraphWindow):
+        GraphWindow.setWindowTitle(QCoreApplication.translate("GraphWindow", u"CNC Editor - Gr\u00e1fico", None))
+        self.actionNew.setText(QCoreApplication.translate("GraphWindow", u"Nuevo", None))
+#if QT_CONFIG(statustip)
+        self.actionNew.setStatusTip(QCoreApplication.translate("GraphWindow", u"Crear un nuevo programa CNC", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionNew.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+N", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionOpen.setText(QCoreApplication.translate("GraphWindow", u"Abrir", None))
+#if QT_CONFIG(statustip)
+        self.actionOpen.setStatusTip(QCoreApplication.translate("GraphWindow", u"Abrir un programa CNC existente", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionOpen.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+O", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSave.setText(QCoreApplication.translate("GraphWindow", u"Guardar", None))
+#if QT_CONFIG(statustip)
+        self.actionSave.setStatusTip(QCoreApplication.translate("GraphWindow", u"Guardar el programa CNC actual", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionSave.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+S", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionGuardar_como.setText(QCoreApplication.translate("GraphWindow", u"Guardar como", None))
+#if QT_CONFIG(statustip)
+        self.actionGuardar_como.setStatusTip(QCoreApplication.translate("GraphWindow", u"Guardar el programa CNC actual con otro nombre", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionGuardar_como.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+A", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionDirectorio_base.setText(QCoreApplication.translate("GraphWindow", u"Directorio base", None))
+#if QT_CONFIG(statustip)
+        self.actionDirectorio_base.setStatusTip(QCoreApplication.translate("GraphWindow", u"Seleccionar el folder donde se va a trabajar", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionDirectorio_base.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+D", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionClose.setText(QCoreApplication.translate("GraphWindow", u"Cerrar", None))
+#if QT_CONFIG(statustip)
+        self.actionClose.setStatusTip(QCoreApplication.translate("GraphWindow", u"Cerrar la aplicaci\u00f3n", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionClose.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+Q", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionDuplicate.setText(QCoreApplication.translate("GraphWindow", u"Duplicar l\u00edneas       ", None))
+#if QT_CONFIG(statustip)
+        self.actionDuplicate.setStatusTip(QCoreApplication.translate("GraphWindow", u"Duplicar las l\u00edneas seleccionadas", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionDuplicate.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+D", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionDelete.setText(QCoreApplication.translate("GraphWindow", u"Borrar l\u00edneas", None))
+#if QT_CONFIG(statustip)
+        self.actionDelete.setStatusTip(QCoreApplication.translate("GraphWindow", u"Borrar las l\u00edneas seleccionadas", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionDelete.setShortcut(QCoreApplication.translate("GraphWindow", u"Del", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionVersion.setText(QCoreApplication.translate("GraphWindow", u"Versi\u00f3n", None))
+#if QT_CONFIG(shortcut)
+        self.actionVersion.setShortcut(QCoreApplication.translate("GraphWindow", u"F1", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionInvert_X.setText(QCoreApplication.translate("GraphWindow", u"Invertir X", None))
+#if QT_CONFIG(statustip)
+        self.actionInvert_X.setStatusTip(QCoreApplication.translate("GraphWindow", u"Invertir el signo de los movimientos en el eje X", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionInvert_X.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+X", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionInvert_Y.setText(QCoreApplication.translate("GraphWindow", u"Invertir Y", None))
+#if QT_CONFIG(statustip)
+        self.actionInvert_Y.setStatusTip(QCoreApplication.translate("GraphWindow", u"Invertir el signo de los movimientos en el eje Y", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionInvert_Y.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+Y", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionInvert_Z.setText(QCoreApplication.translate("GraphWindow", u"Invertir Z", None))
+#if QT_CONFIG(statustip)
+        self.actionInvert_Z.setStatusTip(QCoreApplication.translate("GraphWindow", u"Invertir el signo de los movimientos en el eje Z", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionInvert_Z.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+Z", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionMove_up.setText(QCoreApplication.translate("GraphWindow", u"Mover arriba", None))
+#if QT_CONFIG(statustip)
+        self.actionMove_up.setStatusTip(QCoreApplication.translate("GraphWindow", u"Mover hacia arriba las l\u00edneas seleccionadas", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionMove_up.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+Up", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionMove_down.setText(QCoreApplication.translate("GraphWindow", u"Mover abajo", None))
+#if QT_CONFIG(statustip)
+        self.actionMove_down.setStatusTip(QCoreApplication.translate("GraphWindow", u"Mover hacia abajo las l\u00edneas seleccionadas", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionMove_down.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+Down", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionGo_to.setText(QCoreApplication.translate("GraphWindow", u"Ir a programa", None))
+#if QT_CONFIG(statustip)
+        self.actionGo_to.setStatusTip(QCoreApplication.translate("GraphWindow", u"Cambiar al programa CNC seleccionado", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionGo_to.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+Right", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionReturn_to.setText(QCoreApplication.translate("GraphWindow", u"Regresar a programa      ", None))
+#if QT_CONFIG(statustip)
+        self.actionReturn_to.setStatusTip(QCoreApplication.translate("GraphWindow", u"Regresar al programa CNC anterior", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionReturn_to.setShortcut(QCoreApplication.translate("GraphWindow", u"Alt+Left", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionShow_functions.setText(QCoreApplication.translate("GraphWindow", u"Barra de funciones", None))
+#if QT_CONFIG(statustip)
+        self.actionShow_functions.setStatusTip(QCoreApplication.translate("GraphWindow", u"Mostrar la barra de funciones", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionShow_functions.setShortcut(QCoreApplication.translate("GraphWindow", u"0", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionShow_tape1_widget.setText(QCoreApplication.translate("GraphWindow", u"Ventana programa 1", None))
+#if QT_CONFIG(statustip)
+        self.actionShow_tape1_widget.setStatusTip(QCoreApplication.translate("GraphWindow", u"Mostrar la ventana del programa principal", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionShow_tape1_widget.setShortcut(QCoreApplication.translate("GraphWindow", u"1", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionShow_tape2_widget.setText(QCoreApplication.translate("GraphWindow", u"Ventana programa 2", None))
+#if QT_CONFIG(statustip)
+        self.actionShow_tape2_widget.setStatusTip(QCoreApplication.translate("GraphWindow", u"Mostrar la ventana del programa secundario", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionShow_tape2_widget.setShortcut(QCoreApplication.translate("GraphWindow", u"2", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionHide_functions.setText(QCoreApplication.translate("GraphWindow", u"Barra de funciones", None))
+#if QT_CONFIG(statustip)
+        self.actionHide_functions.setStatusTip(QCoreApplication.translate("GraphWindow", u"Ocultar la barra de funciones", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionHide_functions.setShortcut(QCoreApplication.translate("GraphWindow", u"9", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionHide_tape1_widget.setText(QCoreApplication.translate("GraphWindow", u"Ventana programa 1", None))
+#if QT_CONFIG(statustip)
+        self.actionHide_tape1_widget.setStatusTip(QCoreApplication.translate("GraphWindow", u"Ocultar la ventana del programa principal", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionHide_tape1_widget.setShortcut(QCoreApplication.translate("GraphWindow", u"4", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionHide_tape2_widget.setText(QCoreApplication.translate("GraphWindow", u"Ventana programa 2", None))
+#if QT_CONFIG(statustip)
+        self.actionHide_tape2_widget.setStatusTip(QCoreApplication.translate("GraphWindow", u"Ocultar la ventana del programa secundario", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionHide_tape2_widget.setShortcut(QCoreApplication.translate("GraphWindow", u"5", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSeleccionar_maquina.setText(QCoreApplication.translate("GraphWindow", u"Seleccionar m\u00e1quina", None))
+#if QT_CONFIG(statustip)
+        self.actionSeleccionar_maquina.setStatusTip(QCoreApplication.translate("GraphWindow", u"Seleccionar el tipo de m\u00e1quina a programar", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionSeleccionar_maquina.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+M", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionShow_config_widget.setText(QCoreApplication.translate("GraphWindow", u"Esquema programa", None))
+#if QT_CONFIG(statustip)
+        self.actionShow_config_widget.setStatusTip(QCoreApplication.translate("GraphWindow", u"Mostrar el esquema del programa", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionShow_config_widget.setShortcut(QCoreApplication.translate("GraphWindow", u"3", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionHide_config_widget.setText(QCoreApplication.translate("GraphWindow", u"Esquema programa", None))
+#if QT_CONFIG(statustip)
+        self.actionHide_config_widget.setStatusTip(QCoreApplication.translate("GraphWindow", u"Ocultar el esquema del programa", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionHide_config_widget.setShortcut(QCoreApplication.translate("GraphWindow", u"6", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionBlock.setText(QCoreApplication.translate("GraphWindow", u"Bloquear l\u00edneas", None))
+#if QT_CONFIG(statustip)
+        self.actionBlock.setStatusTip(QCoreApplication.translate("GraphWindow", u"Bloquear las l\u00edneas seleccionadas", None))
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(shortcut)
+        self.actionBlock.setShortcut(QCoreApplication.translate("GraphWindow", u"/", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionGraph.setText(QCoreApplication.translate("GraphWindow", u"Graficar tape", None))
+#if QT_CONFIG(shortcut)
+        self.actionGraph.setShortcut(QCoreApplication.translate("GraphWindow", u"Ctrl+G", None))
+#endif // QT_CONFIG(shortcut)
+        self.menuFile.setTitle(QCoreApplication.translate("GraphWindow", u"Archivo", None))
+        self.dock_functions.setWindowTitle(QCoreApplication.translate("GraphWindow", u"Funciones", None))
+        self.groupBox_program.setTitle(QCoreApplication.translate("GraphWindow", u"Programa", None))
 #if QT_CONFIG(tooltip)
-        self.tbx_com.setToolTip(QCoreApplication.translate("frm_comment", u"Digite el texto del comentario", None))
+        self.btn_free.setToolTip(QCoreApplication.translate("GraphWindow", u"Agrega comandos personalizados por el usuario", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.tbx_com.setStatusTip("")
+        self.btn_free.setStatusTip(QCoreApplication.translate("GraphWindow", u"Agrega comandos personalizados por el usuario", None))
 #endif // QT_CONFIG(statustip)
-        self.tbx_com.setPlaceholderText("")
-        self.lbl_com.setText(QCoreApplication.translate("frm_comment", u"Comentario", None))
-        self.lbl_sde.setText(QCoreApplication.translate("frm_comment", u"Husillo de trabajo", None))
+        self.btn_free.setText(QCoreApplication.translate("GraphWindow", u"C\u00f3digo &Libre", None))
 #if QT_CONFIG(tooltip)
-        self.cbx_sde.setToolTip(QCoreApplication.translate("frm_comment", u"Seleccione el husillo de trabajo a utilizar", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.btn_save.setToolTip(QCoreApplication.translate("frm_comment", u"Agregar los datos al programa CNC", None))
+        self.btn_end.setToolTip(QCoreApplication.translate("GraphWindow", u"Agrega los comandos de finalizaci\u00f3n del programa", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.btn_save.setStatusTip("")
+        self.btn_end.setStatusTip(QCoreApplication.translate("GraphWindow", u"Agrega los comandos de finalizaci\u00f3n del programa", None))
 #endif // QT_CONFIG(statustip)
-        self.btn_save.setText(QCoreApplication.translate("frm_comment", u"Agregar", None))
-#if QT_CONFIG(shortcut)
-        self.btn_save.setShortcut(QCoreApplication.translate("frm_comment", u"Ctrl+S", None))
-#endif // QT_CONFIG(shortcut)
-        self.chk_blk.setText(QCoreApplication.translate("frm_comment", u"Bloqueo de l\u00ednea", None))
-        self.btn_help.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_help.setShortcut(QCoreApplication.translate("frm_comment", u"F1", None))
-#endif // QT_CONFIG(shortcut)
+        self.btn_end.setText(QCoreApplication.translate("GraphWindow", u"&Finalizar programa", None))
+#if QT_CONFIG(tooltip)
+        self.btn_comment.setToolTip(QCoreApplication.translate("GraphWindow", u"Agrega comentarios para facilitar la comprensi\u00f3n del programa", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_comment.setStatusTip(QCoreApplication.translate("GraphWindow", u"Agrega comentarios para facilitar la comprensi\u00f3n del programa", None))
+#endif // QT_CONFIG(statustip)
+        self.btn_comment.setText(QCoreApplication.translate("GraphWindow", u"&Comentario", None))
+#if QT_CONFIG(tooltip)
+        self.btn_header.setToolTip(QCoreApplication.translate("GraphWindow", u"Agrega el encabezado del programa", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_header.setStatusTip(QCoreApplication.translate("GraphWindow", u"Agrega el encabezado del programa", None))
+#endif // QT_CONFIG(statustip)
+        self.btn_header.setText(QCoreApplication.translate("GraphWindow", u"&Iniciar programa", None))
+#if QT_CONFIG(tooltip)
+        self.btn_subrutine.setToolTip(QCoreApplication.translate("GraphWindow", u"Llama la subrutina dentro del programa principal", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_subrutine.setStatusTip(QCoreApplication.translate("GraphWindow", u"Llama la subrutina dentro del programa principal", None))
+#endif // QT_CONFIG(statustip)
+        self.btn_subrutine.setText(QCoreApplication.translate("GraphWindow", u"Llamar Subrutina", None))
     # retranslateUi
 

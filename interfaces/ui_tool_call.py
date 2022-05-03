@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'machine_datagfvnXf.ui'
+## Form generated from reading UI file 'tool_callaBDHBk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -14,22 +14,22 @@ from PySide6.QtWidgets import *  # type: ignore
 
 import resources_rc
 
-class Ui_frm_machine_data(object):
-    def setupUi(self, frm_machine_data):
-        if not frm_machine_data.objectName():
-            frm_machine_data.setObjectName(u"frm_machine_data")
-        frm_machine_data.resize(210, 330)
+class Ui_frm_tool_call(object):
+    def setupUi(self, frm_tool_call):
+        if not frm_tool_call.objectName():
+            frm_tool_call.setObjectName(u"frm_tool_call")
+        frm_tool_call.resize(210, 510)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(frm_machine_data.sizePolicy().hasHeightForWidth())
-        frm_machine_data.setSizePolicy(sizePolicy)
-        frm_machine_data.setMinimumSize(QSize(210, 330))
-        frm_machine_data.setMaximumSize(QSize(210, 330))
+        sizePolicy.setHeightForWidth(frm_tool_call.sizePolicy().hasHeightForWidth())
+        frm_tool_call.setSizePolicy(sizePolicy)
+        frm_tool_call.setMinimumSize(QSize(210, 510))
+        frm_tool_call.setMaximumSize(QSize(210, 510))
         icon = QIcon()
         icon.addFile(u":/icons/resources/gear.png", QSize(), QIcon.Normal, QIcon.Off)
-        frm_machine_data.setWindowIcon(icon)
-        frm_machine_data.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
+        frm_tool_call.setWindowIcon(icon)
+        frm_tool_call.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
 "\n"
 "    Created by the qtsass compiler v0.1.1\n"
 "    \n"
@@ -200,79 +200,10 @@ class Ui_frm_machine_data(object):
 "  background: transparent;\n"
 "}\n"
 "\n"
-"/* QCheckBox --------------------------------------------------------------\n"
-"\n"
-"https"
-                        "://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qcheckbox\n"
-"\n"
-"--------------------------------------------------------------------------- */\n"
-"QCheckBox {\n"
-"  background-color: #19232D;\n"
-"  color: #F0F0F0;\n"
-"  spacing: 4px;\n"
-"  outline: none;\n"
-"  padding-top: 4px;\n"
-"  padding-bottom: 4px;\n"
-"}\n"
-"\n"
-"QCheckBox:focus {\n"
-"  border: none;\n"
-"}\n"
-"\n"
-"QCheckBox QWidget:disabled {\n"
-"  background-color: #19232D;\n"
-"  color: #787878;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"  margin-left: 4px;\n"
-"  height: 16px;\n"
-"  width: 16px;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"  image: url(\":/qss_icons/rc/checkbox_unchecked.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked:hover, QCheckBox::indicator:unchecked:focus, QCheckBox::indicator:unchecked:pressed {\n"
-"  border: none;\n"
-"  image: url(\":/qss_icons/rc/checkbox_unchecked_focus.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked:disabled {\n"
-"  image: url(\":/qss_icons/rc/checkbox_unchecked_disabled.png\");\n"
-""
-                        "}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"  image: url(\":/qss_icons/rc/checkbox_checked.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked:hover, QCheckBox::indicator:checked:focus, QCheckBox::indicator:checked:pressed {\n"
-"  border: none;\n"
-"  image: url(\":/qss_icons/rc/checkbox_checked_focus.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked:disabled {\n"
-"  image: url(\":/qss_icons/rc/checkbox_checked_disabled.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:indeterminate {\n"
-"  image: url(\":/qss_icons/rc/checkbox_indeterminate.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:indeterminate:disabled {\n"
-"  image: url(\":/qss_icons/rc/checkbox_indeterminate_disabled.png\");\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:indeterminate:focus, QCheckBox::indicator:indeterminate:hover, QCheckBox::indicator:indeterminate:pressed {\n"
-"  image: url(\":/qss_icons/rc/checkbox_indeterminate_focus.png\");\n"
-"}\n"
-"\n"
 "/* QGroupBox --------------------------------------------------------------\n"
 "\n"
-"https://doc.qt.io/qt-5/"
-                        "stylesheet-examples.html#customizing-qgroupbox\n"
+"https"
+                        "://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qgroupbox\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QGroupBox {\n"
@@ -309,9 +240,9 @@ class Ui_frm_machine_data(object):
 "  image: url(\":/qss_icons/rc/checkbox_unchecked_focus.png\");\n"
 "}\n"
 "\n"
-"QGroupBox::indicator:unchecked:disabled {\n"
-"  image: url"
-                        "(\":/qss_icons/rc/checkbox_unchecked_disabled.png\");\n"
+"QGroupBox::indicator:unchecked:disabled "
+                        "{\n"
+"  image: url(\":/qss_icons/rc/checkbox_unchecked_disabled.png\");\n"
 "}\n"
 "\n"
 "QGroupBox::indicator:checked {\n"
@@ -346,9 +277,9 @@ class Ui_frm_machine_data(object):
 "  border: none;\n"
 "}\n"
 "\n"
-"QRadioButton:disabled {\n"
-""
-                        "  background-color: #19232D;\n"
+"QRadioB"
+                        "utton:disabled {\n"
+"  background-color: #19232D;\n"
 "  color: #787878;\n"
 "  border: none;\n"
 "  outline: none;\n"
@@ -388,8 +319,8 @@ class Ui_frm_machine_data(object):
 "QRadioButton::indicator:checked {\n"
 "  border: none;\n"
 "  outline: none;\n"
-"  image: url(\":/qss_icons/rc/radio_ch"
-                        "ecked.png\");\n"
+"  image: url(\":/"
+                        "qss_icons/rc/radio_checked.png\");\n"
 "}\n"
 "\n"
 "QRadioButton::indicator:checked:hover, QRadioButton::indicator:checked:focus, QRadioButton::indicator:checked:pressed {\n"
@@ -426,9 +357,9 @@ class Ui_frm_machine_data(object):
 "\n"
 "QMenuBar::item:selected {\n"
 "  padding: 4px;\n"
-"  background: transparent;\n"
-"  bor"
-                        "der: 0px solid #32414B;\n"
+"  background: t"
+                        "ransparent;\n"
+"  border: 0px solid #32414B;\n"
 "}\n"
 "\n"
 "QMenuBar::item:pressed {\n"
@@ -473,9 +404,9 @@ class Ui_frm_machine_data(object):
 "  color: #F0F0F0;\n"
 "}\n"
 "\n"
-"QMenu::indicator {\n"
-""
-                        "  width: 12px;\n"
+"Q"
+                        "Menu::indicator {\n"
+"  width: 12px;\n"
 "  height: 12px;\n"
 "  padding-left: 6px;\n"
 "  /* non-exclusive indicator = check box style indicator (see QActionGroup::setExclusive) */\n"
@@ -504,10 +435,10 @@ class Ui_frm_machine_data(object):
 "\n"
 "QMenu::indicator:exclusive:unchecked:selected {\n"
 "  image: url(\":/qss_icons/rc/radio_unchecked_disabled.png\");\n"
-"}\n"
+""
+                        "}\n"
 "\n"
-"QMenu::indi"
-                        "cator:exclusive:checked {\n"
+"QMenu::indicator:exclusive:checked {\n"
 "  image: url(\":/qss_icons/rc/radio_checked.png\");\n"
 "}\n"
 "\n"
@@ -540,10 +471,10 @@ class Ui_frm_machine_data(object):
 "\n"
 "/* QAbstractScrollArea ----------------------------------------------------\n"
 "\n"
-"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qabstractscrollarea\n"
+"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qabstractscrolla"
+                        "rea\n"
 "\n"
-"---------"
-                        "------------------------------------------------------------------ */\n"
+"--------------------------------------------------------------------------- */\n"
 "QAbstractScrollArea {\n"
 "  background-color: #19232D;\n"
 "  border: 1px solid #32414B;\n"
@@ -575,9 +506,9 @@ class Ui_frm_machine_data(object):
 "  height: 16px;\n"
 "  margin: 2px 16px 2px 16px;\n"
 "  border: 1px solid #32414B;\n"
-"  border-radius: 4px;\n"
-" "
-                        " background-color: #19232D;\n"
+"  bor"
+                        "der-radius: 4px;\n"
+"  background-color: #19232D;\n"
 "}\n"
 "\n"
 "QScrollBar:vertical {\n"
@@ -621,8 +552,8 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "QScrollBar::handle:vertical:focus {\n"
-"  border: 1px solid #"
-                        "1464A0;\n"
+""
+                        "  border: 1px solid #1464A0;\n"
 "}\n"
 "\n"
 "QScrollBar::add-line:horizontal {\n"
@@ -656,8 +587,8 @@ class Ui_frm_machine_data(object):
 "  height: 12px;\n"
 "  width: 12px;\n"
 "  subcontrol-position: bottom;\n"
-"  subcontrol-origin: mar"
-                        "gin;\n"
+"  s"
+                        "ubcontrol-origin: margin;\n"
 "}\n"
 "\n"
 "QScrollBar::sub-line:horizontal {\n"
@@ -691,11 +622,11 @@ class Ui_frm_machine_data(object):
 "  height: 12px;\n"
 "  width: 12px;\n"
 "  subcontrol-position: top;\n"
-"  subcontrol-origin: margin;\n"
+"  subcontrol-origin:"
+                        " margin;\n"
 "}\n"
 "\n"
-""
-                        "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {\n"
+"QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {\n"
 "  background: none;\n"
 "}\n"
 "\n"
@@ -733,9 +664,9 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "QTextEdit:selected {\n"
-"  background: #1464A0;\n"
-"  co"
-                        "lor: #32414B;\n"
+"  backg"
+                        "round: #1464A0;\n"
+"  color: #32414B;\n"
 "}\n"
 "\n"
 "/* QPlainTextEdit ---------------------------------------------------------\n"
@@ -774,8 +705,8 @@ class Ui_frm_machine_data(object):
 "  image: url(\":/qss_icons/rc/window_grip.png\");\n"
 "}\n"
 "\n"
-"/* QStackedWidget ------------"
-                        "---------------------------------------------\n"
+"/* QSt"
+                        "ackedWidget ---------------------------------------------------------\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QStackedWidget {\n"
@@ -812,8 +743,8 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "QToolBar QToolButton:checked:hover {\n"
-"  border: 1px solid #148C"
-                        "D2;\n"
+" "
+                        " border: 1px solid #148CD2;\n"
 "}\n"
 "\n"
 "QToolBar::handle:horizontal {\n"
@@ -850,8 +781,8 @@ class Ui_frm_machine_data(object):
 "  background-color: #19232D;\n"
 "  border: 1px solid #32414B;\n"
 "  color: #F0F0F0;\n"
-"  /* This fixes 103, 111"
-                        " */\n"
+""
+                        "  /* This fixes 103, 111 */\n"
 "  padding-top: 2px;\n"
 "  /* This fixes 103, 111 */\n"
 "  padding-bottom: 2px;\n"
@@ -886,9 +817,9 @@ class Ui_frm_machine_data(object):
 "\n"
 "QAbstractSpinBox:down-button {\n"
 "  background-color: transparent #19232D;\n"
-"  subcontrol-origin: border;\n"
-"  s"
-                        "ubcontrol-position: bottom right;\n"
+"  subcontrol"
+                        "-origin: border;\n"
+"  subcontrol-position: bottom right;\n"
 "  border-left: 1px solid #32414B;\n"
 "  border-top: 1px solid #32414B;\n"
 "  border-top-left-radius: 0;\n"
@@ -924,8 +855,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "/* ------------------------------------------------------------------------ */\n"
 "/* DISPLAYS --------------------------------------------------------------- */\n"
-"/* ------------------"
-                        "------------------------------------------------------ */\n"
+""
+                        "/* ------------------------------------------------------------------------ */\n"
 "/* QLabel -----------------------------------------------------------------\n"
 "\n"
 "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qframe\n"
@@ -958,8 +889,8 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "QTextBrowser:disabled {\n"
-"  background-color"
-                        ": #19232D;\n"
+""
+                        "  background-color: #19232D;\n"
 "  border: 1px solid #32414B;\n"
 "  color: #787878;\n"
 "  border-radius: 4px;\n"
@@ -992,9 +923,9 @@ class Ui_frm_machine_data(object):
 "\n"
 "/* QCalendarWidget --------------------------------------------------------\n"
 "\n"
-"--------------------------------------------------------------------------- */\n"
-"QCalendar"
-                        "Widget {\n"
+"--------------------------------------------------------------------------"
+                        "- */\n"
+"QCalendarWidget {\n"
 "  border: 1px solid #32414B;\n"
 "  border-radius: 4px;\n"
 "}\n"
@@ -1032,8 +963,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "QProgressBar:disabled {\n"
 "  background-color: #19232D;\n"
-"  border: 1px solid #"
-                        "32414B;\n"
+"  b"
+                        "order: 1px solid #32414B;\n"
 "  color: #787878;\n"
 "  border-radius: 4px;\n"
 "  text-align: center;\n"
@@ -1065,9 +996,9 @@ class Ui_frm_machine_data(object):
 "  color: #F0F0F0;\n"
 "  border-radius: 4px;\n"
 "  padding: 3px;\n"
-"  outline: none;\n"
-"  /* Issue #"
-                        "194 - Special case of QPushButton inside dialogs, for better UI */\n"
+"  outline: none"
+                        ";\n"
+"  /* Issue #194 - Special case of QPushButton inside dialogs, for better UI */\n"
 "  min-width: 80px;\n"
 "}\n"
 "\n"
@@ -1112,9 +1043,9 @@ class Ui_frm_machine_data(object):
 "  border: 1px solid #19232D;\n"
 "}\n"
 "\n"
-"QPushButton:pressed:hover {\n"
-"  border"
-                        ": 1px solid #148CD2;\n"
+"QPushButton:pressed:ho"
+                        "ver {\n"
+"  border: 1px solid #148CD2;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1149,11 +1080,11 @@ class Ui_frm_machine_data(object):
 "  padding: 2px;\n"
 "  /* The subcontrols below are used only in the DelayedPopup mode */\n"
 "  /* The subcontrols below are used only in the MenuButtonPopup mode */\n"
-"  /* The subcontrol below is used only in the InstantPopup or DelayedPopup mode */\n"
+"  /* The subcontrol below is used only in the InstantPopup or DelayedPopup mode *"
+                        "/\n"
 "}\n"
 "\n"
-"Q"
-                        "ToolButton:checked {\n"
+"QToolButton:checked {\n"
 "  background-color: transparent;\n"
 "  border: 1px solid #1464A0;\n"
 "}\n"
@@ -1201,9 +1132,9 @@ class Ui_frm_machine_data(object):
 "  padding-right: 2px;\n"
 "}\n"
 "\n"
-"QToolButton::menu-button {\n"
-"  padding"
-                        ": 2px;\n"
+"QToolButton::menu-butt"
+                        "on {\n"
+"  padding: 2px;\n"
 "  border-radius: 4px;\n"
 "  border: 1px solid #32414B;\n"
 "  width: 12px;\n"
@@ -1243,8 +1174,8 @@ class Ui_frm_machine_data(object):
 "--------------------------------------------------------------------------- */\n"
 "QCommandLinkButton {\n"
 "  background-color: transparent;\n"
-"  border: 1px solid #32414B;"
-                        "\n"
+"  border: "
+                        "1px solid #32414B;\n"
 "  color: #F0F0F0;\n"
 "  border-radius: 4px;\n"
 "  padding: 0px;\n"
@@ -1273,9 +1204,9 @@ class Ui_frm_machine_data(object):
 "  /* 4 + 16*2 See scrollbar size */\n"
 "  /* Fixes #103, #111 */\n"
 "  min-height: 1.5em;\n"
-"  /* padding-top: 2px;     removed to fix #132 */\n"
-"  /*"
-                        " padding-bottom: 2px;  removed to fix #132 */\n"
+"  /* padding-top: 2px;     removed to fi"
+                        "x #132 */\n"
+"  /* padding-bottom: 2px;  removed to fix #132 */\n"
 "  /* min-width: 75px;      removed to fix #109 */\n"
 "  /* Needed to remove indicator - fix #132 */\n"
 "}\n"
@@ -1321,8 +1252,8 @@ class Ui_frm_machine_data(object):
 "QComboBox::indicator {\n"
 "  border: none;\n"
 "  border-radius: 0;\n"
-"  background-color: tran"
-                        "sparent;\n"
+"  back"
+                        "ground-color: transparent;\n"
 "  selection-background-color: transparent;\n"
 "  color: transparent;\n"
 "  selection-color: transparent;\n"
@@ -1363,9 +1294,9 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "/* QSlider ----------------------------------------------------------------\n"
-"\n"
-"https://d"
-                        "oc.qt.io/qt-5/stylesheet-examples.html#customizing-qslider\n"
+""
+                        "\n"
+"https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qslider\n"
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QSlider:disabled {\n"
@@ -1412,8 +1343,8 @@ class Ui_frm_machine_data(object):
 "  border-radius: 4px;\n"
 "}\n"
 "\n"
-"QSlider::su"
-                        "b-page:horizontal:disabled {\n"
+""
+                        "QSlider::sub-page:horizontal:disabled {\n"
 "  background: #14506E;\n"
 "}\n"
 "\n"
@@ -1457,8 +1388,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qlineedit\n"
 "\n"
-"------------------------------"
-                        "--------------------------------------------- */\n"
+"-------------------"
+                        "-------------------------------------------------------- */\n"
 "QLineEdit {\n"
 "  background-color: #19232D;\n"
 "  padding-top: 2px;\n"
@@ -1498,8 +1429,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "--------------------------------------------------------------------------- */\n"
 "QTabWidget {\n"
-"  paddi"
-                        "ng: 2px;\n"
+""
+                        "  padding: 2px;\n"
 "  selection-background-color: #32414B;\n"
 "}\n"
 "\n"
@@ -1539,8 +1470,8 @@ class Ui_frm_machine_data(object):
 "  border: 0;\n"
 "  margin: 2px;\n"
 "  padding: 2px;\n"
-"  image: url(\":/qss_icons/rc/w"
-                        "indow_close.png\");\n"
+"  image: url(\":/qss_ico"
+                        "ns/rc/window_close.png\");\n"
 "}\n"
 "\n"
 "QTabBar::close-button:hover {\n"
@@ -1573,8 +1504,8 @@ class Ui_frm_machine_data(object):
 "  background-color: #32414B;\n"
 "}\n"
 "\n"
-"QTabBar::tab:left:selected:disabled "
-                        "{\n"
+"QTabBar::tab:left:selected:di"
+                        "sabled {\n"
 "  border-right: 3px solid #14506E;\n"
 "  color: #787878;\n"
 "  background-color: #32414B;\n"
@@ -1616,8 +1547,8 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "QTabBar::tab:bottom:!selected {\n"
-"  border-top: 2px solid #19232D;"
-                        "\n"
+"  border-top: 2px solid #"
+                        "19232D;\n"
 "  margin-bottom: 3px;\n"
 "}\n"
 "\n"
@@ -1659,9 +1590,9 @@ class Ui_frm_machine_data(object):
 "  /* Fixes spyder-ide/spyder#9766 */\n"
 "  padding-left: 4px;\n"
 "  padding-right: 4px;\n"
-"}\n"
 ""
-                        "\n"
+                        "}\n"
+"\n"
 "QTabBar::tab:bottom {\n"
 "  color: #F0F0F0;\n"
 "  border-top: 3px solid #32414B;\n"
@@ -1700,9 +1631,9 @@ class Ui_frm_machine_data(object):
 "  padding-right: 2px;\n"
 "  padding-top: 4px;\n"
 "  padding-bottom: 4px;\n"
-"  border-top-left-radius: 3px;\n"
-""
-                        "  border-bottom-left-radius: 3px;\n"
+"  border-top-left-radius: "
+                        "3px;\n"
+"  border-bottom-left-radius: 3px;\n"
 "  min-height: 5px;\n"
 "}\n"
 "\n"
@@ -1745,8 +1676,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "QTabBar QToolButton {\n"
 "  /* Fixes #136 */\n"
-"  background-color: #32414B;"
-                        "\n"
+"  background-color:"
+                        " #32414B;\n"
 "  height: 12px;\n"
 "  width: 12px;\n"
 "}\n"
@@ -1783,8 +1714,8 @@ class Ui_frm_machine_data(object):
 "  background-color: #19232D;\n"
 "  border: 1px solid #32414B;\n"
 "  border-radius: 4px;\n"
-"  titlebar-close-icon: url(\":/q"
-                        "ss_icons/rc/window_close.png\");\n"
+"  titlebar-close-icon: "
+                        "url(\":/qss_icons/rc/window_close.png\");\n"
 "  titlebar-normal-icon: url(\":/qss_icons/rc/window_undock.png\");\n"
 "}\n"
 "\n"
@@ -1824,8 +1755,8 @@ class Ui_frm_machine_data(object):
 "  image: url(\":/qss_icons/rc/window_undock_pressed.png\");\n"
 "}\n"
 "\n"
-"/* QTreeView QListView QTableView -----------"
-                        "------------------------------\n"
+"/* QTreeView QListView QTableView --"
+                        "---------------------------------------\n"
 "\n"
 "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qtreeview\n"
 "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qlistview\n"
@@ -1850,8 +1781,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "QTreeView:branch:has-children:!has-siblings:closed, QTreeView:branch:closed:has-children:has-siblings {\n"
 "  border-image: none;\n"
-"  image: url(\":/qss_icons/rc/"
-                        "branch_closed.png\");\n"
+"  image: url(\":/qss_"
+                        "icons/rc/branch_closed.png\");\n"
 "}\n"
 "\n"
 "QTreeView:branch:open:has-children:!has-siblings, QTreeView:branch:open:has-children:has-siblings {\n"
@@ -1876,8 +1807,8 @@ class Ui_frm_machine_data(object):
 "QListView::indicator:checked:hover,\n"
 "QListView::indicator:checked:focus,\n"
 "QListView::indicator:checked:pressed {\n"
-"  image: url(\":/qss_icons/rc/checkbo"
-                        "x_checked_focus.png\");\n"
+"  image: url(\":/qss_icons/r"
+                        "c/checkbox_checked_focus.png\");\n"
 "}\n"
 "\n"
 "QTreeView::indicator:unchecked,\n"
@@ -1903,9 +1834,9 @@ class Ui_frm_machine_data(object):
 "QListView::indicator:indeterminate:pressed {\n"
 "  image: url(\":/qss_icons/rc/checkbox_indeterminate_focus.png\");\n"
 "}\n"
-"\n"
-"QT"
-                        "reeView,\n"
+""
+                        "\n"
+"QTreeView,\n"
 "QListView,\n"
 "QTableView,\n"
 "QColumnView {\n"
@@ -1950,9 +1881,9 @@ class Ui_frm_machine_data(object):
 "QTreeView::item:selected:hover,\n"
 "QListView::item:selected:hover,\n"
 "QTableView::item:selected:hover,\n"
-"QColumnView::item:selected:hover {\n"
-""
-                        "  background: #1464A0;\n"
+"QColumnView::item:selected:hov"
+                        "er {\n"
+"  background: #1464A0;\n"
 "  color: #19232D;\n"
 "}\n"
 "\n"
@@ -1988,8 +1919,8 @@ class Ui_frm_machine_data(object):
 "  border: 0px transparent #32414B;\n"
 "  padding: 0px;\n"
 "  margin: 0px;\n"
-"  border-rad"
-                        "ius: 0px;\n"
+"  b"
+                        "order-radius: 0px;\n"
 "}\n"
 "\n"
 "QHeaderView:disabled {\n"
@@ -2035,9 +1966,9 @@ class Ui_frm_machine_data(object):
 "  padding-right: 4px;\n"
 "  border-top: 1px solid #19232D;\n"
 "}\n"
-"\n"
-"Q"
-                        "HeaderView::section::vertical::first, QHeaderView::section::vertical::only-one {\n"
+""
+                        "\n"
+"QHeaderView::section::vertical::first, QHeaderView::section::vertical::only-one {\n"
 "  border-top: 1px solid #32414B;\n"
 "}\n"
 "\n"
@@ -2071,8 +2002,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qtoolbox\n"
 "\n"
-"-------------------------------------------------------"
-                        "-------------------- */\n"
+"-------------------------------------------------"
+                        "-------------------------- */\n"
 "QToolBox {\n"
 "  padding: 0px;\n"
 "  border: 0px;\n"
@@ -2120,8 +2051,8 @@ class Ui_frm_machine_data(object):
 "  border-bottom: 2px solid #148CD2;\n"
 "}\n"
 "\n"
-"QToolBox QScrollArea "
-                        "QWidget QWidget {\n"
+"QToolBox QScrol"
+                        "lArea QWidget QWidget {\n"
 "  padding: 0px;\n"
 "  border: 0px;\n"
 "  background-color: #19232D;\n"
@@ -2158,8 +2089,8 @@ class Ui_frm_machine_data(object):
 ".QFrame[frameShape=\"5\"] {\n"
 "  max-width: 2px;\n"
 "  border: none;\n"
-"  backgroun"
-                        "d-color: #32414B;\n"
+"  bac"
+                        "kground-color: #32414B;\n"
 "}\n"
 "\n"
 "/* QSplitter --------------------------------------------------------------\n"
@@ -2198,8 +2129,8 @@ class Ui_frm_machine_data(object):
 "\n"
 "/* QDateEdit, QDateTimeEdit -----------------------------------------------\n"
 "\n"
-"------------------------------------------------------------------"
-                        "--------- */\n"
+"------------------------------------------------------------"
+                        "--------------- */\n"
 "QDateEdit, QDateTimeEdit {\n"
 "  selection-background-color: #1464A0;\n"
 "  border-style: solid;\n"
@@ -2232,8 +2163,8 @@ class Ui_frm_machine_data(object):
 "}\n"
 "\n"
 "QDateEdit::down-arrow:on, QDateEdit::down-arrow:hover, QDateEdit::down-arrow:focus, QDateTimeEdit::down-arrow:on, QDateTimeEdit::down-arrow:hover, QDateTimeEdit::down-arrow:focus {\n"
-"  image: url(\""
-                        ":/qss_icons/rc/arrow_down.png\");\n"
+"  image:"
+                        " url(\":/qss_icons/rc/arrow_down.png\");\n"
 "}\n"
 "\n"
 "QDateEdit QAbstractItemView, QDateTimeEdit QAbstractItemView {\n"
@@ -2263,86 +2194,126 @@ class Ui_frm_machine_data(object):
 "  /* Fix cut labels in plots #134 */\n"
 "  padding: 0px;\n"
 "}")
-        self.centralwidget = QWidget(frm_machine_data)
+        self.centralwidget = QWidget(frm_tool_call)
         self.centralwidget.setObjectName(u"centralwidget")
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(10, 10, 190, 310))
+        self.frame.setGeometry(QRect(10, 10, 190, 490))
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy1)
-        self.frame.setMinimumSize(QSize(190, 310))
-        self.frame.setMaximumSize(QSize(190, 310))
+        self.frame.setMinimumSize(QSize(190, 490))
+        self.frame.setMaximumSize(QSize(190, 490))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
-        self.tbx_dia = QLineEdit(self.frame)
-        self.tbx_dia.setObjectName(u"tbx_dia")
-        self.tbx_dia.setGeometry(QRect(13, 30, 170, 26))
-        self.tbx_dia.setMinimumSize(QSize(170, 0))
-        self.tbx_dia.setMaximumSize(QSize(170, 16777215))
-        self.tbx_dia.setAlignment(Qt.AlignCenter)
-        self.lbl_dia = QLabel(self.frame)
-        self.lbl_dia.setObjectName(u"lbl_dia")
-        self.lbl_dia.setEnabled(True)
-        self.lbl_dia.setGeometry(QRect(20, 10, 125, 26))
-        self.tbx_lgt = QLineEdit(self.frame)
-        self.tbx_lgt.setObjectName(u"tbx_lgt")
-        self.tbx_lgt.setGeometry(QRect(13, 80, 170, 26))
-        self.tbx_lgt.setMinimumSize(QSize(170, 0))
-        self.tbx_lgt.setMaximumSize(QSize(170, 16777215))
-        self.tbx_lgt.setToolTipDuration(-1)
-        self.tbx_lgt.setAlignment(Qt.AlignCenter)
-        self.lbl_lgt = QLabel(self.frame)
-        self.lbl_lgt.setObjectName(u"lbl_lgt")
-        self.lbl_lgt.setGeometry(QRect(20, 60, 117, 26))
-        self.tbx_chk = QLineEdit(self.frame)
-        self.tbx_chk.setObjectName(u"tbx_chk")
-        self.tbx_chk.setGeometry(QRect(13, 130, 170, 26))
-        self.tbx_chk.setMinimumSize(QSize(170, 0))
-        self.tbx_chk.setMaximumSize(QSize(170, 16777215))
-        self.tbx_chk.setAlignment(Qt.AlignCenter)
-        self.lbl_chk = QLabel(self.frame)
-        self.lbl_chk.setObjectName(u"lbl_chk")
-        self.lbl_chk.setEnabled(True)
-        self.lbl_chk.setGeometry(QRect(20, 110, 121, 26))
-        self.lbl_cch = QLabel(self.frame)
-        self.lbl_cch.setObjectName(u"lbl_cch")
-        self.lbl_cch.setEnabled(True)
-        self.lbl_cch.setGeometry(QRect(20, 160, 101, 26))
-        self.cbx_cch = QComboBox(self.frame)
-        self.cbx_cch.setObjectName(u"cbx_cch")
-        self.cbx_cch.setGeometry(QRect(10, 180, 170, 26))
-        self.cbx_cch.setMinimumSize(QSize(170, 26))
-        self.cbx_cch.setMaximumSize(QSize(170, 16777215))
+        self.tbx_tol = QLineEdit(self.frame)
+        self.tbx_tol.setObjectName(u"tbx_tol")
+        self.tbx_tol.setGeometry(QRect(10, 30, 170, 26))
+        self.tbx_tol.setMinimumSize(QSize(170, 0))
+        self.tbx_tol.setMaximumSize(QSize(170, 16777215))
+        self.tbx_tol.setAlignment(Qt.AlignCenter)
+        self.lbl_tol = QLabel(self.frame)
+        self.lbl_tol.setObjectName(u"lbl_tol")
+        self.lbl_tol.setEnabled(True)
+        self.lbl_tol.setGeometry(QRect(20, 10, 139, 26))
+        self.tbx_spc = QLineEdit(self.frame)
+        self.tbx_spc.setObjectName(u"tbx_spc")
+        self.tbx_spc.setGeometry(QRect(10, 180, 170, 26))
+        self.tbx_spc.setMinimumSize(QSize(170, 0))
+        self.tbx_spc.setMaximumSize(QSize(170, 16777215))
+        self.tbx_spc.setAlignment(Qt.AlignCenter)
+        self.lbl_spc = QLabel(self.frame)
+        self.lbl_spc.setObjectName(u"lbl_spc")
+        self.lbl_spc.setEnabled(True)
+        self.lbl_spc.setGeometry(QRect(20, 160, 145, 26))
         self.btn_save = QPushButton(self.frame)
         self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setGeometry(QRect(10, 280, 171, 24))
+        self.btn_save.setGeometry(QRect(10, 460, 171, 24))
         sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
         self.btn_save.setSizePolicy(sizePolicy)
         self.btn_save.setMinimumSize(QSize(88, 0))
         self.btn_save.setAutoDefault(True)
-        self.lbl_wrk = QLabel(self.frame)
-        self.lbl_wrk.setObjectName(u"lbl_wrk")
-        self.lbl_wrk.setEnabled(True)
-        self.lbl_wrk.setGeometry(QRect(20, 210, 138, 26))
-        self.cbx_wrk = QComboBox(self.frame)
-        self.cbx_wrk.setObjectName(u"cbx_wrk")
-        self.cbx_wrk.setGeometry(QRect(10, 230, 170, 26))
-        self.cbx_wrk.setMinimumSize(QSize(170, 26))
-        self.cbx_wrk.setMaximumSize(QSize(170, 16777215))
-        self.tbx_dia.raise_()
-        self.lbl_dia.raise_()
-        self.tbx_lgt.raise_()
-        self.lbl_lgt.raise_()
-        self.tbx_chk.raise_()
-        self.lbl_chk.raise_()
-        self.cbx_cch.raise_()
-        self.lbl_cch.raise_()
+        self.lbl_typ = QLabel(self.frame)
+        self.lbl_typ.setObjectName(u"lbl_typ")
+        self.lbl_typ.setEnabled(True)
+        self.lbl_typ.setGeometry(QRect(20, 60, 118, 26))
+        self.lbl_dia = QLabel(self.frame)
+        self.lbl_dia.setObjectName(u"lbl_dia")
+        self.lbl_dia.setEnabled(True)
+        self.lbl_dia.setGeometry(QRect(20, 110, 154, 26))
+        self.tbx_dia = QLineEdit(self.frame)
+        self.tbx_dia.setObjectName(u"tbx_dia")
+        self.tbx_dia.setGeometry(QRect(10, 130, 170, 26))
+        self.tbx_dia.setMinimumSize(QSize(170, 0))
+        self.tbx_dia.setMaximumSize(QSize(170, 16777215))
+        self.tbx_dia.setAlignment(Qt.AlignCenter)
+        self.cbx_typ = QComboBox(self.frame)
+        self.cbx_typ.setObjectName(u"cbx_typ")
+        self.cbx_typ.setGeometry(QRect(10, 80, 170, 26))
+        self.cbx_typ.setMinimumSize(QSize(170, 26))
+        self.cbx_typ.setMaximumSize(QSize(170, 16777215))
+        self.chk_blk = QCheckBox(self.frame)
+        self.chk_blk.setObjectName(u"chk_blk")
+        self.chk_blk.setGeometry(QRect(20, 430, 161, 20))
+        self.cbx_sde = QComboBox(self.frame)
+        self.cbx_sde.setObjectName(u"cbx_sde")
+        self.cbx_sde.setGeometry(QRect(10, 230, 170, 26))
+        self.cbx_sde.setMinimumSize(QSize(170, 26))
+        self.cbx_sde.setMaximumSize(QSize(170, 16777215))
+        self.lbl_sde = QLabel(self.frame)
+        self.lbl_sde.setObjectName(u"lbl_sde")
+        self.lbl_sde.setEnabled(True)
+        self.lbl_sde.setGeometry(QRect(20, 210, 118, 26))
+        self.tbx_xin = QLineEdit(self.frame)
+        self.tbx_xin.setObjectName(u"tbx_xin")
+        self.tbx_xin.setGeometry(QRect(10, 280, 170, 26))
+        self.tbx_xin.setMinimumSize(QSize(170, 0))
+        self.tbx_xin.setMaximumSize(QSize(170, 16777215))
+        self.tbx_xin.setAlignment(Qt.AlignCenter)
+        self.lbl_xin = QLabel(self.frame)
+        self.lbl_xin.setObjectName(u"lbl_xin")
+        self.lbl_xin.setEnabled(True)
+        self.lbl_xin.setGeometry(QRect(20, 260, 98, 26))
+        self.lbl_yin = QLabel(self.frame)
+        self.lbl_yin.setObjectName(u"lbl_yin")
+        self.lbl_yin.setEnabled(True)
+        self.lbl_yin.setGeometry(QRect(20, 310, 98, 26))
+        self.tbx_yin = QLineEdit(self.frame)
+        self.tbx_yin.setObjectName(u"tbx_yin")
+        self.tbx_yin.setGeometry(QRect(10, 330, 170, 26))
+        self.tbx_yin.setMinimumSize(QSize(170, 0))
+        self.tbx_yin.setMaximumSize(QSize(170, 16777215))
+        self.tbx_yin.setAlignment(Qt.AlignCenter)
+        self.lbl_zin = QLabel(self.frame)
+        self.lbl_zin.setObjectName(u"lbl_zin")
+        self.lbl_zin.setEnabled(True)
+        self.lbl_zin.setGeometry(QRect(20, 360, 98, 26))
+        self.tbx_zin = QLineEdit(self.frame)
+        self.tbx_zin.setObjectName(u"tbx_zin")
+        self.tbx_zin.setGeometry(QRect(10, 380, 170, 26))
+        self.tbx_zin.setMinimumSize(QSize(170, 0))
+        self.tbx_zin.setMaximumSize(QSize(170, 16777215))
+        self.tbx_zin.setAlignment(Qt.AlignCenter)
+        self.tbx_tol.raise_()
+        self.lbl_tol.raise_()
+        self.tbx_spc.raise_()
+        self.lbl_spc.raise_()
         self.btn_save.raise_()
-        self.cbx_wrk.raise_()
-        self.lbl_wrk.raise_()
+        self.tbx_dia.raise_()
+        self.cbx_typ.raise_()
+        self.lbl_dia.raise_()
+        self.lbl_typ.raise_()
+        self.chk_blk.raise_()
+        self.cbx_sde.raise_()
+        self.lbl_sde.raise_()
+        self.tbx_xin.raise_()
+        self.lbl_xin.raise_()
+        self.tbx_yin.raise_()
+        self.tbx_zin.raise_()
+        self.lbl_zin.raise_()
+        self.lbl_yin.raise_()
         self.btn_help = QToolButton(self.centralwidget)
         self.btn_help.setObjectName(u"btn_help")
         self.btn_help.setGeometry(QRect(183, -2, 29, 29))
@@ -2361,67 +2332,101 @@ class Ui_frm_machine_data(object):
         icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Selected, QIcon.On)
         self.btn_help.setIcon(icon1)
         self.btn_help.setIconSize(QSize(20, 20))
-        frm_machine_data.setCentralWidget(self.centralwidget)
+        frm_tool_call.setCentralWidget(self.centralwidget)
 #if QT_CONFIG(shortcut)
+        self.lbl_tol.setBuddy(self.lbl_tol)
+        self.lbl_typ.setBuddy(self.lbl_typ)
         self.lbl_dia.setBuddy(self.lbl_dia)
-        self.lbl_cch.setBuddy(self.lbl_cch)
-        self.lbl_wrk.setBuddy(self.lbl_cch)
+        self.lbl_sde.setBuddy(self.lbl_typ)
 #endif // QT_CONFIG(shortcut)
-        QWidget.setTabOrder(self.tbx_dia, self.tbx_lgt)
-        QWidget.setTabOrder(self.tbx_lgt, self.tbx_chk)
-        QWidget.setTabOrder(self.tbx_chk, self.cbx_cch)
-        QWidget.setTabOrder(self.cbx_cch, self.cbx_wrk)
-        QWidget.setTabOrder(self.cbx_wrk, self.btn_save)
-        QWidget.setTabOrder(self.btn_save, self.btn_help)
+        QWidget.setTabOrder(self.tbx_tol, self.cbx_typ)
+        QWidget.setTabOrder(self.cbx_typ, self.tbx_dia)
+        QWidget.setTabOrder(self.tbx_dia, self.tbx_spc)
+        QWidget.setTabOrder(self.tbx_spc, self.cbx_sde)
+        QWidget.setTabOrder(self.cbx_sde, self.tbx_xin)
+        QWidget.setTabOrder(self.tbx_xin, self.tbx_yin)
+        QWidget.setTabOrder(self.tbx_yin, self.tbx_zin)
+        QWidget.setTabOrder(self.tbx_zin, self.btn_save)
+        QWidget.setTabOrder(self.btn_save, self.chk_blk)
+        QWidget.setTabOrder(self.chk_blk, self.btn_help)
 
-        self.retranslateUi(frm_machine_data)
+        self.retranslateUi(frm_tool_call)
 
-        QMetaObject.connectSlotsByName(frm_machine_data)
+        QMetaObject.connectSlotsByName(frm_tool_call)
     # setupUi
 
-    def retranslateUi(self, frm_machine_data):
-        frm_machine_data.setWindowTitle(QCoreApplication.translate("frm_machine_data", u"GCode Editor", None))
+    def retranslateUi(self, frm_tool_call):
+        frm_tool_call.setWindowTitle(QCoreApplication.translate("frm_tool_call", u"GCode Editor", None))
 #if QT_CONFIG(tooltip)
-        self.tbx_dia.setToolTip(QCoreApplication.translate("frm_machine_data", u"Digite el di\u00e1metro del material (Torno suizo)", None))
+        self.tbx_tol.setToolTip(QCoreApplication.translate("frm_tool_call", u"Digite el n\u00famero de herramienta a llamar", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.tbx_tol.setStatusTip("")
+#endif // QT_CONFIG(statustip)
+        self.tbx_tol.setPlaceholderText("")
+        self.lbl_tol.setText(QCoreApplication.translate("frm_tool_call", u"N\u00famero de herramienta", None))
+#if QT_CONFIG(tooltip)
+        self.tbx_spc.setToolTip(QCoreApplication.translate("frm_tool_call", u"Digite las indicaciones especiales sobre la herramienta", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.tbx_spc.setStatusTip("")
+#endif // QT_CONFIG(statustip)
+        self.tbx_spc.setPlaceholderText("")
+        self.lbl_spc.setText(QCoreApplication.translate("frm_tool_call", u"Indicaciones especiales", None))
+#if QT_CONFIG(tooltip)
+        self.btn_save.setToolTip(QCoreApplication.translate("frm_tool_call", u"Agregar los datos al programa CNC", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_save.setStatusTip("")
+#endif // QT_CONFIG(statustip)
+        self.btn_save.setText(QCoreApplication.translate("frm_tool_call", u"Agregar", None))
+#if QT_CONFIG(shortcut)
+        self.btn_save.setShortcut(QCoreApplication.translate("frm_tool_call", u"Ctrl+S", None))
+#endif // QT_CONFIG(shortcut)
+        self.lbl_typ.setText(QCoreApplication.translate("frm_tool_call", u"Tipo de herramienta", None))
+        self.lbl_dia.setText(QCoreApplication.translate("frm_tool_call", u"Di\u00e1metro de la herramienta", None))
+#if QT_CONFIG(tooltip)
+        self.tbx_dia.setToolTip(QCoreApplication.translate("frm_tool_call", u"Digite el di\u00e1metro de la herramienta", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         self.tbx_dia.setStatusTip("")
 #endif // QT_CONFIG(statustip)
         self.tbx_dia.setPlaceholderText("")
-        self.lbl_dia.setText(QCoreApplication.translate("frm_machine_data", u"Di\u00e1metro del material", None))
 #if QT_CONFIG(tooltip)
-        self.tbx_lgt.setToolTip(QCoreApplication.translate("frm_machine_data", u"Digite la longitud total de la pieza (Torno suizo)", None))
+        self.cbx_typ.setToolTip(QCoreApplication.translate("frm_tool_call", u"Seleccione el tipo de herramienta a utilizar", None))
+#endif // QT_CONFIG(tooltip)
+        self.chk_blk.setText(QCoreApplication.translate("frm_tool_call", u"Bloqueo de l\u00ednea", None))
+#if QT_CONFIG(tooltip)
+        self.cbx_sde.setToolTip(QCoreApplication.translate("frm_tool_call", u"Seleccione el husillo de trabajo a utilizar", None))
+#endif // QT_CONFIG(tooltip)
+        self.lbl_sde.setText(QCoreApplication.translate("frm_tool_call", u"Husillo de trabajo", None))
+#if QT_CONFIG(tooltip)
+        self.tbx_xin.setToolTip(QCoreApplication.translate("frm_tool_call", u"Digite la posici\u00f3n de inicio en el eje X", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.tbx_lgt.setStatusTip("")
+        self.tbx_xin.setStatusTip("")
 #endif // QT_CONFIG(statustip)
-        self.lbl_lgt.setText(QCoreApplication.translate("frm_machine_data", u"Longitud de la pieza", None))
+        self.tbx_xin.setPlaceholderText("")
+        self.lbl_xin.setText(QCoreApplication.translate("frm_tool_call", u"Posici\u00f3n inicio X", None))
+        self.lbl_yin.setText(QCoreApplication.translate("frm_tool_call", u"Posici\u00f3n inicio Y", None))
 #if QT_CONFIG(tooltip)
-        self.tbx_chk.setToolTip(QCoreApplication.translate("frm_machine_data", u"Digite la longitud de la sujeci\u00f3n del husillo posterior (Torno suizo)", None))
+        self.tbx_yin.setToolTip(QCoreApplication.translate("frm_tool_call", u"Digite la posici\u00f3n de inicio en el eje Y", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.tbx_chk.setStatusTip("")
+        self.tbx_yin.setStatusTip("")
 #endif // QT_CONFIG(statustip)
-        self.tbx_chk.setPlaceholderText("")
-        self.lbl_chk.setText(QCoreApplication.translate("frm_machine_data", u"Longitud de sujeci\u00f3n", None))
-        self.lbl_cch.setText(QCoreApplication.translate("frm_machine_data", u"Cuchilla tronzar", None))
+        self.tbx_yin.setPlaceholderText("")
+        self.lbl_zin.setText(QCoreApplication.translate("frm_tool_call", u"Posici\u00f3n inicio Z", None))
 #if QT_CONFIG(tooltip)
-        self.cbx_cch.setToolTip(QCoreApplication.translate("frm_machine_data", u"Seleccione el tipo de cuchilla de tronzar a utilizar (Torno suizo)", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.btn_save.setToolTip(QCoreApplication.translate("frm_machine_data", u"Agregar los datos al programa CNC", None))
+        self.tbx_zin.setToolTip(QCoreApplication.translate("frm_tool_call", u"Digite la posici\u00f3n de inicio en el eje Z", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.btn_save.setStatusTip("")
+        self.tbx_zin.setStatusTip("")
 #endif // QT_CONFIG(statustip)
-        self.btn_save.setText(QCoreApplication.translate("frm_machine_data", u"Agregar", None))
-#if QT_CONFIG(shortcut)
-        self.btn_save.setShortcut(QCoreApplication.translate("frm_machine_data", u"Ctrl+S", None))
-#endif // QT_CONFIG(shortcut)
-        self.lbl_wrk.setText(QCoreApplication.translate("frm_machine_data", u"Coordenadas de trabajo", None))
-#if QT_CONFIG(tooltip)
-        self.cbx_wrk.setToolTip(QCoreApplication.translate("frm_machine_data", u"Seleccione las coordenadas prefijadas de trabajo a utilizar (Mazak)", None))
-#endif // QT_CONFIG(tooltip)
+        self.tbx_zin.setPlaceholderText("")
         self.btn_help.setText("")
+#if QT_CONFIG(shortcut)
+        self.btn_help.setShortcut(QCoreApplication.translate("frm_tool_call", u"F1", None))
+#endif // QT_CONFIG(shortcut)
     # retranslateUi
 

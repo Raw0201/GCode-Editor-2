@@ -13,6 +13,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
 )
 
+import pyqtgraph as pg
 import contextlib
 import sys
 import os
@@ -37,6 +38,7 @@ from generators.header_gen import header_gen
 from generators.free_gen import free_gen
 from generators.comment_gen import comment_gen
 from generators.subrutine_gen import subrutine_gen
+from generators.tool_call_gen import tool_call_gen
 from generators.end_gen import end_gen
 
 # ?
@@ -44,11 +46,13 @@ from generators.end_gen import end_gen
 # ?
 
 from interfaces.ui_MainWindow import Ui_MainWindow
+from interfaces.ui_graph import Ui_GraphWindow
 from interfaces.ui_helper import Ui_frm_helper
 from interfaces.ui_header import Ui_frm_header
 from interfaces.ui_free import Ui_frm_free
 from interfaces.ui_comment import Ui_frm_comment
 from interfaces.ui_subrutine import Ui_frm_subrutine
+from interfaces.ui_tool_call import Ui_frm_tool_call
 
 # ?
 # ? Clase principal --------------------------------------------------------- *
@@ -71,6 +75,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.subtask1 = None
         self.helper1 = None
+        self.graph1 = None
 
         self.load_folders_locations()
         self.load_default_folders()
@@ -113,6 +118,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def load_main_data(self) -> None:
         """Cargar datos principales"""
 
+        self.current_widget = ""
         self.current_folder = self.root_dir
         self.file_name = ""
         self.file_extension = ""
@@ -129,6 +135,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.current_machine = ""
         self.current_comment = ""
+        self.current_side = ""
         self.current_work_offset = ""
         self.part_name = ""
         self.main_tape_number = ""
@@ -150,6 +157,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             "        Comentario": Comment,
             "        Código libre": Free,
             "        -> Subrutina": Subrutine,
+            "    Llamar herramienta": Tool_call,
             "Fin de programa": End,
         }
 
@@ -166,6 +174,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actionBlock.triggered.connect(self.block_lines)
         self.actionMove_up.triggered.connect(lambda: self.movement("up"))
         self.actionMove_down.triggered.connect(lambda: self.movement("down"))
+        self.actionGraph.triggered.connect(self.graph)
 
     def load_buttons_list(self) -> None:
         """Cargar lista de botones"""
@@ -176,6 +185,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btn_free: self.free,
             self.btn_comment: self.comment,
             self.btn_subrutine: self.subrutine,
+            self.btn_tool_call: self.tool_call,
         }
 
         self.turning_buttons = {}
@@ -210,7 +220,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def load_widgets_events(self) -> None:
         """Cargar eventos de los widgets"""
 
-        self.config_widget.itemClicked.connect(self.config_selected)
+        self.config_widget.clicked.connect(self.config_clicked)
+        self.tape1_widget.clicked.connect(self.tape1_clicked)
+        self.tape2_widget.clicked.connect(self.tape2_clicked)
+        self.config_widget.itemSelectionChanged.connect(self.config_selected)
         self.config_widget.itemDoubleClicked.connect(self.config_modifier)
         self.tape1_widget.itemSelectionChanged.connect(self.tape1_selected)
         self.tape1_widget.itemDoubleClicked.connect(self.config_modifier)
@@ -470,6 +483,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.update_data()
 
+    def home_position(self) -> None:
+        """Obtiene la línea inicial del programa"""
+        line = 0
+        self.go_to_position(line)
+
+    def end_position(self) -> None:
+        """Obtiene la línea final del programa"""
+        line = len(self.config_list) - 1
+        self.go_to_position(line)
+
+    def go_to_position(self, line):
+        """Ir a la línea indicada"""
+        self.config_widget.setCurrentCell(line, 0)
+        self.current_selection = [line]
+        self.tape1_update_selection()
+        self.tape2_update_selection()
+
     # *
     # * Menú Modificar ------------------------------------------------------ *
     # *
@@ -509,7 +539,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.update_data()
 
-    def insert_after(self, data_pack):
+    def insert_after(self, data_pack: list):
         """Inserta los datos nuevos después de la línea seleccionada
 
         Args:
@@ -560,6 +590,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.config_update_selection()
         self.tape1_update_selection()
         self.tape2_update_selection()
+        self.modified_task = False
 
     def tape_add(self) -> None:
         """Genera líneas de tape a partir de la configuración"""
@@ -647,29 +678,51 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for num, line in enumerate(self.tape2_list):
             self.tape2_widget.setItem(num, 0, QTableWidgetItem(line[1]))
 
+    def config_clicked(self):
+        """Ejecuta la selección de líneas de configuración"""
+
+        self.current_widget = "config_widget"
+        self.config_selected()
+
+    def tape1_clicked(self):
+        """Ejecuta la selección de líneas de tape 1"""
+
+        self.current_widget = "tape1_widget"
+        self.tape1_selected()
+
+    def tape2_clicked(self):
+        """Ejecuta la selección de líneas de tape 2"""
+
+        self.current_widget = "tape2_widget"
+        self.tape2_selected()
+
     def config_selected(self) -> None:
         """Devuelve las líneas seleccionadas de la configuración"""
 
-        if selected_items := self.config_widget.selectedItems():
-            config_lines = []
-            config_lines.extend(
-                item.row() for item in selected_items if item.column() == 0
-            )
-            self.current_selection = sorted(list(set(config_lines)))
+        if self.current_widget == "config_widget":
+            if selected_items := self.config_widget.selectedItems():
+                config_lines = []
+                config_lines.extend(
+                    item.row() for item in selected_items if item.column() == 0
+                )
+                self.current_selection = sorted(list(set(config_lines)))
+
             self.tape1_update_selection()
             self.tape2_update_selection()
 
     def tape1_selected(self) -> None:
         """Obtiene los items seleccionados en tape2"""
 
-        if selected_items := self.tape1_widget.selectedItems():
-            self.items_selection(selected_items)
+        if self.current_widget == "tape1_widget":
+            if selected_items := self.tape1_widget.selectedItems():
+                self.items_selection(selected_items)
 
     def tape2_selected(self) -> None:
         """Obtiene los items seleccionados en tape2"""
 
-        if selected_items := self.tape2_widget.selectedItems():
-            self.items_selection(selected_items)
+        if self.current_widget == "tape2_widget":
+            if selected_items := self.tape2_widget.selectedItems():
+                self.items_selection(selected_items)
 
     def items_selection(self, selected_items):
         """Devuelve las líneas seleccionadas de la configuración
@@ -684,7 +737,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         config_lines = [self.tape1_list[line][0] for line in selected_list]
         self.current_selection = sorted(list(set(config_lines)))
-        self.config_update_selection()
+
+        if self.current_widget == "tape1_widget":
+            self.config_update_selection()
+            self.tape2_update_selection()
+        elif self.current_widget == "tape2_widget":
+            self.config_update_selection()
+            self.tape1_update_selection()
 
     def config_update_selection(self) -> None:
         """Actualiza líneas seleccionadas en config"""
@@ -751,6 +810,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             view = QAbstractItemView
             widget.scrollToItem(items[-1], view.PositionAtCenter)
 
+    def keyPressEvent(self, qKeyEvent) -> None:
+        """Configurar comportamento de teclas presionadas
+
+        Args:
+            qKeyEvent (any): Evento de tecla presionada
+        """
+        if qKeyEvent.key() in [QtCore.Qt.Key_Return, QtCore.Qt.Key_Enter]:
+            self.config_modifier()
+        elif qKeyEvent.key() == QtCore.Qt.Key_Home:
+            self.home_position()
+        elif qKeyEvent.key() == QtCore.Qt.Key_End:
+            self.end_position()
+        else:
+            return
+
     # *
     # * Operaciones --------------------------------------------------------- *
     # *
@@ -762,6 +836,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.helper1 = Helper()
         self.helper1.show()
         image_load(self.helper1.lbl_image, image)
+
+    def graph(self) -> None:
+        """Mostrar subventana"""
+        if self.graph1:
+            del self.graph1
+        self.graph1 = Graph()
+        self.graph1.show()
 
     def header(self) -> None:
         """Mostrar subventana"""
@@ -781,6 +862,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def subrutine(self) -> None:
         """Mostrar subventana"""
         self.subtask1 = Subrutine()
+        self.subtask1.show()
+
+    def tool_call(self) -> None:
+        """Mostrar subventana"""
+        self.subtask1 = Tool_call()
         self.subtask1.show()
 
     def end(self) -> None:
@@ -839,6 +925,66 @@ class Helper(QMainWindow, Ui_frm_helper):
 
         super().__init__()
         self.setupUi(self)
+
+    def keyPressEvent(self, qKeyEvent) -> None:
+        """Configurar comportamento de teclas presionadas
+
+        Args:
+            qKeyEvent (any): Evento de tecla presionada
+        """
+
+        keyPressed(self, qKeyEvent)
+
+
+# ? ---------------------------------------------------------------------------
+
+
+class Graph(QMainWindow, Ui_GraphWindow):
+    """Ventana de ayuda para la tarea
+
+    Args:
+        QMainWindow (_type_): Clase de la interfaz gráfica principal
+        Ui_GraphWindow (_type_): Interfaz gráfica de la ventana
+    """
+
+    def __init__(self) -> None:
+        """Inicializar la clase"""
+
+        super().__init__()
+        self.setupUi(self)
+
+        self.vertical_moves = [0, 0, 0.1, 0.1]
+        self.trasversal_moves = [0.05, 0.1, 0.15, 0.25]
+        self.horizontal_moves = [0, 0, 0.15, 0.25]
+        self.rapid_horizontal = [-0.05, 0]
+        self.rapid_vertical = [-0.05, 0]
+
+        self.construir_grafico()
+
+    def construir_grafico(self):
+
+        self.graph1_widget.setTitle("X - Z")
+        self.graph1_widget.plot(
+            self.horizontal_moves,
+            self.vertical_moves,
+            pen="blue",
+        )
+        self.graph1_widget.plot(
+            self.rapid_horizontal,
+            self.rapid_vertical,
+            pen="gray",
+        )
+        # self.graph1_widget.setAspectLocked()
+        self.graph1_widget.getPlotItem().hideAxis("bottom")
+        self.graph1_widget.getPlotItem().hideAxis("left")
+
+        self.graph2_widget.setTitle("Y - Z")
+        self.graph2_widget.plot(self.horizontal_moves, self.trasversal_moves)
+        # self.graph2_widget.setAspectLocked()
+        self.graph2_widget.getPlotItem().hideAxis("bottom")
+        self.graph2_widget.getPlotItem().hideAxis("left")
+
+        # self.graph1_widget.setXLink(self.graph2_widget)
 
     def keyPressEvent(self, qKeyEvent) -> None:
         """Configurar comportamento de teclas presionadas
@@ -980,6 +1126,7 @@ class Header(Subtask_window, Ui_frm_header):
         """
 
         self.save_required = True
+        self.current_side = "PRINCIPAL"
         self.current_machine = data["Mch"]
         self.part_name = data["Prt"]
         self.main_tape_number = data["Pgr"]
@@ -1017,6 +1164,7 @@ class Header(Subtask_window, Ui_frm_header):
 
         self.btn_header.setEnabled(False)
 
+
 # ? ---------------------------------------------------------------------------
 
 
@@ -1038,6 +1186,7 @@ class Free(Subtask_window, Ui_frm_free):
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
         self.cbx_sde.addItems(Lists.tape_sides)
+        self.cbx_sde.setCurrentText(window.current_side)
 
     def collector(self) -> None:
         """Recopilar datos ingresado por el usuario"""
@@ -1127,6 +1276,7 @@ class Free(Subtask_window, Ui_frm_free):
         """
 
         self.save_required = True
+        self.current_side = data["Sde"]
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -1159,6 +1309,7 @@ class Comment(Subtask_window, Ui_frm_comment):
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
         self.cbx_sde.addItems(Lists.tape_sides)
+        self.cbx_sde.setCurrentText(window.current_side)
 
     def collector(self) -> None:
         """Recopilar datos ingresado por el usuario"""
@@ -1252,6 +1403,7 @@ class Comment(Subtask_window, Ui_frm_comment):
 
         self.save_required = True
         self.current_comment = data["Com"]
+        self.current_side = data["Sde"]
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -1317,7 +1469,6 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
             data["Sub"] = ftext(data["Sub"]) if data["Sub"] != "" else ""
             data["Rep"] = foper(data["Rep"])
             data["Blk"] = data["Blk"] == QtCore.Qt.Checked
-
         except ValueError:
             Messages.data_type_error(self)
             return
@@ -1337,7 +1488,7 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
         self.close()
 
     def generator(self, data: dict) -> None:
-        """Genera las líneas del tape
+        """Genera lzas líneas del tape
 
         Args:
             data (dict): Diccionario de datos recopilados
@@ -1375,6 +1526,7 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
         """
 
         self.save_required = True
+        self.current_side = "PRINCIPAL"
 
     def button_switcher(self, data: dict) -> None:
         """Actualiza las condiciones de los botones
@@ -1384,6 +1536,156 @@ class Subrutine(Subtask_window, Ui_frm_subrutine):
         """
 
         self.btn_subrutine.setEnabled(True)
+
+
+# ? ---------------------------------------------------------------------------
+
+
+class Tool_call(Subtask_window, Ui_frm_tool_call):
+    """Encabezado del programa
+
+    Args:
+        Subtask_window (_type_): Clase padre de la ventana
+        Ui_frm_tool_call (_type_): Interfaz gráfica de la ventana
+    """
+
+    def __init__(self) -> None:
+        """Inicializar la clase"""
+
+        super().__init__()
+        self.task = find_task_name(window.tasks_list, __class__)
+
+        image = "tool.png"
+        self.btn_help.clicked.connect(lambda: window.helper(image))
+
+        self.cbx_typ.addItems(Lists.tool_list)
+        self.cbx_sde.addItems(Lists.tape_sides)
+        self.cbx_sde.setCurrentText(window.current_side)
+
+    def collector(self) -> None:
+        """Recopilar datos ingresado por el usuario"""
+
+        data = {
+            "Tol": self.tbx_tol.text(),
+            "Typ": self.cbx_typ.currentText(),
+            "Dia": self.tbx_dia.text(),
+            "Spc": self.tbx_spc.text(),
+            "Sde": self.cbx_sde.currentText(),
+            "Xin": self.tbx_xin.text(),
+            "Yin": self.tbx_yin.text(),
+            "Zin": self.tbx_zin.text(),
+            "Blk": self.chk_blk.checkState(),
+        }
+        self.validator(data)
+
+    def validator(self, data: dict) -> None:
+        """Validar datos ingresados por el usuario
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        if any_empty(data):
+            Messages.blank_data_error(self)
+            return
+        self.converter(data)
+
+    def converter(self, data: dict) -> None:
+        """Convertir los datos al formato requerido
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        try:
+            data["Tol"] = int(data["Tol"])
+            data["Dia"] = foper(data["Dia"])
+            data["Spc"] = ftext(data["Spc"]) if data["Spc"] != "" else ""
+            data["Xin"] = foper(data["Xin"])
+            data["Yin"] = foper(data["Yin"])
+            data["Zin"] = foper(data["Zin"])
+            data["Blk"] = data["Blk"] == QtCore.Qt.Checked
+        except ValueError:
+            Messages.data_type_error(self)
+            return
+
+        self.packer(data)
+
+    def packer(self, data: dict) -> None:
+        """Empaqueta datos recopilados y adicionales
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        data1 = (self.task, data)
+        data2 = (
+            "        Código libre",
+            {"Fre": " ", "Sde": window.current_side, "Blk": False},
+        )
+
+        data_pack = [data1] if window.modified_task else [data2, data1]
+        window.config_add(data_pack)
+        self.close()
+        window.comment()
+
+    def generator(self, data: dict) -> None:
+        """Genera las líneas del tape
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+            side (bool): Condición de lado del tape
+        """
+
+        parameters = window.get_parameters()
+        machine = window.current_machine
+        lines = tool_call_gen(machine, data)
+        window.tape_generator(lines, parameters)
+
+    def modifier(self, data: dict) -> None:
+        """Modifica las líneas de configuración
+
+        Args:
+            data (dict): Lista de datos de configuración
+        """
+
+        self.modified_task = True
+        tol, typ, dia, spc, sde, xin, yin, zin, blk = data.values()
+        blk = QtCore.Qt.Checked if blk else QtCore.Qt.Unchecked
+
+        self.subtask1 = Tool_call()
+        self.subtask1.tbx_tol.setText(str(tol))
+        self.subtask1.tbx_tol.setSelection(0, 100)
+        self.subtask1.cbx_typ.setCurrentText(str(typ))
+        self.subtask1.tbx_dia.setText(str(dia))
+        self.subtask1.tbx_spc.setText(str(spc))
+        self.subtask1.cbx_sde.setCurrentText(str(sde))
+        self.subtask1.tbx_xin.setText(str(xin))
+        self.subtask1.tbx_yin.setText(str(yin))
+        self.subtask1.tbx_zin.setText(str(zin))
+        self.subtask1.chk_blk.setCheckState(blk)
+        self.subtask1.btn_save.setText("Actualizar")
+        self.subtask1.show()
+
+    def processor(self, data: dict) -> None:
+        """Procesa las condiciones y datos de programa
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        self.save_required = True
+        self.current_tool = data["Tol"]
+        self.current_side = data["Sde"]
+
+    def button_switcher(self, data: dict) -> None:
+        """Actualiza las condiciones de los botones
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        self.btn_tool_call.setEnabled(True)
 
 
 # ? ---------------------------------------------------------------------------
