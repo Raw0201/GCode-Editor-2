@@ -61,3 +61,10 @@ class Messages:
             "Duplicando encabezado",
             "El encabezado no debe ser duplicado",
         )
+
+    def file_open_error(self):
+        return QMessageBox.critical(
+            self,
+            "Error al abrir archivo",
+            "No se puede cargar el programa seleccionado",
+        )

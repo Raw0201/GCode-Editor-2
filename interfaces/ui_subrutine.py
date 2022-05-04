@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'subrutineapVbHc.ui'
+## Form generated from reading UI file 'subrutineWudffr.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,14 +18,14 @@ class Ui_frm_subrutine(object):
     def setupUi(self, frm_subrutine):
         if not frm_subrutine.objectName():
             frm_subrutine.setObjectName(u"frm_subrutine")
-        frm_subrutine.resize(210, 210)
+        frm_subrutine.resize(210, 180)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(frm_subrutine.sizePolicy().hasHeightForWidth())
         frm_subrutine.setSizePolicy(sizePolicy)
-        frm_subrutine.setMinimumSize(QSize(210, 210))
-        frm_subrutine.setMaximumSize(QSize(210, 210))
+        frm_subrutine.setMinimumSize(QSize(210, 180))
+        frm_subrutine.setMaximumSize(QSize(210, 180))
         icon = QIcon()
         icon.addFile(u":/icons/resources/gear.png", QSize(), QIcon.Normal, QIcon.Off)
         frm_subrutine.setWindowIcon(icon)
@@ -2199,14 +2199,14 @@ class Ui_frm_subrutine(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(10, 10, 190, 190))
+        self.frame.setGeometry(QRect(10, 10, 190, 160))
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy1)
-        self.frame.setMinimumSize(QSize(190, 190))
-        self.frame.setMaximumSize(QSize(190, 190))
+        self.frame.setMinimumSize(QSize(190, 160))
+        self.frame.setMaximumSize(QSize(190, 160))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.tbx_sub = QLineEdit(self.frame)
@@ -2225,14 +2225,11 @@ class Ui_frm_subrutine(object):
         self.lbl_rep.setGeometry(QRect(20, 60, 141, 26))
         self.btn_save = QPushButton(self.frame)
         self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setGeometry(QRect(10, 160, 171, 24))
+        self.btn_save.setGeometry(QRect(10, 130, 171, 24))
         sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
         self.btn_save.setSizePolicy(sizePolicy)
         self.btn_save.setMinimumSize(QSize(88, 0))
         self.btn_save.setAutoDefault(True)
-        self.chk_blk = QCheckBox(self.frame)
-        self.chk_blk.setObjectName(u"chk_blk")
-        self.chk_blk.setGeometry(QRect(15, 130, 161, 20))
         self.tbx_rep = QLineEdit(self.frame)
         self.tbx_rep.setObjectName(u"tbx_rep")
         self.tbx_rep.setGeometry(QRect(13, 80, 170, 26))
@@ -2242,7 +2239,6 @@ class Ui_frm_subrutine(object):
         self.tbx_sub.raise_()
         self.lbl_sub.raise_()
         self.btn_save.raise_()
-        self.chk_blk.raise_()
         self.tbx_rep.raise_()
         self.lbl_rep.raise_()
         self.btn_help = QToolButton(self.centralwidget)
@@ -2270,8 +2266,7 @@ class Ui_frm_subrutine(object):
 #endif // QT_CONFIG(shortcut)
         QWidget.setTabOrder(self.tbx_sub, self.tbx_rep)
         QWidget.setTabOrder(self.tbx_rep, self.btn_save)
-        QWidget.setTabOrder(self.btn_save, self.chk_blk)
-        QWidget.setTabOrder(self.chk_blk, self.btn_help)
+        QWidget.setTabOrder(self.btn_save, self.btn_help)
 
         self.retranslateUi(frm_subrutine)
 
@@ -2299,7 +2294,6 @@ class Ui_frm_subrutine(object):
 #if QT_CONFIG(shortcut)
         self.btn_save.setShortcut(QCoreApplication.translate("frm_subrutine", u"Ctrl+S", None))
 #endif // QT_CONFIG(shortcut)
-        self.chk_blk.setText(QCoreApplication.translate("frm_subrutine", u"Bloqueo de l\u00ednea", None))
 #if QT_CONFIG(tooltip)
         self.tbx_rep.setToolTip(QCoreApplication.translate("frm_subrutine", u"Digite la cantidad de repeticiones", None))
 #endif // QT_CONFIG(tooltip)

@@ -1,3 +1,4 @@
+import contextlib
 from datetime import date
 from app_tools.app_lists import *
 
@@ -56,9 +57,30 @@ def foper(oper: str) -> float:
     return result
 
 
-def fcom(tool: str, compensations: list) -> str:
-    if tool in compensations:
-        return compensations[tool]
+def fdia(num: str) -> str:
+    """Formatear dimensiones a 3 decimales
+
+    Args:
+        num (str): Número a formatear
+
+    Returns:
+        str: Cadena formateada
+    """
+
+    num = "{0:.3f}".format(float(num))
+
+    while True:
+        if num[0] == "-":
+            if num[1] != "0":
+                break
+            num = f"-{num[2:]}"
+        elif num[0] != "0":
+            break
+        else:
+            num = num[1:]
+    num = "0" if num == ".0" else num
+
+    return num
 
 
 def fnum3(num: str) -> str:
@@ -154,6 +176,7 @@ def kswiss_to_swiss(tool: int, side: str) -> int:
         tool = tools1[tool]
     elif side == "LATERAL" and tool in tools2:
         tool = tools2[tool]
+
     return tool
 
 
@@ -175,4 +198,9 @@ def swiss_to_kswiss(tool: int, side: str) -> int:
         tool = tools1[tool]
     elif side == "LATERAL" and tool in tools2:
         tool = tools2[tool]
+
     return tool
+
+
+def fcom(tool: int, compensations: list) -> float:
+    return compensations[tool] if tool in compensations else False

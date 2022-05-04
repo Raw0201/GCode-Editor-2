@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'headerDmlUtH.ui'
+## Form generated from reading UI file 'headerelFIFR.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QToolButton, QWidget)
 import resources_rc
 
 class Ui_frm_header(object):
@@ -2310,10 +2316,10 @@ class Ui_frm_header(object):
         self.lbl_mch = QLabel(self.frame)
         self.lbl_mch.setObjectName(u"lbl_mch")
         self.lbl_mch.setEnabled(True)
-        self.lbl_mch.setGeometry(QRect(20, 160, 101, 26))
+        self.lbl_mch.setGeometry(QRect(20, 310, 101, 26))
         self.cbx_mch = QComboBox(self.frame)
         self.cbx_mch.setObjectName(u"cbx_mch")
-        self.cbx_mch.setGeometry(QRect(10, 180, 170, 26))
+        self.cbx_mch.setGeometry(QRect(10, 330, 170, 26))
         self.cbx_mch.setMinimumSize(QSize(170, 26))
         self.cbx_mch.setMaximumSize(QSize(170, 16777215))
         self.btn_save = QPushButton(self.frame)
@@ -2331,19 +2337,19 @@ class Ui_frm_header(object):
         self.lbl_chk = QLabel(self.frame)
         self.lbl_chk.setObjectName(u"lbl_chk")
         self.lbl_chk.setEnabled(True)
-        self.lbl_chk.setGeometry(QRect(20, 310, 121, 26))
+        self.lbl_chk.setGeometry(QRect(20, 260, 121, 26))
         self.lbl_lgt = QLabel(self.frame)
         self.lbl_lgt.setObjectName(u"lbl_lgt")
-        self.lbl_lgt.setGeometry(QRect(20, 260, 117, 26))
+        self.lbl_lgt.setGeometry(QRect(20, 210, 117, 26))
         self.tbx_chk = QLineEdit(self.frame)
         self.tbx_chk.setObjectName(u"tbx_chk")
-        self.tbx_chk.setGeometry(QRect(10, 330, 170, 26))
+        self.tbx_chk.setGeometry(QRect(10, 280, 170, 26))
         self.tbx_chk.setMinimumSize(QSize(170, 0))
         self.tbx_chk.setMaximumSize(QSize(170, 16777215))
         self.tbx_chk.setAlignment(Qt.AlignCenter)
         self.tbx_lgt = QLineEdit(self.frame)
         self.tbx_lgt.setObjectName(u"tbx_lgt")
-        self.tbx_lgt.setGeometry(QRect(10, 280, 170, 26))
+        self.tbx_lgt.setGeometry(QRect(10, 230, 170, 26))
         self.tbx_lgt.setMinimumSize(QSize(170, 0))
         self.tbx_lgt.setMaximumSize(QSize(170, 16777215))
         self.tbx_lgt.setToolTipDuration(-1)
@@ -2355,10 +2361,10 @@ class Ui_frm_header(object):
         self.lbl_dia = QLabel(self.frame)
         self.lbl_dia.setObjectName(u"lbl_dia")
         self.lbl_dia.setEnabled(True)
-        self.lbl_dia.setGeometry(QRect(20, 210, 125, 26))
+        self.lbl_dia.setGeometry(QRect(20, 160, 125, 26))
         self.tbx_dia = QLineEdit(self.frame)
         self.tbx_dia.setObjectName(u"tbx_dia")
-        self.tbx_dia.setGeometry(QRect(10, 230, 170, 26))
+        self.tbx_dia.setGeometry(QRect(10, 180, 170, 26))
         self.tbx_dia.setMinimumSize(QSize(170, 0))
         self.tbx_dia.setMaximumSize(QSize(170, 16777215))
         self.tbx_dia.setAlignment(Qt.AlignCenter)
@@ -2418,11 +2424,11 @@ class Ui_frm_header(object):
 #endif // QT_CONFIG(shortcut)
         QWidget.setTabOrder(self.tbx_prt, self.tbx_pgr)
         QWidget.setTabOrder(self.tbx_pgr, self.tbx_dsc)
-        QWidget.setTabOrder(self.tbx_dsc, self.cbx_mch)
-        QWidget.setTabOrder(self.cbx_mch, self.tbx_dia)
+        QWidget.setTabOrder(self.tbx_dsc, self.tbx_dia)
         QWidget.setTabOrder(self.tbx_dia, self.tbx_lgt)
         QWidget.setTabOrder(self.tbx_lgt, self.tbx_chk)
-        QWidget.setTabOrder(self.tbx_chk, self.cbx_cch)
+        QWidget.setTabOrder(self.tbx_chk, self.cbx_mch)
+        QWidget.setTabOrder(self.cbx_mch, self.cbx_cch)
         QWidget.setTabOrder(self.cbx_cch, self.cbx_wrk)
         QWidget.setTabOrder(self.cbx_wrk, self.btn_save)
         QWidget.setTabOrder(self.btn_save, self.btn_help)

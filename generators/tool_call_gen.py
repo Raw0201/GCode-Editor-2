@@ -13,11 +13,11 @@ def tool_call_gen(machine, data) -> list:
         list: Lista de líneas de tape
     """
 
-    if machine in ("B12", "A16"):
+    if machine in {"B12", "A16"}:
         return tool_call_swiss(machine, data)
-    elif machine in ("K16", "E16"):
+    elif machine in {"K16", "E16"}:
         return tool_call_kswiss(data)
-    elif machine in ("HARDINGE", "ROMI"):
+    elif machine in {"HARDINGE", "ROMI"}:
         return tool_call_hard_rom(machine, data)
     elif machine == "OMNITURN":
         return tool_call_omni(data)
@@ -48,11 +48,9 @@ def tool_call_swiss(machine: str, data: list) -> list:
     sft = fcom(tol, Lists.swiss_compensations)
     sft = f"{blk}G50W-{fnum3(sft)}" if sft else ""
     tol = f"T0{tol}" if tol < 10 else f"T{tol}"
-    dia = "" if dia == 0 else f" {dia}"
+    dia = "" if dia == 0 else f" {fdia(dia)}"
     spc = "" if spc == "0" else f" {spc}"
-    xin = "" if xin == 0 else f"X{fnum3(xin)}"
-    yin = "" if yin == 0 else f"Y{fnum3(yin)}"
-    zin = "" if zin == 0 else f"Z{fnum3(zin)}"
+    zin = f"Z{fnum3(zin)}"
 
     lines1 = [
         f"{blk}{tol}00({typ}{dia}{spc})",
@@ -86,11 +84,9 @@ def tool_call_kswiss(data: list) -> list:
     sft = fcom(tol, Lists.kswiss_compensations)
     sft = f"{blk}G50W-{fnum3(sft)}" if sft else ""
     tol = f"T0{tol}" if tol < 10 else f"T{tol}"
-    dia = "" if dia == 0 else f" {dia}"
+    dia = "" if dia == 0 else f" {fdia(dia)}"
     spc = "" if spc == "0" else f" {spc}"
-    xin = "" if xin == 0 else f"X{fnum3(xin)}"
-    yin = "" if yin == 0 else f"Y{fnum3(yin)}"
-    zin = "" if zin == 0 else f"Z{fnum3(zin)}"
+    zin = f"Z{fnum3(zin)}"
 
     lines1 = [
         f"{blk}{tol}00({typ}{dia}{spc})",
@@ -118,8 +114,16 @@ def tool_call_omni(data: list) -> list:
     blank_space = fspace()
 
     blk = "/" if blk else ""
+    tol = f"T{tol}"
+    dia = "" if dia == 0 else f" {fdia(dia)}"
+    spc = "" if spc == "0" else f" {spc}"
+    xin = f"X{fnum3(xin)}"
+    zin = f"Z{fnum3(zin)}"
 
-    lines1 = [f"G90G94F300({prg}  {prt})", f"({mch} - {dsc} - {version})"]
+    lines1 = [
+        f"{blk}{tol}({typ}{dia}{spc})",
+        f"{blk}{xin}{zin}",
+    ]
     lines2 = [blank_space for _ in lines1]
     return [lines1, lines2]
 
@@ -138,13 +142,16 @@ def tool_call_mazak(data: list) -> list:
     blank_space = fspace()
 
     blk = "/" if blk else ""
+    tol = f"T0{tol}" if tol < 10 else f"T{tol}"
+    dia = "" if dia == 0 else f" {fdia(dia)}"
+    spc = "" if spc == "0" else f" {spc}"
+    xin = f"X{fnum3(xin)}"
+    yin = f"Y{fnum3(yin)}"
+    zin = f"Z{fnum3(zin)}"
 
     lines1 = [
-        "%",
-        f"O{num}({prt})",
-        f"({mch} - {dsc} - {version})",
-        "G17G20G40G49G80G90G95",
-        wrk,
+        f"{blk}{tol}T00M06({typ}{dia}{spc})",
+        f"{blk}G90G00{xin}{yin}{zin}",
     ]
     lines2 = [blank_space for _ in lines1]
     return [lines1, lines2]
@@ -165,11 +172,15 @@ def tool_call_hard_rom(machine: str, data: list) -> list:
     blank_space = fspace()
 
     blk = "/" if blk else ""
+    tol = f"T0{tol}" if tol < 10 else f"T{tol}"
+    dia = "" if dia == 0 else f" {fdia(dia)}"
+    spc = "" if spc == "0" else f" {spc}"
+    xin = f"X{fnum3(xin)}"
+    zin = f"Z{fnum3(zin)}"
 
-    lines1 = ["%", f"O{num}({prt})", f"({mch} - {dsc} - {version})"]
-    romi = "G20G40G90G95G97"
-    hardinge = "G65P9150H1.5G97"
+    romi = [f"{blk}{tol}{tol}G54({typ}{dia}{spc})", f"{blk}G00{xin}{zin}M08"]
+    hardinge = [f"{blk}{tol}({typ}{dia}{spc})", f"{blk}G00{xin}{zin}M08"]
 
-    lines1.append(romi) if machine == "ROMI" else lines1.append(hardinge)
+    lines1 = romi if machine == "ROMI" else hardinge
     lines2 = [blank_space for _ in lines1]
     return [lines1, lines2]

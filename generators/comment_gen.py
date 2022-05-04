@@ -15,8 +15,9 @@ def comment_gen(machine: str, data: list) -> list:
     com, sde, blk = data.values()
     blank_space = fspace()
 
+    blk = "/" if blk else ""
     com = " " if com == "" else com
-    line = f"(-- {com} --)"
+    line = f"{blk}(-- {com} --)"
 
     if sde != "SECUNDARIO":
         lines1 = [line]

@@ -11,9 +11,17 @@ class Lists:
         "HARDINGE",
     )
 
-    tape_sides = ("PRINCIPAL", "SECUNDARIO", "LATERAL")
+    tape_sides = {
+        "PRINCIPAL": "1",
+        "SECUNDARIO": "2",
+        "LATERAL": "3",
+    }
 
-    cutoff_list = ("DERECHA", "IZQUIERDA", "NO APLICA")
+    cutoff_list = (
+        "DERECHA",
+        "IZQUIERDA",
+        "NO APLICA",
+    )
 
     work_offset_list = (
         "G50 (TORNO)",
@@ -30,6 +38,7 @@ class Lists:
         "CUCHILLA TRONZAR",
         "CUCHILLA ROSCAR",
         "CUCHILLA RANURAR",
+        "CUCHILLA ESPECIAL",
         "FRESA PLANA",
         "FRESA BOLA",
         "FRESA ESPADA",
@@ -39,11 +48,11 @@ class Lists:
         "BROCA",
         "BROCA CENTRO",
         "BROCA ESPECIAL",
-        "BARRA TORNEADO",
+        "BARRA TORNEAR",
         "DISCO SIERRA",
         "VOLADOR",
         "RIMA",
-        "MACHO ROSCADO",
+        "MACHO ROSCAR",
         "HTA DOBLAR",
         "PIN",
     )
@@ -65,4 +74,22 @@ class Lists:
         12: 0.394,
         13: 0.394,
         14: 0.394,
+    }
+
+    rotation_directions = (
+        "NORMAL",
+        "REVERSA",
+        "DETENER",
+    )
+
+    rotation_commands = {
+        "NORMAL1": "M03",
+        "REVERSA1": "M04",
+        "DETENER1": "M05",
+        "NORMAL2": "M23",
+        "REVERSA2": "M24",
+        "DETENER2": "M25",
+        "NORMAL3": "M80",
+        "REVERSA3": "M81",
+        "DETENER3": "M82",
     }

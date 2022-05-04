@@ -27,8 +27,14 @@ def keyPressed(self, qKeyEvent) -> None:
     Args:
         qKeyEvent (any): Evento de tecla presionada
     """
-    if qKeyEvent.key() in [QtCore.Qt.Key_Return, QtCore.Qt.Key_Enter]:
+    if qKeyEvent.key() in [
+        QtCore.Qt.Key_Return,
+        QtCore.Qt.Key_Enter,
+        QtCore.Qt.Key_Down,
+    ]:
         self.focusNextChild()
+    if qKeyEvent.key() == QtCore.Qt.Key_Up:
+        self.focusPreviousChild()
     elif qKeyEvent.key() == QtCore.Qt.Key_Escape:
         self.modified_task = False
         self.close()

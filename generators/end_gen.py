@@ -12,7 +12,7 @@ def end_gen(machine: str, data: list) -> list:
         list: Lista de líneas de tape
     """
 
-    mch, num = data.values()
+    mch, num, blk = data.values()
 
     lines1 = [f"Finalizando tape1 de {mch} {num}"]
     lines2 = [f"Finalizando tape2 de {mch} {num}"]
