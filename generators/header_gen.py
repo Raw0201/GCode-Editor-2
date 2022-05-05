@@ -2,7 +2,7 @@ from app_tools.format_tools import *
 
 
 def header_gen(machine, data) -> list:
-    """Generador
+    """Generador de líneas de tape
 
     Args:
         machine (str): Tipo de máquina utilizada

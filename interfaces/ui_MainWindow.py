@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWindowiEemof.ui'
+## Form generated from reading UI file 'MainWindowEbnATM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1292, 1300)
+        MainWindow.resize(1292, 1294)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -2442,29 +2442,11 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setHorizontalSpacing(3)
         self.gridLayout_3.setVerticalSpacing(5)
         self.gridLayout_3.setContentsMargins(1, 10, 1, 1)
-        self.btn_misc = QPushButton(self.groupBox_machine)
-        self.btn_misc.setObjectName(u"btn_misc")
+        self.btn_spindle_index = QPushButton(self.groupBox_machine)
+        self.btn_spindle_index.setObjectName(u"btn_spindle_index")
         sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.btn_misc.sizePolicy().hasHeightForWidth())
-        self.btn_misc.setSizePolicy(sizePolicy2)
-        self.btn_misc.setMinimumSize(QSize(28, 0))
-        self.btn_misc.setMaximumSize(QSize(120, 16777215))
-
-        self.gridLayout_3.addWidget(self.btn_misc, 1, 0, 1, 1)
-
-        self.btn_collect = QPushButton(self.groupBox_machine)
-        self.btn_collect.setObjectName(u"btn_collect")
-        sizePolicy2.setHeightForWidth(self.btn_collect.sizePolicy().hasHeightForWidth())
-        self.btn_collect.setSizePolicy(sizePolicy2)
-        self.btn_collect.setMinimumSize(QSize(28, 0))
-        self.btn_collect.setMaximumSize(QSize(120, 16777215))
-
-        self.gridLayout_3.addWidget(self.btn_collect, 3, 0, 1, 1)
-
-        self.btn_spindle_index = QPushButton(self.groupBox_machine)
-        self.btn_spindle_index.setObjectName(u"btn_spindle_index")
         sizePolicy2.setHeightForWidth(self.btn_spindle_index.sizePolicy().hasHeightForWidth())
         self.btn_spindle_index.setSizePolicy(sizePolicy2)
         self.btn_spindle_index.setMinimumSize(QSize(28, 0))
@@ -2476,6 +2458,15 @@ class Ui_MainWindow(object):
         self.btn_spindle.setObjectName(u"btn_spindle")
 
         self.gridLayout_3.addWidget(self.btn_spindle, 0, 0, 1, 1)
+
+        self.btn_misc = QPushButton(self.groupBox_machine)
+        self.btn_misc.setObjectName(u"btn_misc")
+        sizePolicy2.setHeightForWidth(self.btn_misc.sizePolicy().hasHeightForWidth())
+        self.btn_misc.setSizePolicy(sizePolicy2)
+        self.btn_misc.setMinimumSize(QSize(28, 0))
+        self.btn_misc.setMaximumSize(QSize(120, 16777215))
+
+        self.gridLayout_3.addWidget(self.btn_misc, 3, 0, 1, 1)
 
 
         self.gridLayout_4.addWidget(self.groupBox_machine, 2, 0, 1, 1)
@@ -2525,15 +2516,6 @@ class Ui_MainWindow(object):
         self.gridLayout.setHorizontalSpacing(3)
         self.gridLayout.setVerticalSpacing(5)
         self.gridLayout.setContentsMargins(1, 10, 1, 1)
-        self.btn_end = QPushButton(self.groupBox_program)
-        self.btn_end.setObjectName(u"btn_end")
-        sizePolicy2.setHeightForWidth(self.btn_end.sizePolicy().hasHeightForWidth())
-        self.btn_end.setSizePolicy(sizePolicy2)
-        self.btn_end.setMinimumSize(QSize(28, 0))
-        self.btn_end.setMaximumSize(QSize(120, 16777215))
-
-        self.gridLayout.addWidget(self.btn_end, 6, 0, 1, 1)
-
         self.btn_comment = QPushButton(self.groupBox_program)
         self.btn_comment.setObjectName(u"btn_comment")
         sizePolicy2.setHeightForWidth(self.btn_comment.sizePolicy().hasHeightForWidth())
@@ -2558,12 +2540,30 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.btn_subrutine, 5, 0, 1, 1)
 
+        self.btn_end = QPushButton(self.groupBox_program)
+        self.btn_end.setObjectName(u"btn_end")
+        sizePolicy2.setHeightForWidth(self.btn_end.sizePolicy().hasHeightForWidth())
+        self.btn_end.setSizePolicy(sizePolicy2)
+        self.btn_end.setMinimumSize(QSize(28, 0))
+        self.btn_end.setMaximumSize(QSize(120, 16777215))
+
+        self.gridLayout.addWidget(self.btn_end, 7, 0, 1, 1)
+
         self.btn_free = QPushButton(self.groupBox_program)
         self.btn_free.setObjectName(u"btn_free")
         self.btn_free.setMinimumSize(QSize(28, 0))
         self.btn_free.setMaximumSize(QSize(120, 16777215))
 
         self.gridLayout.addWidget(self.btn_free, 1, 0, 1, 1)
+
+        self.btn_collect = QPushButton(self.groupBox_program)
+        self.btn_collect.setObjectName(u"btn_collect")
+        sizePolicy2.setHeightForWidth(self.btn_collect.sizePolicy().hasHeightForWidth())
+        self.btn_collect.setSizePolicy(sizePolicy2)
+        self.btn_collect.setMinimumSize(QSize(28, 0))
+        self.btn_collect.setMaximumSize(QSize(120, 16777215))
+
+        self.gridLayout.addWidget(self.btn_collect, 6, 0, 1, 1)
 
 
         self.gridLayout_4.addWidget(self.groupBox_program, 0, 0, 1, 1)
@@ -2830,10 +2830,8 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.btn_header, self.btn_comment)
         QWidget.setTabOrder(self.btn_comment, self.btn_tool_call)
         QWidget.setTabOrder(self.btn_tool_call, self.btn_tool_close)
-        QWidget.setTabOrder(self.btn_tool_close, self.btn_misc)
-        QWidget.setTabOrder(self.btn_misc, self.btn_spindle_index)
-        QWidget.setTabOrder(self.btn_spindle_index, self.btn_collect)
-        QWidget.setTabOrder(self.btn_collect, self.btn_lineal)
+        QWidget.setTabOrder(self.btn_tool_close, self.btn_spindle_index)
+        QWidget.setTabOrder(self.btn_spindle_index, self.btn_lineal)
         QWidget.setTabOrder(self.btn_lineal, self.btn_radial)
         QWidget.setTabOrder(self.btn_radial, self.btn_thread)
         QWidget.setTabOrder(self.btn_thread, self.btn_cutoff)
@@ -3115,20 +3113,6 @@ class Ui_MainWindow(object):
         self.dock_functions.setWindowTitle(QCoreApplication.translate("MainWindow", u"Funciones", None))
         self.groupBox_machine.setTitle(QCoreApplication.translate("MainWindow", u"M\u00e1quina", None))
 #if QT_CONFIG(tooltip)
-        self.btn_misc.setToolTip(QCoreApplication.translate("MainWindow", u"Funciones miscel\u00e1neas de la m\u00e1quina", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        self.btn_misc.setStatusTip(QCoreApplication.translate("MainWindow", u"Funciones miscel\u00e1neas de la m\u00e1quina", None))
-#endif // QT_CONFIG(statustip)
-        self.btn_misc.setText(QCoreApplication.translate("MainWindow", u"Funciones &M", None))
-#if QT_CONFIG(tooltip)
-        self.btn_collect.setToolTip(QCoreApplication.translate("MainWindow", u"Activar el proceso de recolecci\u00f3n de la pieza", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        self.btn_collect.setStatusTip(QCoreApplication.translate("MainWindow", u"Activar el proceso de recolecci\u00f3n de la pieza", None))
-#endif // QT_CONFIG(statustip)
-        self.btn_collect.setText(QCoreApplication.translate("MainWindow", u"Recolectar &Pieza", None))
-#if QT_CONFIG(tooltip)
         self.btn_spindle_index.setToolTip(QCoreApplication.translate("MainWindow", u"Orientar el husillo a X cantidad de grados", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
@@ -3142,6 +3126,13 @@ class Ui_MainWindow(object):
         self.btn_spindle.setStatusTip(QCoreApplication.translate("MainWindow", u"Indique el sentido y velocidad de giro del husillo", None))
 #endif // QT_CONFIG(statustip)
         self.btn_spindle.setText(QCoreApplication.translate("MainWindow", u"Giro del hu&sillo", None))
+#if QT_CONFIG(tooltip)
+        self.btn_misc.setToolTip(QCoreApplication.translate("MainWindow", u"Funciones miscel\u00e1neas de la m\u00e1quina", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_misc.setStatusTip(QCoreApplication.translate("MainWindow", u"Funciones miscel\u00e1neas de la m\u00e1quina", None))
+#endif // QT_CONFIG(statustip)
+        self.btn_misc.setText(QCoreApplication.translate("MainWindow", u"Funciones &M", None))
         self.groupBox_tool.setTitle(QCoreApplication.translate("MainWindow", u"Herramienta", None))
 #if QT_CONFIG(tooltip)
         self.btn_tool_call.setToolTip(QCoreApplication.translate("MainWindow", u"Llama una herramienta guardada o colocada en la m\u00e1quina", None))
@@ -3158,13 +3149,6 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.btn_tool_close.setText(QCoreApplication.translate("MainWindow", u"Cerrar &herramienta", None))
         self.groupBox_program.setTitle(QCoreApplication.translate("MainWindow", u"Programa", None))
-#if QT_CONFIG(tooltip)
-        self.btn_end.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n del programa", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        self.btn_end.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n del programa", None))
-#endif // QT_CONFIG(statustip)
-        self.btn_end.setText(QCoreApplication.translate("MainWindow", u"&Finalizar programa", None))
 #if QT_CONFIG(tooltip)
         self.btn_comment.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega comentarios para facilitar la comprensi\u00f3n del programa", None))
 #endif // QT_CONFIG(tooltip)
@@ -3187,12 +3171,26 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.btn_subrutine.setText(QCoreApplication.translate("MainWindow", u"Llamar s&ubrutina", None))
 #if QT_CONFIG(tooltip)
+        self.btn_end.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n del programa", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_end.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega los comandos de finalizaci\u00f3n del programa", None))
+#endif // QT_CONFIG(statustip)
+        self.btn_end.setText(QCoreApplication.translate("MainWindow", u"&Finalizar programa", None))
+#if QT_CONFIG(tooltip)
         self.btn_free.setToolTip(QCoreApplication.translate("MainWindow", u"Agrega un espacio en blanco en el programa", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         self.btn_free.setStatusTip(QCoreApplication.translate("MainWindow", u"Agrega un espacio en blanco en el programa", None))
 #endif // QT_CONFIG(statustip)
         self.btn_free.setText(QCoreApplication.translate("MainWindow", u"&Espacio", None))
+#if QT_CONFIG(tooltip)
+        self.btn_collect.setToolTip(QCoreApplication.translate("MainWindow", u"Activar el proceso de recolecci\u00f3n de la pieza", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.btn_collect.setStatusTip(QCoreApplication.translate("MainWindow", u"Activar el proceso de recolecci\u00f3n de la pieza", None))
+#endif // QT_CONFIG(statustip)
+        self.btn_collect.setText(QCoreApplication.translate("MainWindow", u"Recolectar &Pieza", None))
         self.tabWidget_principal.setTabText(self.tabWidget_principal.indexOf(self.tabWidget_principal_functions), "")
         self.groupBox_turning.setTitle(QCoreApplication.translate("MainWindow", u"Torneado", None))
 #if QT_CONFIG(tooltip)

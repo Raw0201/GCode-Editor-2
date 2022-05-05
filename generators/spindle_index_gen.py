@@ -1,8 +1,7 @@
 from app_tools.format_tools import *
-from app_tools.combo_lists import *
 
 
-def comment_gen(machine: str, data: list) -> list:
+def spindle_index_gen(machine: str, data: list) -> list:
     """Generador de líneas de tape
 
     Args:
@@ -41,13 +40,11 @@ def gen_b12(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    lines1 = [blank_space]
     lines2 = [blank_space]
 
     return [lines1, lines2]
@@ -63,16 +60,16 @@ def gen_a16(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"]
+    cmd = "M18C" if rot == "DETENER" else "M28S"
+
+    lines1 = [f"{blk}{cmd}{grd}(- HUSILLO A {grd}GRD -)"]
     lines2 = [blank_space]
 
-    return [lines2, lines1] if sde == "$2" else [lines1, lines2]
+    return [lines1, lines2]
 
 
 def gen_k16(data: list) -> list:
@@ -85,16 +82,16 @@ def gen_k16(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"]
+    cmd = "M18C" if rot == "DETENER" else "M28S"
+
+    lines1 = [f"{blk}{cmd}{grd}(- HUSILLO A {grd}GRD -)"]
     lines2 = [blank_space]
 
-    return [lines2, lines1] if sde == "$2" else [lines1, lines2]
+    return [lines1, lines2]
 
 
 def gen_e16(data: list) -> list:
@@ -107,16 +104,16 @@ def gen_e16(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"]
+    cmd = "M18C" if rot == "DETENER" else "M28S"
+
+    lines1 = [f"{blk}{cmd}{grd}(- HUSILLO A {grd}GRD -)"]
     lines2 = [blank_space]
 
-    return [lines2, lines1] if sde == "$2" else [lines1, lines2]
+    return [lines1, lines2]
 
 
 def gen_omni(data: list) -> list:
@@ -129,13 +126,13 @@ def gen_omni(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    rot = "CCW" if rot == "NORMAL" else "CW"
+
+    lines1 = [f"{blk}M00(- GIRAR {grd}GRD {rot} -)"]
     lines2 = [blank_space]
 
     return [lines1, lines2]
@@ -151,14 +148,16 @@ def gen_romi(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
-    lines2 = [blank_space]
+    lines1 = [
+        f"{blk}M23",
+        f"{blk}C{grd}(- HUSILLO A {grd}GRD -)",
+        f"{blk}M22",
+    ]
+    lines2 = [blank_space for _ in lines1]
 
     return [lines1, lines2]
 
@@ -173,14 +172,12 @@ def gen_hardinge(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
-    lines2 = [blank_space]
+    lines1 = [f"{blk}B{grd}(- HUSILLO A {grd}GRD -)"]
+    lines2 = [blank_space for _ in lines1]
 
     return [lines1, lines2]
 
@@ -195,13 +192,11 @@ def gen_mazak(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    grd, rot, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
-    sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    lines1 = [f"{blk}M00(- GIRAR {grd}GRD -)"]
     lines2 = [blank_space]
 
     return [lines1, lines2]

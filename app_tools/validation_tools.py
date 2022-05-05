@@ -8,7 +8,7 @@ def all_empty(data: dict) -> bool:
         bool: Condición de los campos
     """
     items_list = list(data.items())
-    filtered_list = items_list[1:]
+    filtered_list = items_list[:-1]
     empties = sum(item[1] == "" for item in filtered_list)
     if empties == len(data) - 1:
         return True

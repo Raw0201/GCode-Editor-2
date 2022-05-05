@@ -2,7 +2,7 @@ from app_tools.format_tools import *
 
 
 def subrutine_gen(machine: str, data: list) -> list:
-    """Generador
+    """Generador de líneas de tape
 
     Args:
         machine (str): Tipo de máquina utilizada

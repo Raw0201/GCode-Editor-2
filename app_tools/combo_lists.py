@@ -1,20 +1,20 @@
-class Lists:
+class Combo_lists:
 
-    machine_list = (
+    machines = (
         "B12",
         "A16",
         "K16",
         "E16",
-        "MAZAK",
         "OMNITURN",
         "ROMI",
         "HARDINGE",
+        "MAZAK",
     )
 
     tape_sides = {
-        "PRINCIPAL": "1",
-        "SECUNDARIO": "2",
-        "LATERAL": "3",
+        "PRINCIPAL": "$1",
+        "SECUNDARIO": "$2",
+        "LATERAL": "$3",
     }
 
     cutoff_list = (
@@ -93,3 +93,27 @@ class Lists:
         "REVERSA3": "M81",
         "DETENER3": "M82",
     }
+
+    program_stops = (
+        "",
+        "PROGRAMADA",
+        "OPCIONAL",
+    )
+
+    collet_operations = (
+        "",
+        "ABRIR",
+        "CERRAR",
+    )
+
+    coolant_operations = (
+        "",
+        "ACTIVAR",
+        "DESACTIVAR",
+    )
+
+    work_planes = (
+        "G17(- PLANO X-Y -)",
+        "G18(- PLANO X-Z -)",
+        "G19(- PLANO Y-Z -)",
+    )

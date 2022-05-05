@@ -1,8 +1,9 @@
 from app_tools.format_tools import *
+from app_tools.cnc_codes import *
 from app_tools.combo_lists import *
 
 
-def comment_gen(machine: str, data: list) -> list:
+def misc_gen(machine: str, data: list) -> list:
     """Generador de líneas de tape
 
     Args:
@@ -41,13 +42,20 @@ def gen_b12(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    if sde != "$1":
+        return [[blank_space], [blank_space]]
+
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Swiss_lathe.m_codes[f"PARADA {stp}"]
+    chk = Swiss_lathe.m_codes[f"{chk} BOQUILLA"]
+    col = Swiss_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines1, lines2]
@@ -63,13 +71,17 @@ def gen_a16(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"]
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Swiss_k_lathe.m_codes[f"PARADA {stp}"]
+    chk = Swiss_k_lathe.m_codes[f"{chk} BOQUILLA {sde}"]
+    col = Swiss_k_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines2, lines1] if sde == "$2" else [lines1, lines2]
@@ -85,13 +97,17 @@ def gen_k16(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"]
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Swiss_k_lathe.m_codes[f"PARADA {stp}"]
+    chk = Swiss_k_lathe.m_codes[f"{chk} BOQUILLA {sde}"]
+    col = Swiss_k_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines2, lines1] if sde == "$2" else [lines1, lines2]
@@ -107,13 +123,17 @@ def gen_e16(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"]
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Swiss_k_lathe.m_codes[f"PARADA {stp}"]
+    chk = Swiss_k_lathe.m_codes[f"{chk} BOQUILLA {sde}"]
+    col = Swiss_k_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines2, lines1] if sde == "$2" else [lines1, lines2]
@@ -129,13 +149,20 @@ def gen_omni(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    if sde != "$1":
+        return [[blank_space], [blank_space]]
+
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Omni_lathe.m_codes[f"PARADA {stp}"]
+    chk = Omni_lathe.m_codes[f"{chk} BOQUILLA"]
+    col = Omni_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines1, lines2]
@@ -151,13 +178,20 @@ def gen_romi(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    if sde != "$1":
+        return [[blank_space], [blank_space]]
+
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Romi_lathe.m_codes[f"PARADA {stp}"]
+    chk = Romi_lathe.m_codes[f"{chk} BOQUILLA"]
+    col = Romi_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines1, lines2]
@@ -173,13 +207,20 @@ def gen_hardinge(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    if sde != "$1":
+        return [[blank_space], [blank_space]]
+
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Hardinge_lathe.m_codes[f"PARADA {stp}"]
+    chk = Hardinge_lathe.m_codes[f"{chk} BOQUILLA"]
+    col = Hardinge_lathe.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines1, lines2]
@@ -195,13 +236,20 @@ def gen_mazak(data: list) -> list:
         list: Lista de líneas de tape generadas
     """
 
-    com, sde, blk = data.values()
+    com, stp, chk, col, sde, blk = data.values()
     blank_space = fspace()
     blk = "/" if blk else ""
     sde = Combo_lists.tape_sides[sde]
-    com = " " if com == "" else com
 
-    lines1 = [f"{blk}(-- {com} --)"] if sde == "$1" else [blank_space]
+    if sde != "$1":
+        return [[blank_space], [blank_space]]
+
+    com = "" if com == "" else f"(- {com} -)"
+    stp = Mazak_mill.m_codes[f"PARADA {stp}"]
+    chk = Mazak_mill.m_codes[f"{chk} BOQUILLA"]
+    col = Mazak_mill.m_codes[f"{col} REFRIGERANTE"]
+
+    lines1 = [f"{blk}{stp}{chk}{col}{com}"]
     lines2 = [blank_space]
 
     return [lines1, lines2]

@@ -27,7 +27,7 @@ from app_tools.subwindow_tools import *
 from app_tools.format_tools import *
 from app_tools.validation_tools import *
 from app_tools.message_boxes import *
-from app_tools.app_lists import *
+from app_tools.combo_lists import *
 
 
 # ?
@@ -41,6 +41,8 @@ from generators.subrutine_gen import subrutine_gen
 from generators.tool_call_gen import tool_call_gen
 from generators.tool_close_gen import tool_close_gen
 from generators.spindle_gen import spindle_gen
+from generators.spindle_index_gen import spindle_index_gen
+from generators.misc_gen import misc_gen
 from generators.end_gen import end_gen
 
 # ?
@@ -55,6 +57,8 @@ from interfaces.ui_comment import Ui_frm_comment
 from interfaces.ui_subrutine import Ui_frm_subrutine
 from interfaces.ui_tool_call import Ui_frm_tool_call
 from interfaces.ui_spindle import Ui_frm_spindle
+from interfaces.ui_spindle_index import Ui_frm_spindle_index
+from interfaces.ui_misc import Ui_frm_misc
 from interfaces.ui_version import Ui_frm_version
 
 # ?
@@ -104,7 +108,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         base = self.root_dir
         self.default_dirs = {
-            machine: f"{base}/{machine}" for machine in Lists.machine_list
+            machine: f"{base}/{machine}" for machine in Combo_lists.machines
         }
 
     def load_default_folders(self) -> None:
@@ -166,6 +170,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             "    Llamar herramienta": Tool_call,
             "    Cerrar herramienta": Tool_close,
             "        Giro husillo": Spindle,
+            "        Orientar husillo": Spindle_index,
+            "        Funciones M": Misc,
             "Fin de programa": End,
         }
 
@@ -197,6 +203,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btn_tool_call: self.tool_call,
             self.btn_tool_close: self.tool_close,
             self.btn_spindle: self.spindle,
+            self.btn_spindle_index: self.spindle_index,
+            self.btn_misc: self.misc,
         }
 
         self.turning_buttons = {}
@@ -863,7 +871,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def free(self) -> None:
         """Mostrar subventana"""
         self.subtask1 = Free()
-        # self.subtask1.show()
 
     def comment(self) -> None:
         """Mostrar subventana"""
@@ -887,6 +894,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def spindle(self) -> None:
         """Mostrar subventana"""
         self.subtask1 = Spindle()
+        self.subtask1.show()
+
+    def spindle_index(self) -> None:
+        """Mostrar subventana"""
+        self.subtask1 = Spindle_index()
+        self.subtask1.show()
+
+    def misc(self) -> None:
+        """Mostrar subventana"""
+        self.subtask1 = Misc()
         self.subtask1.show()
 
     def end(self) -> None:
@@ -1065,9 +1082,9 @@ class Header(Subtask_window, Ui_frm_header):
         image = "header.png"
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
-        self.cbx_mch.addItems(Lists.machine_list)
-        self.cbx_cch.addItems(Lists.cutoff_list)
-        self.cbx_wrk.addItems(Lists.work_offset_list)
+        self.cbx_mch.addItems(Combo_lists.machines)
+        self.cbx_cch.addItems(Combo_lists.cutoff_list)
+        self.cbx_wrk.addItems(Combo_lists.work_offset_list)
 
     def collector(self) -> None:
         """Recopilar datos ingresado por el usuario"""
@@ -1336,7 +1353,7 @@ class Comment(Subtask_window, Ui_frm_comment):
         image = "free.png"
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
-        self.cbx_sde.addItems(Lists.tape_sides)
+        self.cbx_sde.addItems(Combo_lists.tape_sides)
         self.cbx_sde.setCurrentText(window.current_side)
 
     def collector(self) -> None:
@@ -1580,8 +1597,8 @@ class Tool_call(Subtask_window, Ui_frm_tool_call):
         image = "tool.png"
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
-        self.cbx_typ.addItems(Lists.tool_list)
-        self.cbx_sde.addItems(Lists.tape_sides)
+        self.cbx_typ.addItems(Combo_lists.tool_list)
+        self.cbx_sde.addItems(Combo_lists.tape_sides)
         self.cbx_sde.setCurrentText(window.current_side)
 
     def collector(self) -> None:
@@ -1860,8 +1877,8 @@ class Spindle(Subtask_window, Ui_frm_spindle):
         image = "spindle.png"
         self.btn_help.clicked.connect(lambda: window.helper(image))
 
-        self.cbx_rot.addItems(Lists.rotation_directions)
-        self.cbx_sde.addItems(Lists.tape_sides)
+        self.cbx_rot.addItems(Combo_lists.rotation_directions)
+        self.cbx_sde.addItems(Combo_lists.tape_sides)
         self.cbx_sde.setCurrentText(window.current_side)
 
     def collector(self) -> None:
@@ -1942,6 +1959,258 @@ class Spindle(Subtask_window, Ui_frm_spindle):
         self.subtask1.tbx_spd.setText(str(spd))
         self.subtask1.tbx_spd.setSelection(0, 100)
         self.subtask1.cbx_rot.setCurrentText(str(rot))
+        self.subtask1.cbx_sde.setCurrentText(str(sde))
+        self.subtask1.btn_save.setText("Actualizar")
+        self.subtask1.show()
+
+    def processor(self, data: dict) -> None:
+        """Procesa las condiciones y datos de programa
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        window.save_required = True
+        window.current_side = data["Sde"]
+
+    def button_switcher(self, data: dict) -> None:
+        """Actualiza las condiciones de los botones
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        window.btn_spindle.setEnabled(True)
+
+# ? ---------------------------------------------------------------------------
+
+
+class Spindle_index(Subtask_window, Ui_frm_spindle_index):
+    """Encabezado del programa
+
+    Args:
+        Subtask_window (_type_): Clase padre de la ventana
+        Ui_frm_spindle_index (_type_): Interfaz gráfica de la ventana
+    """
+
+    def __init__(self) -> None:
+        """Inicializar la clase"""
+
+        super().__init__()
+        self.task = find_task_name(window.tasks_list, __class__)
+
+        image = "index.png"
+        self.btn_help.clicked.connect(lambda: window.helper(image))
+
+        self.cbx_rot.addItems(Combo_lists.rotation_directions)
+
+    def collector(self) -> None:
+        """Recopilar datos ingresado por el usuario"""
+
+        data = {
+            "Grd": self.tbx_grd.text(),
+            "Rot": self.cbx_rot.currentText(),
+            "Blk": False,
+        }
+
+        self.validator(data)
+
+    def validator(self, data: dict) -> None:
+        """Validar datos ingresados por el usuario
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        if any_empty(data):
+            Messages.blank_data_error(self)
+            return
+        self.converter(data)
+
+    def converter(self, data: dict) -> None:
+        """Convertir los datos al formato requerido
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        try:
+            data["Grd"] = int(foper(data["Grd"]))
+
+        except ValueError:
+            Messages.data_type_error(self)
+            return
+
+        self.packer(data)
+
+    def packer(self, data: dict) -> None:
+        """Empaqueta datos recopilados y adicionales
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        data1 = (self.task, data)
+        data_pack = [data1]
+        window.config_add(data_pack)
+        self.close()
+
+    def generator(self, data: dict) -> None:
+        """Genera las líneas del tape
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        parameters = window.get_parameters()
+        machine = window.current_machine
+        lines = spindle_index_gen(machine, data)
+        window.tape_generator(lines, parameters)
+
+    def modifier(self, data: dict) -> None:
+        """Modifica las líneas de configuración
+
+        Args:
+            data (dict): Lista de datos de configuración
+        """
+
+        window.modified_task = True
+        grd, rot, blk = data.values()
+
+        self.subtask1 = Spindle_index()
+        self.subtask1.tbx_grd.setText(str(grd))
+        self.subtask1.tbx_grd.setSelection(0, 100)
+        self.subtask1.cbx_rot.setCurrentText(str(rot))
+        self.subtask1.btn_save.setText("Actualizar")
+        self.subtask1.show()
+
+    def processor(self, data: dict) -> None:
+        """Procesa las condiciones y datos de programa
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        window.save_required = True
+        window.current_side = "PRINCIPAL"
+
+    def button_switcher(self, data: dict) -> None:
+        """Actualiza las condiciones de los botones
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        window.btn_spindle_index.setEnabled(True)
+
+# ? ---------------------------------------------------------------------------
+
+
+class Misc(Subtask_window, Ui_frm_misc):
+    """Encabezado del programa
+
+    Args:
+        Subtask_window (_type_): Clase padre de la ventana
+        Ui_frm_misc (_type_): Interfaz gráfica de la ventana
+    """
+
+    def __init__(self) -> None:
+        """Inicializar la clase"""
+
+        super().__init__()
+        self.task = find_task_name(window.tasks_list, __class__)
+
+        image = "misc.png"
+        self.btn_help.clicked.connect(lambda: window.helper(image))
+
+        self.cbx_stp.addItems(Combo_lists.program_stops)
+        self.cbx_chk.addItems(Combo_lists.collet_operations)
+        self.cbx_col.addItems(Combo_lists.coolant_operations)
+        self.cbx_sde.addItems(Combo_lists.tape_sides)
+        self.cbx_sde.setCurrentText(window.current_side)
+
+    def collector(self) -> None:
+        """Recopilar datos ingresado por el usuario"""
+
+        data = {
+            "Com": self.tbx_com.text(),
+            "Stp": self.cbx_stp.currentText(),
+            "Chk": self.cbx_chk.currentText(),
+            "Col": self.cbx_col.currentText(),
+            "Sde": self.cbx_sde.currentText(),
+            "Blk": False,
+        }
+
+        self.validator(data)
+
+    def validator(self, data: dict) -> None:
+        """Validar datos ingresados por el usuario
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        if all_empty(data):
+            Messages.all_blank_data_error(self)
+            return
+        self.converter(data)
+
+    def converter(self, data: dict) -> None:
+        """Convertir los datos al formato requerido
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        try:
+            data["Com"] = ftext(data["Com"]) if data["Com"] != "" else ""
+
+        except ValueError:
+            Messages.data_type_error(self)
+            return
+
+        self.packer(data)
+
+    def packer(self, data: dict) -> None:
+        """Empaqueta datos recopilados y adicionales
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        data1 = (self.task, data)
+        data_pack = [data1]
+        window.config_add(data_pack)
+        self.close()
+
+    def generator(self, data: dict) -> None:
+        """Genera las líneas del tape
+
+        Args:
+            data (dict): Diccionario de datos recopilados
+        """
+
+        parameters = window.get_parameters()
+        machine = window.current_machine
+        lines = misc_gen(machine, data)
+        window.tape_generator(lines, parameters)
+
+    def modifier(self, data: dict) -> None:
+        """Modifica las líneas de configuración
+
+        Args:
+            data (dict): Lista de datos de configuración
+        """
+
+        window.modified_task = True
+        com, stp, chk, col, sde, blk = data.values()
+
+        self.subtask1 = Misc()
+        self.subtask1.tbx_com.setText(str(com))
+        self.subtask1.tbx_com.setSelection(0, 100)
+        self.subtask1.cbx_stp.setCurrentText(str(stp))
+        self.subtask1.cbx_chk.setCurrentText(str(chk))
+        self.subtask1.cbx_col.setCurrentText(str(col))
         self.subtask1.cbx_sde.setCurrentText(str(sde))
         self.subtask1.btn_save.setText("Actualizar")
         self.subtask1.show()

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'spindlemMYEEA.ui'
+## Form generated from reading UI file 'spindle_indexRoiJJj.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -14,22 +14,22 @@ from PySide6.QtWidgets import *  # type: ignore
 
 import resources_rc
 
-class Ui_frm_spindle(object):
-    def setupUi(self, frm_spindle):
-        if not frm_spindle.objectName():
-            frm_spindle.setObjectName(u"frm_spindle")
-        frm_spindle.resize(210, 230)
+class Ui_frm_spindle_index(object):
+    def setupUi(self, frm_spindle_index):
+        if not frm_spindle_index.objectName():
+            frm_spindle_index.setObjectName(u"frm_spindle_index")
+        frm_spindle_index.resize(210, 180)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(frm_spindle.sizePolicy().hasHeightForWidth())
-        frm_spindle.setSizePolicy(sizePolicy)
-        frm_spindle.setMinimumSize(QSize(210, 230))
-        frm_spindle.setMaximumSize(QSize(210, 230))
+        sizePolicy.setHeightForWidth(frm_spindle_index.sizePolicy().hasHeightForWidth())
+        frm_spindle_index.setSizePolicy(sizePolicy)
+        frm_spindle_index.setMinimumSize(QSize(210, 180))
+        frm_spindle_index.setMaximumSize(QSize(210, 180))
         icon = QIcon()
         icon.addFile(u":/icons/resources/gear.png", QSize(), QIcon.Normal, QIcon.Off)
-        frm_spindle.setWindowIcon(icon)
-        frm_spindle.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
+        frm_spindle_index.setWindowIcon(icon)
+        frm_spindle_index.setStyleSheet(u"/* ---------------------------------------------------------------------------\n"
 "\n"
 "    Created by the qtsass compiler v0.1.1\n"
 "    \n"
@@ -2195,42 +2195,33 @@ class Ui_frm_spindle(object):
 "  /* Fix cut labels in plots #134 */\n"
 "  padding: 0px;\n"
 "}")
-        self.centralwidget = QWidget(frm_spindle)
+        self.centralwidget = QWidget(frm_spindle_index)
         self.centralwidget.setObjectName(u"centralwidget")
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(10, 10, 190, 210))
+        self.frame.setGeometry(QRect(10, 10, 190, 160))
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy1)
-        self.frame.setMinimumSize(QSize(190, 210))
-        self.frame.setMaximumSize(QSize(190, 210))
+        self.frame.setMinimumSize(QSize(190, 160))
+        self.frame.setMaximumSize(QSize(190, 160))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
-        self.tbx_spd = QLineEdit(self.frame)
-        self.tbx_spd.setObjectName(u"tbx_spd")
-        self.tbx_spd.setGeometry(QRect(13, 30, 170, 26))
-        self.tbx_spd.setMinimumSize(QSize(170, 0))
-        self.tbx_spd.setMaximumSize(QSize(170, 16777215))
-        self.tbx_spd.setAlignment(Qt.AlignCenter)
-        self.lbl_spd = QLabel(self.frame)
-        self.lbl_spd.setObjectName(u"lbl_spd")
-        self.lbl_spd.setEnabled(True)
-        self.lbl_spd.setGeometry(QRect(20, 10, 73, 26))
-        self.lbl_sde = QLabel(self.frame)
-        self.lbl_sde.setObjectName(u"lbl_sde")
-        self.lbl_sde.setEnabled(True)
-        self.lbl_sde.setGeometry(QRect(20, 110, 111, 26))
-        self.cbx_sde = QComboBox(self.frame)
-        self.cbx_sde.setObjectName(u"cbx_sde")
-        self.cbx_sde.setGeometry(QRect(10, 130, 170, 26))
-        self.cbx_sde.setMinimumSize(QSize(170, 26))
-        self.cbx_sde.setMaximumSize(QSize(170, 16777215))
+        self.tbx_grd = QLineEdit(self.frame)
+        self.tbx_grd.setObjectName(u"tbx_grd")
+        self.tbx_grd.setGeometry(QRect(13, 30, 170, 26))
+        self.tbx_grd.setMinimumSize(QSize(170, 0))
+        self.tbx_grd.setMaximumSize(QSize(170, 16777215))
+        self.tbx_grd.setAlignment(Qt.AlignCenter)
+        self.lbl_grd = QLabel(self.frame)
+        self.lbl_grd.setObjectName(u"lbl_grd")
+        self.lbl_grd.setEnabled(True)
+        self.lbl_grd.setGeometry(QRect(20, 10, 73, 26))
         self.btn_save = QPushButton(self.frame)
         self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setGeometry(QRect(10, 180, 171, 24))
+        self.btn_save.setGeometry(QRect(10, 130, 171, 24))
         sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
         self.btn_save.setSizePolicy(sizePolicy)
         self.btn_save.setMinimumSize(QSize(88, 0))
@@ -2244,13 +2235,6 @@ class Ui_frm_spindle(object):
         self.lbl_rot.setObjectName(u"lbl_rot")
         self.lbl_rot.setEnabled(True)
         self.lbl_rot.setGeometry(QRect(20, 60, 111, 26))
-        self.tbx_spd.raise_()
-        self.lbl_spd.raise_()
-        self.cbx_sde.raise_()
-        self.lbl_sde.raise_()
-        self.btn_save.raise_()
-        self.cbx_rot.raise_()
-        self.lbl_rot.raise_()
         self.btn_help = QToolButton(self.centralwidget)
         self.btn_help.setObjectName(u"btn_help")
         self.btn_help.setGeometry(QRect(183, -2, 29, 29))
@@ -2269,53 +2253,46 @@ class Ui_frm_spindle(object):
         icon1.addFile(u":/icons/resources/question.png", QSize(), QIcon.Selected, QIcon.On)
         self.btn_help.setIcon(icon1)
         self.btn_help.setIconSize(QSize(20, 20))
-        frm_spindle.setCentralWidget(self.centralwidget)
+        frm_spindle_index.setCentralWidget(self.centralwidget)
 #if QT_CONFIG(shortcut)
-        self.lbl_spd.setBuddy(self.lbl_spd)
-        self.lbl_sde.setBuddy(self.lbl_sde)
-        self.lbl_rot.setBuddy(self.lbl_sde)
+        self.lbl_grd.setBuddy(self.lbl_grd)
 #endif // QT_CONFIG(shortcut)
-        QWidget.setTabOrder(self.tbx_spd, self.cbx_rot)
-        QWidget.setTabOrder(self.cbx_rot, self.cbx_sde)
-        QWidget.setTabOrder(self.cbx_sde, self.btn_save)
+        QWidget.setTabOrder(self.tbx_grd, self.cbx_rot)
+        QWidget.setTabOrder(self.cbx_rot, self.btn_save)
         QWidget.setTabOrder(self.btn_save, self.btn_help)
 
-        self.retranslateUi(frm_spindle)
+        self.retranslateUi(frm_spindle_index)
 
-        QMetaObject.connectSlotsByName(frm_spindle)
+        QMetaObject.connectSlotsByName(frm_spindle_index)
     # setupUi
 
-    def retranslateUi(self, frm_spindle):
-        frm_spindle.setWindowTitle(QCoreApplication.translate("frm_spindle", u"GCode Editor", None))
+    def retranslateUi(self, frm_spindle_index):
+        frm_spindle_index.setWindowTitle(QCoreApplication.translate("frm_spindle_index", u"GCode Editor", None))
 #if QT_CONFIG(tooltip)
-        self.tbx_spd.setToolTip(QCoreApplication.translate("frm_spindle", u"Digite la velocidad de giro", None))
+        self.tbx_grd.setToolTip(QCoreApplication.translate("frm_spindle_index", u"Digite la posici\u00f3n en grados de orientaci\u00f3n del husillo", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        self.tbx_spd.setStatusTip("")
+        self.tbx_grd.setStatusTip("")
 #endif // QT_CONFIG(statustip)
-        self.tbx_spd.setPlaceholderText("")
-        self.lbl_spd.setText(QCoreApplication.translate("frm_spindle", u"Velocidad", None))
-        self.lbl_sde.setText(QCoreApplication.translate("frm_spindle", u"Husillo de trabajo", None))
+        self.tbx_grd.setPlaceholderText("")
+        self.lbl_grd.setText(QCoreApplication.translate("frm_spindle_index", u"Grados", None))
 #if QT_CONFIG(tooltip)
-        self.cbx_sde.setToolTip(QCoreApplication.translate("frm_spindle", u"Seleccione el husillo de trabajo a utilizar", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.btn_save.setToolTip(QCoreApplication.translate("frm_spindle", u"Agregar los datos al programa CNC", None))
+        self.btn_save.setToolTip(QCoreApplication.translate("frm_spindle_index", u"Agregar los datos al programa CNC", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         self.btn_save.setStatusTip("")
 #endif // QT_CONFIG(statustip)
-        self.btn_save.setText(QCoreApplication.translate("frm_spindle", u"Agregar", None))
+        self.btn_save.setText(QCoreApplication.translate("frm_spindle_index", u"Agregar", None))
 #if QT_CONFIG(shortcut)
-        self.btn_save.setShortcut(QCoreApplication.translate("frm_spindle", u"Ctrl+S", None))
+        self.btn_save.setShortcut(QCoreApplication.translate("frm_spindle_index", u"Ctrl+S", None))
 #endif // QT_CONFIG(shortcut)
 #if QT_CONFIG(tooltip)
-        self.cbx_rot.setToolTip(QCoreApplication.translate("frm_spindle", u"Seleccione el sentido de giro del husillo", None))
+        self.cbx_rot.setToolTip(QCoreApplication.translate("frm_spindle_index", u"Seleccione el sentido de giro del husillo (detener para eje C)", None))
 #endif // QT_CONFIG(tooltip)
-        self.lbl_rot.setText(QCoreApplication.translate("frm_spindle", u"Sentido de giro", None))
+        self.lbl_rot.setText(QCoreApplication.translate("frm_spindle_index", u"Sentido de giro", None))
         self.btn_help.setText("")
 #if QT_CONFIG(shortcut)
-        self.btn_help.setShortcut(QCoreApplication.translate("frm_spindle", u"F1", None))
+        self.btn_help.setShortcut(QCoreApplication.translate("frm_spindle_index", u"F1", None))
 #endif // QT_CONFIG(shortcut)
     # retranslateUi
 
